@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Format of BTP Report}
+\author{Naman Jain, Pranshu Maheshwari, Saksham Tanwar}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Sections in Report}
+\begin{enumerate}
+    \item Introduction
+    \begin{itemize}
+        \item Description of a generic application
+        \item Disadvantages of a centralized database layer
+        \item Advantages of using a blockchain solution
+        \item Introduction of our product, highlighting the importance of blockchain, describing overall architecture and various products used.
+    \end{itemize}
+    \item Introduction of essential Concepts of Blockchain
+    \begin{itemize}
+        \item Describe various offerings of blockchain in regards to our product
+        \item Existing applications related to our product
+    \end{itemize}
+    \item Architecture
+    \begin{itemize}
+        \item Details regarding the solution architecture
+        \item Identifying the various actors/users of the product and how they interact with the product
+        \item Various sub modules of the product and how they interact with one another
+    \end{itemize}
+    \item Deployment Details
+    \begin{itemize}
+        \item Details about how the product can be deployed
+    \end{itemize}
+    \item Conclusion
+    \begin{itemize}
+        \item Identify the problems which the product solved
+        \item Identify the problems still left in the solution proposed
+    \end{itemize}
+    \item References
+
+\end{enumerate}
+
+\section{Introduction}
+    \subsection{Generic Application}
+        \paragraph{}
+        In building applications, an Application Programming Interface (API) simplifies programming by abstracting the underlying implementation and only exposing objects or actions the developer needs. An API is a computing interface that defines interactions between multiple software applications or mixed hardware-software intermediaries. \cite{wiki}
+        
+        \paragraph{}
+        A typical application needs persistent storage. This is facilitated by using a database, which is an organized collection of data. A database abstraction layer is an API which unifies the communication between a computer application and databases. This API provides access to the database by exposing low level programming interface to the application developers. The API can provide access to any database but typical applications generally use a centralized database.
+        
+    \subsection{Disadvantages of a centralized database}
+        \paragraph{}
+        A database is an organized collection of data and centralized database is a database that is located, stored, and maintained in a single location.
+        A distributed database is a database in which all the information is stored on multiple physical locations. There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database all the locations store the database identically i.e. all locations have the same management system and schema. Whereas in heterogeneous distributed database different locations can have different management software, schemas.
+        A decentralized database is a database which doesn't have a central owner, it uses multiple central owners where each central owner has a copy of the data which can be accessed by the users. 
+        \cite{wiki}
+        \paragraph{}
+        If a centralized database is used to store the data then the whole system is prone to Single Point of Failure, if for some reason the database fails the whole system will fail. As all the data is stored in a single location, if there are precautionary measures taken then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerability.
+        
+    \subsection{Advantages of using Blockchain}
+        \paragraph{}
+        Blockchain is type of database where data is stored in blocks and then the blocks are chained together. When a block fills up, a new block is created and filled with data and it is also chained to the previous block which makes the chained together. Data is blockchain in immutable i.e. blockchain only supports read and write operation rather than the tradition read, write, update and delete this makes the data not susceptible to change. Blockchain uses distributed ledger design i.e. all the data is replicated, shared and synchronized across all the nodes in the network. This makes the data almost tamper proof as it will be very costly and thus highly unlikely for a malicious person to change the data across the whole network. Blockchain also offers transparency as any node can read, and verify the data. No node can directly write data to the blockchain as it make the data inconsistent, to avoid this blockchain uses an consensus algorithm where, when data is to be added to the blockchain all the node come to a consensus according to the algorithm used and only then the data is added and synchronized in the chain.
+        \paragraph{}
+        Although blockchain has redundant data and is slower compared to the traditional databases, it provides the users with a secure, reliable, distributed, decentralized, immutable storage of data. On basis of application when trust is more important than speed blockchain provide an effective solution.
+        
+    \subsection{Motivation}
+        \paragraph{}
+        In India, currently if person is asked to prove if he/she is the owner of a piece of land then all they can show for it is a sale deed which just proves that the person was the owner at a particular time, but that person cannot prove that he/she is still the owner of that land. For proving the same he/she has to go to various government offices and collect various document showing that no sale deed has been registered for that land after the one which the person has. When a person wishes to buy land in India, they have to be very careful and perform various checks such as
+        \begin{itemize}
+            \item Check if the deed title is in the name of the seller and if he/she has the full right to sell it
+            \item Procure a Encumbrance Certificate from sub-registrar's office where the deed is registered which declares that the land is free of any legal hassle and unpaid dues
+            \item Check if the Property tax and other bills are paid in full and the seller has the respective original receipts
+            \item Check if the loan on the land has been completely repaid
+        \end{itemize}
+        If a buyer is lethargic in verifying these documents he/she can be easily duped into buying a disputed land parcel or it may even happen that the land in question did not even legally belong to the said seller, that is the seller was not the genuine owner of that land provided fake documents. As these documents are mostly maintained offline as hard copies these cases occur often.
+
+        \paragraph{}
+        Getting all the information such as the sale deeds and ownership history for a land parcel is very cumbersome, a simple solution to this problem is a smartphone application with which users/potential buyers can get land ownership history and related documents for a particular land parcel. These documents and data can be stored in a database by the government and will be updated every time a new sale deed is registered i.e. owner for a land parcel changes. This makes the process of acquiring the documents in question very easy and hassle free.
+\end{document}
