@@ -1,46 +1,52 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 
-\title{Format of BTP Report}
+\usepackage[nottoc]{tocbibind}
+
+\title{BTP Report}
 \author{Naman Jain, Pranshu Maheshwari, Saksham Tanwar}
 \date{\today}
 
 \begin{document}
 
 \maketitle
+\clearpage
+\tableofcontents
+\clearpage
 
-\section*{Sections in Report}
-\begin{enumerate}
-    \item Introduction
-    \begin{itemize}
-        \item Description of a generic application
-        \item Disadvantages of a centralized database layer
-        \item Advantages of using a blockchain solution
-        \item Introduction of our product, highlighting the importance of blockchain, describing overall architecture and various products used.
-    \end{itemize}
-    \item Introduction of essential Concepts of Blockchain
-    \begin{itemize}
-        \item Describe various offerings of blockchain in regards to our product
-        \item Existing applications related to our product
-    \end{itemize}
-    \item Architecture
-    \begin{itemize}
-        \item Details regarding the solution architecture
-        \item Identifying the various actors/users of the product and how they interact with the product
-        \item Various sub modules of the product and how they interact with one another
-    \end{itemize}
-    \item Deployment Details
-    \begin{itemize}
-        \item Details about how the product can be deployed
-    \end{itemize}
-    \item Conclusion
-    \begin{itemize}
-        \item Identify the problems which the product solved
-        \item Identify the problems still left in the solution proposed
-    \end{itemize}
-    \item References
+% \section*{Sections in Report}
+% \begin{enumerate}
+%     \item Introduction
+%     \begin{itemize}
+%         \item Description of a generic application
+%         \item Disadvantages of a centralized database layer
+%         \item Advantages of using a blockchain solution
+%         \item Introduction of our product, highlighting the importance of blockchain, describing overall architecture and various products used.
+%     \end{itemize}
+%     \item Introduction of essential Concepts of Blockchain
+%     \begin{itemize}
+%         \item Describe various offerings of blockchain in regards to our product
+%         \item Existing applications related to our product
+%     \end{itemize}
+%     \item Architecture
+%     \begin{itemize}
+%         \item Details regarding the solution architecture
+%         \item Identifying the various actors/users of the product and how they interact with the product
+%         \item Various sub modules of the product and how they interact with one another
+%     \end{itemize}
+%     \item Deployment Details
+%     \begin{itemize}
+%         \item Details about how the product can be deployed
+%     \end{itemize}
+%     \item Conclusion
+%     \begin{itemize}
+%         \item Identify the problems which the product solved
+%         \item Identify the problems still left in the solution proposed
+%     \end{itemize}
+%     \item References
 
-\end{enumerate}
+% \end{enumerate}
 
 \section{Introduction}
     \subsection{Generic Application}
@@ -55,45 +61,30 @@
         
     \subsection{Disadvantages of a centralized database}
         \paragraph{}
-        Centralized database is a database that is located, stored, and maintained in a single location.
-        A distributed database is a database in which all the information is stored on multiple physical locations. There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database all the locations store the database identically i.e. all locations have the same management system and schema. Whereas in heterogeneous distributed database different locations can have different management software, schemas.
-        A decentralized database is a database which doesn't have a central owner, it uses multiple central owners where each central owner has a copy of the data which can be accessed by the users. 
+        Most applications require data in some form or another and need to store the said data for future use, this is where databases come into picture.
+        A database is an organized collection of data, generally stored and accessed electronically from a computer system.
+        Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one databases and provides access to all of the data contained in the database.
+        DBMS's provide various functions that allow management of a database and its data such as Data definition which defines the database model i.e. the logical structure of the data model, Updating of actual data which includes insertion, modification, and deletion of the actual data, Retrieval of actual data which may or may not include data processing and Administration which includes allowing access to various users, enforcing data security and various other checks.
         \cite{wiki}
+        A database model is a type of data model that determines the logical structure of a database and fundamentally determines in which manner data can be stored, organized and manipulated. The most popular example of a database model is the relational model, which uses a table-based format. The ACID (Atomicity, Consistency, Isolation and Durability) database design is one of oldest and most important database design. A relational database that fails to follow the ACID model cannot be considered reliable. 
         \paragraph{}
-        If a centralized database is used to store the data then the whole system is prone to Single Point of Failure, if for some reason the database fails the whole system will fail. As all the data is stored in a single location, if there are precautionary measures taken then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerability.
+        Databases can categorized in many categories depending on how they store data, where it is stored and the additional functionality the DBMS can provide on the stored data. Broadly databases can categorized into two major categories centralized and distributed. They both have their advantages and disadvantages.
+        A centralized database is a database that is located, stored, and maintained in a single location and has a single DBMS but can be accessed by the users distributed in the network.
+        A distributed database system consists of a collection of local databases,  geographically located in different points (nodes of a network of computers) and  logically related by functional relations so that they can be viewed globally as a single database \cite{distributeddatabase}.
+        There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database all the locations store the database identically i.e. all locations have the same management system and schema. Whereas in heterogeneous distributed database different locations can have different management software, schemas.
+        For a database management system to be distributed, it should be fully compliant with the twelve rules introduced by C.J. Date in 1987 \cite{distributeddbms}: local autonomy; the absence of a dependency from a central location; continuous operation; location independent; fragmentation independent; replication  independent; distributed query processing; distributed transaction management; hardware independent; operating system independent; independent of communication  infrastructure; independent of database management system.
+        
+        \paragraph{}
+        If a centralized database is used to store the data then the whole system is prone to Single Point of Failure, if for some reason the database fails the whole system will fail. As all the data is stored in a single location, if there are no  precautionary measures taken then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerability. This makes centralized database dubious with very low reliability. But at the same time, centralized database ensures data consistency and easy management in compliance with ACID design \cite{centralizeddistributeddatabases}.
+        
+        \paragraph{}
+        A major advantage of distributed database is that by sharing a database across  multiple nodes can obtain a storage space extension and also can benefit from multiple processing resources. A distributed database system is robust to failure to some extent. Hence, it is reliable when compared to a  centralized database system. It is also more robust compared to a centralized database as it doesn't have a single point of failure, if a node fails another node or group of nodes can provide the necessary data. But to make this possible complex software's are required which incur additional costs and processing overheads. Marinating data integrity is difficult and hence minimum redundancy and ACID properties are more relaxed than compared to a centralized database \cite{centralizeddistributeddatabases}. Distributed environment also faces problems such as fragmentation and data replication. A data fragment constitutes some subset of the original database. A data replica constitutes some copy of the whole or part of the original database. The fragmentation and the replication can be combined: a relationship can be partitioned into several pieces and can have multiple replicas of each fragment \cite{distributedsystems}.
         
     \subsection{Advantages of using Blockchain}
         \paragraph{}
-        % general introduction about blockchain benefits.
-        Blockchain is a type of decentralized database where the data is stored in blocks and each block is linked to the previous block using its cryptographic hash, thus forming a chain. As the blockchain grows in size, it becomes more and more difficult to tamper the data in these blocks. Blockchain based databases are more trustworthy, reliable and secure than traditional databases.
-        
+        Blockchain is type of database where data is stored in blocks and then the blocks are chained together. When a block fills up, a new block is created and filled with data and it is also chained to the previous block which makes the chained together. Data is blockchain in immutable i.e. blockchain only supports read and write operation rather than the tradition read, write, update and delete this makes the data not susceptible to change. Blockchain uses distributed ledger design i.e. all the data is replicated, shared and synchronized across all the nodes in the network. This makes the data almost tamper proof as it will be very costly and thus highly unlikely for a malicious person to change the data across the whole network. Blockchain also offers transparency as any node can read, and verify the data. No node can directly write data to the blockchain as it make the data inconsistent, to avoid this blockchain uses an consensus algorithm where, when data is to be added to the blockchain all the node come to a consensus according to the algorithm used and only then the data is added and synchronized in the chain.
         \paragraph{}
-        % decentralization benefits
-        A blockchain based system is decentralized. Hence, a centralized authority is not necessary. Decentralized systems are also resilient to single point of failure. A blockchain network comprises of various nodes, each maintaining its own copy of database. Hence, all the data is replicated, shared and synchronized across all the nodes in the network. This makes the data almost tamper proof as it will be very costly and thus highly unlikely for a malicious person to change the data across the whole network. No node can directly write data to the blockchain as it can make the data inconsistent, to avoid this the blockchain network uses a consensus algorithm which helps all the nodes in the network to come to a consensus and commit the data in the blockchain. This helps to keep all the nodes in the network to get synchronized with each other. 
-
-        \paragraph{}
-        % Immutability and tracability benefits.
-        The data that is committed to the blockchain is immutable. After some data is inserted into the blockchain, it is very difficult to delete or alter it. This is realized by including, in each block, the cryptographic hash of its previous block. Because of this immutability, a blockchain database only supports read and write operations in contrast to traditional databases which supports read, write, update and delete operations. To update the database state, a subsequent write is required. Old writes persist in the blockchain forever, making it convenient to trace how the blockchain database state is updated over time. This makes it possible to trace the actions that resulted in a particular database state.
-
-        \paragraph{}
-        % transparency
-        Another benefit of blockchain is that it provides transparency to the data stored in it. This is achieved by replicating the blockchain data among multiple nodes present in the blockchain network. Nodes in the blockchain network not only can view the data already committed to the blockchain but can also participate in the process of validating the data to be committed in the blockchain. The transparency also helps users to cross verify some data against the blockchain.  
-
-        \paragraph{}
-        % single public ledger
-        A blockchain ledger is logically a single public ledger. Since every node updates its copy of blockchain ledger in sync with each other and after consensus is reached, the whole network logically act as one single public ledger. This removes the complications present in traditional systems where different participants or organizations maintains multiple ledgers which needs to be reconcile and synchronized time to time.
-        
-        \paragraph{}
-        % Reduced Cost
-        Systems that are deployed on public blockchain network are more cost efficient as compared to the traditional systems. This is because the system utilizes the processing power and resources of a large number of nodes that are already connected to the blockchain network, thus significantly reducing the cost needed for setting up and maintaining centralized servers present in traditional systems.
-
-        \paragraph{}
-        % Security
-        Blockchain based systems are more secure and resilient to cyber attacks, which can cause data loss, data leaks, data inconsistency and many other vulnerability, than traditional sytems. Whenever a new block is introduced in the blockchain, its hash value is calculated which also includes the hash of its previous block. If a malicious user fraudulently tries to tamper the data inside a block, not only its hash value changes, but the hashes of the following blocks get changed too. This, along with the fact, that the data is stored in multiple nodes present in the blockchain network, makes it very difficult to tamper the data present in the blockchain.
-
-
-        \paragraph{}
-        % Benefits of blockchain in our solution
+        Although blockchain has redundant data and is slower compared to the traditional databases, it provides the users with a secure, reliable, distributed, decentralized, immutable storage of data. On basis of application when trust is more important than speed blockchain provide an effective solution.
         
     \subsection{Motivation}
         \paragraph{}
@@ -108,4 +99,8 @@
 
         \paragraph{}
         Getting all the information such as the sale deeds and ownership history for a land parcel is very cumbersome, a simple solution to this problem is a smartphone application with which users/potential buyers can get land ownership history and related documents for a particular land parcel. These documents and data can be stored in a database by the government and will be updated every time a new sale deed is registered i.e. owner for a land parcel changes. This makes the process of acquiring the documents in question very easy and hassle free.
+    
+    \clearpage
+    \bibliographystyle{unsrt}
+    \bibliography{citation}
 \end{document}
