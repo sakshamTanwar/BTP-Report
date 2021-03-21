@@ -61,9 +61,36 @@
         
     \subsection{Advantages of using Blockchain}
         \paragraph{}
-        Blockchain is type of database where data is stored in blocks and then the blocks are chained together. When a block fills up, a new block is created and filled with data and it is also chained to the previous block which makes the chained together. Data is blockchain in immutable i.e. blockchain only supports read and write operation rather than the tradition read, write, update and delete this makes the data not susceptible to change. Blockchain uses distributed ledger design i.e. all the data is replicated, shared and synchronized across all the nodes in the network. This makes the data almost tamper proof as it will be very costly and thus highly unlikely for a malicious person to change the data across the whole network. Blockchain also offers transparency as any node can read, and verify the data. No node can directly write data to the blockchain as it make the data inconsistent, to avoid this blockchain uses an consensus algorithm where, when data is to be added to the blockchain all the node come to a consensus according to the algorithm used and only then the data is added and synchronized in the chain.
+        % general introduction about blockchain benefits.
+        Blockchain is a type of decentralized database where the data is stored in blocks and each block is linked to the previous block using its cryptographic hash, thus forming a chain. As the blockchain grows in size, it becomes more and more difficult to tamper the data in these blocks. Blockchain based databases are more trustworthy, reliable and secure than traditional databases.
+        
         \paragraph{}
-        Although blockchain has redundant data and is slower compared to the traditional databases, it provides the users with a secure, reliable, distributed, decentralized, immutable storage of data. On basis of application when trust is more important than speed blockchain provide an effective solution.
+        % decentralization benefits
+        A blockchain based system is decentralized. Hence, a centralized authority is not necessary. Decentralized systems are also resilient to single point of failure. A blockchain network comprises of various nodes, each maintaining its own copy of database. Hence, all the data is replicated, shared and synchronized across all the nodes in the network. This makes the data almost tamper proof as it will be very costly and thus highly unlikely for a malicious person to change the data across the whole network. No node can directly write data to the blockchain as it can make the data inconsistent, to avoid this the blockchain network uses a consensus algorithm which helps all the nodes in the network to come to a consensus and commit the data in the blockchain. This helps to keep all the nodes in the network to get synchronized with each other. 
+
+        \paragraph{}
+        % Immutability and tracability benefits.
+        The data that is committed to the blockchain is immutable. After some data is inserted into the blockchain, it is very difficult to delete or alter it. This is realized by including, in each block, the cryptographic hash of its previous block. Because of this immutability, a blockchain database only supports read and write operations in contrast to traditional databases which supports read, write, update and delete operations. To update the database state, a subsequent write is required. Old writes persist in the blockchain forever, making it convenient to trace how the blockchain database state is updated over time. This makes it possible to trace the actions that resulted in a particular database state.
+
+        \paragraph{}
+        % transparency
+        Another benefit of blockchain is that it provides transparency to the data stored in it. This is achieved by replicating the blockchain data among multiple nodes present in the blockchain network. Nodes in the blockchain network not only can view the data already committed to the blockchain but can also participate in the process of validating the data to be committed in the blockchain. The transparency also helps users to cross verify some data against the blockchain.  
+
+        \paragraph{}
+        % single public ledger
+        A blockchain ledger is logically a single public ledger. Since every node updates its copy of blockchain ledger in sync with each other and after consensus is reached, the whole network logically act as one single public ledger. This removes the complications present in traditional systems where different participants or organizations maintains multiple ledgers which needs to be reconcile and synchronized time to time.
+        
+        \paragraph{}
+        % Reduced Cost
+        Systems that are deployed on public blockchain network are more cost efficient as compared to the traditional systems. This is because the system utilizes the processing power and resources of a large number of nodes that are already connected to the blockchain network, thus significantly reducing the cost needed for setting up and maintaining centralized servers present in traditional systems.
+
+        \paragraph{}
+        % Security
+        Blockchain based systems are more secure and resilient to cyber attacks, which can cause data loss, data leaks, data inconsistency and many other vulnerability, than traditional sytems. Whenever a new block is introduced in the blockchain, its hash value is calculated which also includes the hash of its previous block. If a malicious user fraudulently tries to tamper the data inside a block, not only its hash value changes, but the hashes of the following blocks get changed too. This, along with the fact, that the data is stored in multiple nodes present in the blockchain network, makes it very difficult to tamper the data present in the blockchain.
+
+
+        \paragraph{}
+        % Benefits of blockchain in our solution
         
     \subsection{Motivation}
         \paragraph{}
