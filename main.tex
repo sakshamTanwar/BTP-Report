@@ -44,21 +44,18 @@
 
 \section{Introduction}
     \subsection{Generic Application}
-        \paragraph{} A typical application architecture can be broken down into three layers namely:-
-        \vspace{-1.5em}
+        \paragraph{} A typical application can be broken down into three logical layers namely:-
         \begin{itemize}
-            \item Presentation Layer
-            \item Logic Layer
-            \item Data Layer
+            \item \textbf{Presentation Layer: }It is the layer responsible for display information and collect information from the user.
+            \item \textbf{Business Logic Layer: }In this layer, information collected from presentation layer is used to perform the various calculations and operations needed to be performed by the application.
+            \item \textbf{Data Layer: }This layer is responsible for storing and retrieving data to be used by other layers.
         \end{itemize}
 
-        \paragraph{} Data Layer, as the name suggests, is responsible for storing and retrieving data. Data layer typically implemented by using a database. A database is an organized collection of data.
-        
-        \paragraph{} A database can be of two types : Centralized and Distributed. A centralized database is a database that is located, stored and maintained in a single location.\cite{wiki} A distributed database on the otherhand has information  stored in multiple physical locations.
+        \paragraph{}Data Layer is typically implemented using a database, which is an organized collection of data. A database can be of two types : Centralized and Distributed.
         
     \subsection{Disadvantages of a centralized database}
         \paragraph{}
-        A database is an organized collection of data and centralized database is a database that is located, stored, and maintained in a single location.
+        Centralized database is a database that is located, stored, and maintained in a single location.
         A distributed database is a database in which all the information is stored on multiple physical locations. There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database all the locations store the database identically i.e. all locations have the same management system and schema. Whereas in heterogeneous distributed database different locations can have different management software, schemas.
         A decentralized database is a database which doesn't have a central owner, it uses multiple central owners where each central owner has a copy of the data which can be accessed by the users. 
         \cite{wiki}
