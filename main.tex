@@ -44,11 +44,17 @@
 
 \section{Introduction}
     \subsection{Generic Application}
-        \paragraph{}
-        In building applications, an Application Programming Interface (API) simplifies programming by abstracting the underlying implementation and only exposing objects or actions the developer needs. An API is a computing interface that defines interactions between multiple software applications or mixed hardware-software intermediaries. \cite{wiki}
+        \paragraph{} A typical application architecture can be broken down into three layers namely:-
+        \vspace{-1.5em}
+        \begin{itemize}
+            \item Presentation Layer
+            \item Logic Layer
+            \item Data Layer
+        \end{itemize}
+
+        \paragraph{} Data Layer, as the name suggests, is responsible for storing and retrieving data. Data layer typically implemented by using a database. A database is an organized collection of data.
         
-        \paragraph{}
-        A typical application needs persistent storage. This is facilitated by using a database, which is an organized collection of data. A database abstraction layer is an API which unifies the communication between a computer application and databases. This API provides access to the database by exposing low level programming interface to the application developers. The API can provide access to any database but typical applications generally use a centralized database.
+        \paragraph{} A database can be of two types : Centralized and Distributed. A centralized database is a database that is located, stored and maintained in a single location.\cite{wiki} A distributed database on the otherhand has information  stored in multiple physical locations.
         
     \subsection{Disadvantages of a centralized database}
         \paragraph{}
