@@ -2,7 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
-\usepackage[nottoc]{tocbibind}
+\usepackage[authoryear]{natbib}
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
 
 \title{BTP Report}
 \author{Naman Jain, Pranshu Maheshwari, Saksham Tanwar}
@@ -124,7 +126,14 @@
 
         \paragraph{}
         Getting all the information such as the sale deeds and ownership history for a land parcel is very cumbersome, a simple solution to this problem is a smartphone application with which users/potential buyers can get land ownership history and related documents for a particular land parcel. These documents and data can be stored in a database by the government and will be updated every time a new sale deed is registered i.e. owner for a land parcel changes. This makes the process of acquiring the documents in question very easy and hassle free.
-    
+
+        \paragraph{}
+        Indian government launched Digital India Land Record Modernization Programme in 2008. Main aim of this programme is to create a system of updated land records, automated and automatic mutation, integration between textual and spatial records, inter-connectivity between revenue and registration, to replace the present deeds registration and presumptive title system with that of conclusive titling with title guarantee \cite{dilrmp}. In addition to this, Indian government also plans on storing the digital records on a private blockchain and provide a system where citizens can view the ownership details and complete history of the property before going in for the purchase \cite{blockchaingovin}.  
+
+    \subsection{Proposed Solution}
+        \paragraph{}
+        To tackle the problem of accessing and verifying the land ownership records, this paper proposes a smartphone based solution. Using which users can request land ownership records for a particular land parcel by taking the advantage of the GPS module available in smartphones. These land ownership records are stored in a permissioned blockchain and to make it backwards compatible i.e. migrating old records to the new system, scanned copies of the documents can be stored in permissioned IPFS cluster with their Content Identifier (CID) stored on the same blockchain. Now whenever users want the ownership history of a land parcel they use the smartphone application, mark the piece of land and after successful completion of the process they get a PDF report with the ownership history of that said land parcel. This PDF report also contains verification codes for each ownership record they hold, these verification codes can then be used on a verification portal to generate a digitally signed PDF verifying that the given information is true. This solution hence provides a trustful and hassle free mechanism for people to access and verify land ownership records.
+
     \clearpage
     \bibliographystyle{unsrt}
     \bibliography{citation}
