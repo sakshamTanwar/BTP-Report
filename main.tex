@@ -1,9 +1,10 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-
 \usepackage[authoryear]{natbib}
 \usepackage{titlesec}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
 \newcommand{\sectionbreak}{\clearpage}
 
 \title{BTP Report}
@@ -133,6 +134,61 @@
     \subsection{Proposed Solution}
         \paragraph{}
         To tackle the problem of accessing and verifying the land ownership records, this paper proposes a smartphone based solution. Using which users can request land ownership records for a particular land parcel by taking the advantage of the GPS module available in smartphones. These land ownership records are stored in a permissioned blockchain and to make it backwards compatible i.e. migrating old records to the new system, scanned copies of the documents can be stored in permissioned IPFS cluster with their Content Identifier (CID) stored on the same blockchain. Now whenever users want the ownership history of a land parcel they use the smartphone application, mark the piece of land and after successful completion of the process they get a PDF report with the ownership history of that said land parcel. This PDF report also contains verification codes for each ownership record they hold, these verification codes can then be used on a verification portal to generate a digitally signed PDF verifying that the given information is true. This solution hence provides a trustful and hassle free mechanism for people to access and verify land ownership records.
+
+
+\section{Chapter 3}
+    \subsection{Records Server}
+        \paragraph{}
+        This serves a web application that allows users in Land Registration Department to enter and query land records on blockchain. To support migration of old land records onto the new platform, uploading scanned documents with each transaction such as adding a land record, transferring a land or splitting a land record is supported. All the documents are stored in the IPFS.
+
+        \paragraph{}
+        For each land record, a PDF certificate, digitally signed by the Land Registration Department, is generated which includes all the information about the land such as the current owner, khasra number etc. This certificate is stored in the IPFS.
+        
+        \paragraph{}
+        For each land transfer, a PDF certificate, digitally signed by the Land Registration Department, is generated which includes all the information related to the land transfer. This certificate is stored in the IPFS. In a land transfer, land record certificate is also updated to reflect the current owner.
+
+        \paragraph{}
+        This web application provides following operations to the user :-
+        \begin{itemize}
+            \item Add Land Record :- Add a land record.
+            \item Transfer Land :- Transfer land ownership.
+            \item Split Land :- Splits a land record into two separate land records, useful in cases when a part of land needs to be transferred.
+            \item Query Records :- Users can query records in any particular State, Sub-District, District or Village.
+            \item Query Ownership History :- Users can query ownership history of a particular land.
+        \end{itemize}
+
+        \paragraph{}
+        Records server is implemented using Express framework, a NodeJS module.
+        \begin{figure}[h]
+            \includegraphics[scale=0.25]{records_home}
+            \centering
+            \caption{Home Page}
+        \end{figure}
+        \begin{figure}[h]
+            \includegraphics[scale=0.25]{records_add}
+            \centering
+            \caption{Add Land Records}
+        \end{figure}
+        \begin{figure}[h]
+            \includegraphics[scale=0.25]{records_transfer}
+            \centering
+            \caption{Transfer Land}
+        \end{figure}
+        \begin{figure}[h]
+            \includegraphics[scale=0.25]{records_split}
+            \centering
+            \caption{Split Land Record}
+        \end{figure}
+        \begin{figure}[h]
+            \includegraphics[scale=0.25]{records_query_records}
+            \centering
+            \caption{Query Land Records}
+        \end{figure}
+        \begin{figure}[h]
+            \includegraphics[scale=0.25]{records_query_history}
+            \centering
+            \caption{Query Ownership History}
+        \end{figure}
 
     \clearpage
     \bibliographystyle{unsrt}
