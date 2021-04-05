@@ -159,36 +159,80 @@
 
         \paragraph{}
         Records server is implemented using Express framework, a NodeJS module.
+
+
         \begin{figure}[h]
             \includegraphics[scale=0.25]{records_home}
             \centering
             \caption{Home Page}
         \end{figure}
-        \begin{figure}[h]
-            \includegraphics[scale=0.25]{records_add}
-            \centering
-            \caption{Add Land Records}
-        \end{figure}
-        \begin{figure}[h]
-            \includegraphics[scale=0.25]{records_transfer}
-            \centering
-            \caption{Transfer Land}
-        \end{figure}
-        \begin{figure}[h]
-            \includegraphics[scale=0.25]{records_split}
-            \centering
-            \caption{Split Land Record}
-        \end{figure}
-        \begin{figure}[h]
-            \includegraphics[scale=0.25]{records_query_records}
-            \centering
-            \caption{Query Land Records}
-        \end{figure}
-        \begin{figure}[h]
-            \includegraphics[scale=0.25]{records_query_history}
-            \centering
-            \caption{Query Ownership History}
-        \end{figure}
+        
+        
+
+        \subsubsection{Add Land Record}
+            Adding a land record is added to the blockchain entails:-
+            \begin{enumerate}
+                \item Get input from user.
+                \item Generate certificate from the details.
+                \item Upload certificate to IPFS and receive CID for the certificate.
+                \item Create land record on the blockchain
+            \end{enumerate}
+
+            \begin{figure}[h]
+                \includegraphics[scale=0.25]{records_add}
+                \centering
+                \caption{Add Land Records web page}
+            \end{figure}
+            \begin{figure}[h]
+                \includegraphics[scale=0.25]{records_seq_add}
+                \centering
+                \caption{Sequence Diagram for adding land record}
+            \end{figure}
+        
+        \subsubsection{Transfer Land}
+            Transferring a land record entails :-
+            \begin{enumerate}
+                \item Get input from user.
+                \item Generate land transfer certificate containing details about the land transfer.
+                \item Generate land record certificate containing details about the land and current owner.
+                \item Upload certificates to IPFS and receive CIDs for the certificates.
+                \item Create land transfer record and update land record on the blockchain.
+            \end{enumerate}
+            \begin{figure}[h]
+                \includegraphics[scale=0.25]{records_transfer}
+                \centering
+                \caption{Transfer Land}
+            \end{figure}
+
+            \begin{figure}[h]
+                \includegraphics[scale=0.25]{records_seq_transfer}
+                \centering
+                \caption{Sequence Diagram for transferring land}
+            \end{figure}
+        \subsubsection{Split Land Record}
+            Splitting a land record entails :-
+            \begin{enumerate}
+                \item Get input from user.
+                \item Add two new land records.
+                \item Mark old land record as expired on blockchain.
+            \end{enumerate}
+            
+            \begin{figure}[h]
+                \includegraphics[scale=0.25]{records_split}
+                \centering
+                \caption{Split Land Record}
+            \end{figure}
+            \begin{figure}[h]
+                \includegraphics[scale=0.25]{records_query_records}
+                \centering
+                \caption{Query Land Records}
+            \end{figure}
+            \begin{figure}[h]
+                \includegraphics[scale=0.25]{records_query_history}
+                \centering
+                \caption{Query Ownership History}
+            \end{figure}
+
 
     \clearpage
     \bibliographystyle{unsrt}
