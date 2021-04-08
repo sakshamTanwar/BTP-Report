@@ -5,6 +5,7 @@
 \usepackage{titlesec}
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
+\usepackage{float}
 \newcommand{\sectionbreak}{\clearpage}
 
 \title{BTP Report}
@@ -271,7 +272,15 @@
                 \caption{Sequence diagram for querying land ownership history}
             \end{figure}
 
-
+    \subsection{Smartphone Application}
+        \paragraph{}
+        This application is used to interact with LRSP Server and provide a user friendly mechanism for the users to request land ownership history records. Through the application users can Login or Register themselves after which they can ask for land records by marking the land parcel on map presented on the screen. The marked GPS coordinates are then sent to the LRSP server which checks if they exists in the blockchain. If no, then an error is displayed to the users and if yes, then a second screen with the land parcel highlighted on the map with other necessary information of the land parcel is displayed. The user can now verify that they querying for the correct land parcel and if they wish to continue, they are redirected to a payment gateway i.e. Razorpay gateway. If the transaction is completed successfully then the Payment ID and Payment Signature are sent to the LRSP Server for verification and on positive verification the server proceeds to generate and send the PDF to the user email address and a success screen is displayed on the application. If the transaction fails then an error screen is displayed prompting the user to redo the process.
+        \begin{figure}[htbp]
+            \includegraphics[scale=0.5]{app_sequence}
+            \centering
+            \caption{Sequence diagram for smartphone application}
+        \end{figure}
+        The application is built using React Native which is JavaScript library that is used to build cross-platform applications using a single React code base i.e. we can build both Android and iOS application using the same code base. 
 
     \clearpage
     \bibliographystyle{unsrt}
