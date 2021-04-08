@@ -2,8 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[authoryear]{natbib}
+\usepackage{scrextend}
 \usepackage{titlesec}
 \usepackage{graphicx}
+\usepackage{minted}
 \graphicspath{ {./images/} }
 \usepackage{float}
 \newcommand{\sectionbreak}{\clearpage}
@@ -275,12 +277,221 @@
     \subsection{Smartphone Application}
         \paragraph{}
         This application is used to interact with LRSP Server and provide a user friendly mechanism for the users to request land ownership history records. Through the application users can Login or Register themselves after which they can ask for land records by marking the land parcel on map presented on the screen. The marked GPS coordinates are then sent to the LRSP server which checks if they exists in the blockchain. If no, then an error is displayed to the users and if yes, then a second screen with the land parcel highlighted on the map with other necessary information of the land parcel is displayed. The user can now verify that they querying for the correct land parcel and if they wish to continue, they are redirected to a payment gateway i.e. Razorpay gateway. If the transaction is completed successfully then the Payment ID and Payment Signature are sent to the LRSP Server for verification and on positive verification the server proceeds to generate and send the PDF to the user email address and a success screen is displayed on the application. If the transaction fails then an error screen is displayed prompting the user to redo the process.
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.5]{app_sequence}
             \centering
             \caption{Sequence diagram for smartphone application}
         \end{figure}
         The application is built using React Native which is JavaScript library that is used to build cross-platform applications using a single React code base i.e. we can build both Android and iOS application using the same code base. 
+    
+    \subsection{LRSP Server}
+        \paragraph{}
+        It is a Node server that interacts with the smartphone application to provide the requested land record to the user. It acts as an intermediary between the LRSP smartphone application and the Blockchain network. The application sends GPS coordinates to the LRSP server requesting for the land record. The server resolves it and fetches the corresponding land record information from the Blockchain. The land record is mailed to the user once the user completes the payment. It supports HTTPS for secured interaction.
+        
+        \paragraph{}
+        The server also provides user authentication functionality to the LRSP system. It uses a centralized database to register users with the system. It uses JWT-based stateless authentication to allow access to protected routes.
+
+        \paragraph{}
+        LRSP server is implemented using Express framework, a NodeJS module.
+        
+        \subsubsection{Sequence Flow}
+        \paragraph{}
+        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village, sub-district and district levels in order. Once the record is found, the PDF is generated and mailed to the user after payment is verified. The generated PDF contains the hash IDs of the certificates stored on IPFS. To validate the land record, the user can request for these certificates from the verification server.
+        \begin{figure}[H]
+                \includegraphics[scale=0.5]{lrsp_seq.png}
+                \centering
+                \caption{LRSP server sequence diagram}
+        \end{figure}
+        
+        \subsubsection{Usage}
+        Following are the web endpoints exposed by the LRSP server:
+        \begin{itemize}
+            \item \textbf{POST} /signup:
+                \begin{addmargin}[1em]{2em}% 1em left, 2em right
+                    This endpoint is used to register a new user to the LRSP server. If successful, it returns the jwt access token in the response body. The jwt token expires in 1 hour.
+                    \par\textbf{Request Paramaters:}
+                    \begin{itemize}
+                        \item name: user name
+                        \item email: user email address
+                        \item password: user password
+                    \end{itemize}
+                    \par\textbf{Success Response:}
+                    \begin{listing}[H]
+                    \begin{minted}[frame=single,
+                                   framesep=3mm,
+                                   xleftmargin=21pt,
+                                   tabsize=4,
+                                   autogobble]{js}
+                        {     
+                            "success": "true"
+                            "token": <jwt_token>
+                        }
+                    \end{minted}
+                    \end{listing}
+                \end{addmargin}
+                
+             \item \textbf{POST} /login:
+                \begin{addmargin}[1em]{2em}% 1em left, 2em right
+                    This endpoint is used to get the jwt access token to access protected endpoints. The jwt token expires in 1 hour.
+                    \par\textbf{Request Paramaters:}
+                    \begin{itemize}
+                        \item email: user email address
+                        \item password: user password
+                    \end{itemize}
+                    \par\textbf{Success Response:}
+                    \begin{listing}[H]
+                    \begin{minted}[frame=single,
+                                   framesep=3mm,
+                                   xleftmargin=21pt,
+                                   tabsize=4,
+                                   autogobble]{js}
+                        {     
+                            "success": true
+                            "token": <jwt_token>
+                        }
+                    \end{minted}
+                    \end{listing}
+                \end{addmargin}
+
+            \item \textbf{GET} /landrecord
+                \begin{addmargin}[1em]{2em}% 1em left, 2em right
+                    This endpoint is used to get the land information corresponding to a particular GPS coordinates that includes khasra no, subdistrict, district, state and vertex points of land boundary.
+                    \par\textbf{Require Authentication:} True
+                    \par\textbf{Request Parameters:}
+                    \begin{itemize}
+                        \item lat: GPS coordinate latitude
+                        \item lon: GPS coordinate longitude
+                    \end{itemize}
+                    \par\textbf{Success Response:}
+                    \begin{listing}[H]
+                    \begin{minted}[frame=single,
+                                   framesep=3mm,
+                                   xleftmargin=21pt,
+                                   tabsize=4,
+                                   autogobble]{js}
+                        {
+                            "success": true,
+                            "data": {
+                                "khasra": "1",
+                                "village": "abu said",
+                                "subDistrict": "ajnala",
+                                "district": "amritsar",
+                                "state": "punjab",
+                                "points": [
+                                    {
+                                        "lat": "31.894083",
+                                        "lon": "74.834157"
+                                    },
+                                    {
+                                        "lat": "31.894229",
+                                        "lon": "74.835573"
+                                    },
+                                    {
+                                        "lat": "31.892662",
+                                        "lon": "74.835723"
+                                    },
+                                    {
+                                        "lat": "31.892708",
+                                        "lon": "74.833642"
+                                    }
+                                ]
+                            }
+                        }
+                    \end{minted}
+                   \end{listing}
+                \end{addmargin}
+           
+            \item \textbf{GET}  /payment/initiate
+                \begin{addmargin}[1em]{2em}% 1em left, 2em right
+                    This endpoint is used to initiate a payment request to obtain the requested land record.
+                    \par\textbf{Require Authentication:} True
+                    \par\textbf{Request Parameters:}
+                    \begin{itemize}
+                        \item khasraNo: khasra no of land
+                        \item village: Village name corresponding to land.
+                        \item subDistrict: Sub-District name corresponding to land
+                        \item district: District name corresponding to land
+                        \item state: State name corresponding to land
+                    \end{itemize}
+                    \par\textbf{Success Response:}
+                    \begin{listing}[H]
+                    \begin{minted}[frame=single,
+                                   framesep=3mm,
+                                   xleftmargin=21pt,
+                                   tabsize=4,
+                                   autogobble]{js}
+                        {   
+                            "order_id": 1234
+                            "amount": 100
+                        }
+                    \end{minted}
+                   \end{listing}
+                \end{addmargin}
+
+            \item \textbf{GET}  /payment/verify
+                \begin{addmargin}[1em]{2em}% 1em left, 2em right
+                    This endpoint is used to initiate a payment request to obtain the requested land record.
+                    \par\textbf{Require Authentication:} True
+                    \par\textbf{Request Parameters:}
+                    \begin{itemize}
+                        \item order\textunderscore id:
+                        \item razorpay\textunderscore order\textunderscore id:
+                        \item razorpay\textunderscore payment\textunderscore id:
+                        \item razorpay\textunderscore signature:
+                    \end{itemize}
+                    \par\textbf{Success Response:}
+                    \begin{listing}[H]
+                    \begin{minted}[frame=single,
+                                   framesep=3mm,
+                                   xleftmargin=21pt,
+                                   tabsize=4,
+                                   autogobble]{js}
+                        {     
+                            "success": true,
+                        }
+                    \end{minted}
+                   \end{listing}
+                \end{addmargin}
+        
+        \end{itemize}
+
+    \subsection{Verification Server}
+        \paragraph{}
+        The verification server provides a portal to obtain the PDF certificates issued by Land Registration Department. The certificates are digitally signed by the respective authorities and contains information regarding land records and transactions. These certificates provide a proof for land ownership and transactions and can be used for validation purposes.
+        
+        \paragraph{}
+        Verification server is implemented as a Node server using ExpressJS.
+        
+        \subsubsection{Types of Certificates}
+        \paragraph{}
+        Land Registration Department issues two types of certificates:
+        \begin{itemize}
+            \item \textit{Land Ownership Certificate} :- This certificate is issued corresponding to each land parcel and provides the ownership detail of a land.
+            \item \textit{Land Transaction Certificate} :-  This certificate is issued for each land transaction and provides the land transaction details such as information about previous and new owner, sale price, etc.
+        \end{itemize}
+        
+        \subsubsection{Sequence Flow}
+        \paragraph{}
+        The sequence flow of verification server comprises of the following steps:
+        \begin{enumerate}
+            \item Get input from the user which includes IPFS hash of the certificate and record details.
+            \item Fetch the corresponding record from the Blockchain network.
+            \item Validate the provided certificate IPFS hash against the one associated with the record in the Blockchain.
+            \item If certificate hashes matched, fetch the stored certificate from IPFS.
+            \item Add digital signature to certificate with timestamp and send it to user.
+        \end{enumerate}
+        
+        \begin{figure}[H]
+                \includegraphics[scale=0.5]{verification_seq.png}
+                \centering
+                \caption{Verification server sequence diagram}
+        \end{figure}
+        
+        \begin{figure}[H]
+                \includegraphics[scale=0.33]{verification_home.png}
+                \centering
+                \caption{Home Page}
+        \end{figure}
 
     \clearpage
     \bibliographystyle{unsrt}
