@@ -5,10 +5,10 @@
 \usepackage{scrextend}
 \usepackage{titlesec}
 \usepackage{graphicx}
-\usepackage{minted}
-\graphicspath{ {./images/} }
 \usepackage{float}
+\usepackage{minted}
 \newcommand{\sectionbreak}{\clearpage}
+\graphicspath{ {./images/} }
 
 \title{BTP Report}
 \author{Naman Jain, Pranshu Maheshwari, Saksham Tanwar}
@@ -492,6 +492,146 @@
                 \centering
                 \caption{Home Page}
         \end{figure}
+
+    \subsection{Blockchain}
+        \paragraph{}
+        All land records and land transfer information is stored on blockchain. Blockchain is implemented using Hyperledger Fabric.
+
+        \begin{figure}[htbp]
+            \includegraphics[scale=0.25]{blockchain_use_cases}
+            \centering
+            \caption{Use Case diagram for blockchain}
+            \label{fig:bl_use_case}
+        \end{figure}
+
+        Figure \ref{fig:bl_use_case} shows the various use cases supported by the blockchain. These are implemented by writing smart contracts for each of the five operations shown.
+
+        \subsubsection{Data Format}
+            \begin{figure}[htbp]
+                \includegraphics[scale=0.25]{blockchain_data_format}
+                \centering
+                \caption{Blockchain Data Format}
+            \end{figure}
+
+        \paragraph{}
+        \textbf{Point} stores coordinates of a particular point and has the following fields :-
+        \begin{itemize}
+            \item \textbf{lat} - Latitude
+            \item \textbf{lon} - Longitude
+        \end{itemize}
+
+        \paragraph{}
+        \textbf{Owner} stores details about a land owner and has the following fields :-
+        \begin{itemize}
+            \item \textbf{khataNo} - Khata Number
+            \item \textbf{name} - Name of Owner
+        \end{itemize}
+
+        \paragraph{}
+        \textbf{LandRecord} stores details about a particular land. Each land record is uniquely identified by a land key which is constructed as :-
+        \textit{state:district:subdistrict:village:khasraNo}
+        Following fields are present in a LandRecord :-
+        \begin{itemize}
+            \item \textbf{khasraNo} - Khasra Number
+            \item \textbf{village} - Name of the Village
+            \item \textbf{subdistrict} - Name of the Sub-District
+            \item \textbf{district} - Name of the District
+            \item \textbf{state} - Name of the State
+            \item \textbf{polygonPoints} - Coordinates of the vertices of the land polygon
+            \item \textbf{area} - Area of land parcel in sq m
+            \item \textbf{owner} - Current land owner
+            \item \textbf{parentLandKey} - In case the land record is formed after splitting from another land, this stores the land key of the land from which this record was created
+            \item \textbf{expired} - Boolean to store whether the record is expired or not
+            \item \textbf{certificate} - CID of the certificate file stored in IPFS
+            \item \textbf{otherDocs} - Array of CIDs of the files uploaded to IPFS with the land record
+        \end{itemize}
+
+        \paragraph{}
+        \textbf{TransferLandRecord} stores details about a particular land transfer and has the following fields :-
+        \begin{itemize}
+            \item \textbf{landKey} - Land key of the land to which this transfer record belongs
+            \item \textbf{timestamp} - UNIX timestamp of the transaction
+            \item \textbf{price} - Selling Price of land in Rupees
+            \item \textbf{prevOwner} - Seller of the land
+            \item \textbf{newOwner} - Buyer of the land
+            \item \textbf{certificate} - CID of the certificate file stored in IPFS
+            \item \textbf{otherDocs} - Array of CIDs of the files uploaded to IPFS with the land transfer record
+        \end{itemize}
+
+    \subsubsection{Create Land Record}
+        Creating a land record entails :-
+        \begin{enumerate}
+            \item Check if land already exists for given Khasra Number, Village, Sub-District, District and State. If yes, throw error.
+            \item Create LandRecord data structure with the information provided and store it on the blockchain.
+        \end{enumerate}
+
+        \begin{figure}[htbp]
+            \includegraphics[scale=0.25]{blockchain_seq_create_land}
+            \centering
+            \caption{Sequence Diagram for Creating a land record}
+        \end{figure}
+
+    \subsubsection{Transfer Land Ownership}
+        Transferring land ownership entails :-
+        \begin{enumerate}
+            \item Get land record stored on blockchain for given Khasra Number, Village, Sub-District, District and State.
+            \item Check if land record is expired. If yes, throw error.
+            \item Check if land's current owner is same as land seller. If no, throw error.
+            \item Update LandRecord data structure with new owner details and store it on the blockchain.
+            \item Create TransferLandRecord with the information provided and store it on the blockchain.
+        \end{enumerate}
+
+        \begin{figure}[htbp]
+            \includegraphics[scale=0.25]{blockchain_seq_transfer_land}
+            \centering
+            \caption{Sequence Diagram for Transferring Land Ownership}
+        \end{figure}
+
+    \subsubsection{Split Land Record into Two Records}
+        Splitting a land record into two records entails :-
+        \begin{enumerate}
+            \item Get land record stored on blockchain for given Khasra Number, Village, Sub-District, District and State for the land record which will be splitted.
+            \item Check if that land record is expired. If yes, throw error.
+            \item Mark the land record as expired.
+            \item Create two new LandRecord data structures with the information provided.
+            \item Update original land record and add the two new records on the blockchain. 
+        \end{enumerate}
+
+        \begin{figure}[htbp]
+            \includegraphics[scale=0.25]{blockchain_seq_split_land}
+            \centering
+            \caption{Sequence Diagram for Splitting a land record}
+        \end{figure}
+        
+    \subsubsection{Get all records in a village/sub-district/district/state}
+        Getting all records in a village/sub-district/district/state entails :-
+        \begin{enumerate}
+            \item Get records from blockchain with the information provided.
+            \item Return the records.
+        \end{enumerate}
+
+        \begin{figure}[htbp]
+            \includegraphics[scale=0.25]{blockchain_seq_get_records}
+            \centering
+            \caption{Sequence Diagram for Getting all records in a village/sub-district/district/state}
+        \end{figure}
+
+
+    \subsubsection{Get ownership history of a land}
+        Getting ownership history of a land entails :-
+        \begin{enumerate}
+            \item Get land record stored on blockchain for given Khasra Number, Village, Sub-District, District and State. If record does not exist, throw error.
+            \item Get all TransferLandRecord data structures stored on blockchain for the given record.
+            \item If parentLandKey field of LandRecord is not empty, Get all TransferLandRecord data structures stored on blockchain for the parent land.
+            \item Repeat the above steps for each parent land till a LandRecord is reached which does not have a parentLandKey field. 
+        \end{enumerate}
+
+        \begin{figure}[htbp]
+            \includegraphics[scale=0.25]{blockchain_seq_get_history}
+            \centering
+            \caption{Sequence Diagram for Getting ownership history of a land}
+        \end{figure}
+
 
     \clearpage
     \bibliographystyle{unsrt}
