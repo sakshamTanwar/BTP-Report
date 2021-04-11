@@ -1,10 +1,22 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-
+\usepackage{graphicx}
 \usepackage[authoryear]{natbib}
 \usepackage{titlesec}
+\graphicspath{ {./images/} }
 \newcommand{\sectionbreak}{\clearpage}
+
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
 
 \title{BTP Report}
 \author{Naman Jain, Pranshu Maheshwari, Saksham Tanwar}
@@ -12,7 +24,29 @@
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+    \begin{changemargin}{-2cm}{-2cm}
+        \begin{center}
+            \textbf{\Huge{B. TECH. PROJECT REPORT}\\}
+            \textbf{\Huge{on}\\*[1cm]}
+            \textbf{\Huge{Smartphone based Land Records Retrieval System}\\}
+            \vspace{3cm}
+            By\\
+            \textbf{Naman Jain}\\
+            \textbf{Pranshu Maheshwari}\\
+            \textbf{Saksham Tanwar}\\
+
+            \begin{figure}[htbp]
+                \includegraphics[scale=0.5]{iiti_logo}
+                \centering
+            \end{figure}
+            \vspace{3cm}
+            \textbf{\large{DISCIPLINE OF COMPUTER SCIENCE AND ENGINEERING}}\\*[0.2cm]
+            \textbf{\LARGE{INDIAN INSTITUTE OF TECHNOLOGY INDORE}}\\
+            \today
+        \end{center}
+    \end{changemargin}
+\end{titlepage}
 \clearpage
 \tableofcontents
 \clearpage
