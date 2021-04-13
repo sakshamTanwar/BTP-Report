@@ -286,14 +286,60 @@
         The application is built using React Native which is JavaScript library that is used to build cross-platform applications using a single React code base i.e. we can build both Android and iOS application using the same code base. 
         
         \subsubsection{Sequence Flow}
-        \paragraph{}
-        Through the application users can Login or Register themselves after which they can ask for land records by marking the land parcel on map presented on the screen. The marked GPS coordinates are then sent to the LRSP server which checks if they exists in the blockchain. If no, then an error is displayed to the users and if yes, then a second screen with the land parcel highlighted on the map with other necessary information of the land parcel is displayed. The user can now verify that they querying for the correct land parcel and if they wish to continue, they are redirected to a payment gateway i.e. Razorpay gateway. If the transaction is completed successfully then the Payment ID and Payment Signature are sent to the LRSP Server for verification and on positive verification the server proceeds to generate and send the PDF to the user email address and a success screen is displayed on the application. If the transaction fails then an error screen is displayed prompting the user to redo the process.
-        \begin{figure}[H]
+        \begin{figure}[htbp]
             \includegraphics[scale=0.5]{app_sequence}
             \centering
             \caption{Sequence diagram for smartphone application}
         \end{figure}
+        \paragraph{}
+        Initially the user have to login to the application using a email and password, if they are new to the platform they can register a new account as seen in the Figure \ref{app:login}.
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.1]{app_login}
+            \includegraphics[scale=0.1]{app_signup}
+            \caption{Login and Signup Screen}
+            \label{app:login}
+        \end{figure}
+        \begin{figure}
+            \centering
+            \begin{minipage}{.5\textwidth}
+                \centering
+                \includegraphics[scale=0.1]{app_home}
+                \caption{Request Screen}
+                \label{app:home}
+            \end{minipage}%
+            \begin{minipage}{.5\textwidth}
+                \centering
+                \includegraphics[scale=0.1]{app_confirm}
+                \caption{Confirmation Screen}
+                \label{app:confirm}
+            \end{minipage}
+        \end{figure}
+
+        After successful authentication the user is redirected to a screen as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the LRSP server's /landrecord endpoint with the marked GPS coordinates as the parameters and in response receives the data for the land parcel which then displayed in a confirmation screen (Figure \ref{app:confirm}) where user confirms if the data fecthed is for the correct land parcel and if so proceeds with payment bu pressing on the Continue with Payment button. By pressing on the button the user initiates a transaction with the payment gateway i.e Razorpay gateway and is redirected to the said gateway as shown in Figure \ref{app:payment}. If the transaction is completed successfully then the Payment ID and Payment Signature of the transaction are sent to the LRSP server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason then an failure screen (Figure \ref{app:failure}) is displayed prompting the user to redo the process.
         
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.1]{app_payment}
+            \caption{Payment Screen}
+            \label{app:payment}
+        \end{figure}
+        
+        \begin{figure}
+            \centering
+            \begin{minipage}{.5\textwidth}
+                \centering
+                \includegraphics[scale=0.1]{app_success}
+                \caption{Payment Success Screen}
+                \label{app:success}
+            \end{minipage}%
+            \begin{minipage}{.5\textwidth}
+                \centering
+                \includegraphics[scale=0.1]{app_failure}
+                \caption{Payment Failure Screen}
+                \label{app:failure}
+            \end{minipage}
+        \end{figure}
     
     \subsection{LRSP Server}
         \paragraph{}
