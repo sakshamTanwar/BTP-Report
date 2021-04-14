@@ -140,6 +140,39 @@
 
 
 \section{Chapter 3}
+    \paragraph{}
+    \begin{figure}[htbp]
+        \includegraphics[scale=0.25]{hld}
+        \centering
+        \caption{Overall Architecture}
+        \label{fig:hld}
+    \end{figure}
+
+    Overall solution architecture consists of the following (as seen in Figure \ref{fig:hld}):-
+    \begin{itemize}
+        \item \textbf{Land Records Retrieval Service :-} Responsible for providing land records service to the users who want to obtain land records by visiting the land parcel itself or marking the land on map.
+        \begin{itemize}
+            \item \textbf{Smartphone Application :-} Provides a user interface for users to interact with where users can request land records for a particular land by marking the point on map.
+            \item \textbf{Server :-} Backend server for the Smartphone Application. It interacts with the blockchain network to compile the summary of the land records requested by the users.
+        \end{itemize}
+        \item \textbf{Payment Gateway :-} Razorpay payment gateway service is used to process payments.
+        \item \textbf{Reverse Geocoding Service :-} MapMyIndia's reverse geocoding API is used to get a particular place's State, District, Sub-District and Village from GPS Coordinates.
+        \item \textbf{Blockchain Network :-} Blockchain network is responsible for storing all the land records consisting of details about all the land parcels and their transactions.
+        \item \textbf{IPFS :-} Since blockchain network is not ideal for storing files, IPFS is used to store files such as certificates and scanned documents.
+        \item \textbf{Land Registration Department :-} Responsible for adding records to the blockchain and providing a verification portal where users can obtain digitally signed certificates to verify land records.
+        \begin{itemize}
+            \item \textbf{Records Server :-} Responsible for serving the website using which Land Records can be added to the blockchain.
+            \item \textbf{Verification Server :-} Responsible for serving the website using which Land Records can be verified by allowing users to download digitally signed certificate that contain the information stored on blockchain.
+        \end{itemize}  
+    \end{itemize}
+
+    \paragraph{}
+    Users which use the proposed solution :-
+    \begin{itemize}
+        \item \textbf{Land Information Seeker :-} These users need to access land information, they can be the prospective buyers for a particular land looking to validate the current owner's claim on the land.
+        \item \textbf{Land Registration Department Admins :-} These users enter information on the blockchain. Only these users can enter information to the blockchain.
+    \end{itemize}
+
     \subsection{Records Server}
         \paragraph{}
         This serves a web application that allows users in Land Registration Department to enter and query land records on blockchain. To support migration of old land records onto the new platform, uploading scanned documents with each transaction such as adding a land record, transferring a land or splitting a land record is supported. All the documents are stored in the IPFS.
