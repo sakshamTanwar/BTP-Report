@@ -204,8 +204,8 @@
     \paragraph{}
     Records server requires the following environment variables :-
     \begin{itemize}
-        \item CERT :- Path to P12 certificate file used to sign the PDF documents (certificates)
-        \item IPFS\_CLUSTER :- Link to IPFS cluster node
+        \item \textbf{CERT :-} Path to P12 certificate file used to sign the PDF documents (certificates)
+        \item \textbf{IPFS\_CLUSTER :-} Link to IPFS cluster node
     \end{itemize}
     
     \begin{lstlisting}[language=bash, caption=Records Server]
@@ -218,6 +218,27 @@
     # Start server
     CERT=<cert_path> IPFS_CLUSTER=<ipfs_cluster_link> node dist/app.js
     \end{lstlisting}
+
+    \subsection{Verification Server}
+    \paragraph{}
+    Verification server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+    
+    \paragraph{}
+    Verification server requires the following environment variables :-
+    \begin{itemize}
+        \item \textbf{CERT :-} Path to P12 certificate file used to sign the PDF documents (certificates)
+    \end{itemize}
+
+    \begin{lstlisting}[language=bash, caption=Verification Server]
+        # Install required NodeJs modules
+        npm install
+    
+        # Transpile
+        npm run build
+    
+        # Start server
+        CERT=<cert_path> node dist/app.js
+        \end{lstlisting}
 
     \clearpage
     \bibliographystyle{unsrt}
