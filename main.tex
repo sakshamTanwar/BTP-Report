@@ -4,6 +4,34 @@
 \usepackage{graphicx}
 \usepackage[authoryear]{natbib}
 \usepackage{titlesec}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 \graphicspath{ {./images/} }
 \newcommand{\sectionbreak}{\clearpage}
 
@@ -167,6 +195,29 @@
     \subsection{Proposed Solution}
         \paragraph{}
         To tackle the problem of accessing and verifying the land ownership records, this paper proposes a smartphone based solution. Using which users can request land ownership records for a particular land parcel by taking the advantage of the GPS module available in smartphones. These land ownership records are stored in a permissioned blockchain and to make it backwards compatible i.e. migrating old records to the new system, scanned copies of the documents can be stored in permissioned IPFS cluster with their Content Identifier (CID) stored on the same blockchain. Now whenever users want the ownership history of a land parcel they use the smartphone application, mark the piece of land and after successful completion of the process they get a PDF report with the ownership history of that said land parcel. This PDF report also contains verification codes for each ownership record they hold, these verification codes can then be used on a verification portal to generate a digitally signed PDF verifying that the given information is true. This solution hence provides a trustful and hassle free mechanism for people to access and verify land ownership records.
+
+\section{Chapter 4}
+    \subsection{Records Server}
+    \paragraph{}
+    Records server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+    
+    \paragraph{}
+    Records server requires the following environment variables :-
+    \begin{itemize}
+        \item CERT :- Path to P12 certificate file used to sign the PDF documents (certificates)
+        \item IPFS\_CLUSTER :- Link to IPFS cluster node
+    \end{itemize}
+    
+    \begin{lstlisting}[language=bash, caption=Records Server]
+    # Install required NodeJs modules
+    npm install
+
+    # Transpile
+    npm run build
+
+    # Start server
+    CERT=<cert_path> IPFS_CLUSTER=<ipfs_cluster_link> node dist/app.js
+    \end{lstlisting}
 
     \clearpage
     \bibliographystyle{unsrt}
