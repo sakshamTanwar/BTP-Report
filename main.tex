@@ -6,6 +6,14 @@
 \usepackage{titlesec}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+}
+
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -239,6 +247,36 @@
         # Start server
         CERT=<cert_path> node dist/app.js
         \end{lstlisting}
+
+    \subsection{LRSP Server}
+    \paragraph{}
+    LRSP server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+
+    \paragraph{}
+    LRSP server uses the following external services :-
+    \begin{itemize}
+        \item \textbf{MongoDb :-} A running MongoDb instance is required for user authentication purposes. Provide the URI to the MongoDb database in the file \textit{src/setup/db.ts}. To set up a Mongodb instance locally, follow \href{https://docs.mongodb.com/manual/installation/}{this}.
+        \item \textbf{Reverse Geocoding Service :-} The server is using \textbf{MapMyIndia} Reverse geocoding service. Provide the MapMyIndia API Key in the file \textit{src/services/coordResolver.ts}
+        \item \textbf{RazorPay Payment Integration :-}RazorPay Payment service is used to initiate and verify the payment.
+    \end{itemize}
+
+    \paragraph{}
+    LRSP server requires the following environment variables :-
+    \begin{itemize}
+        \item \textbf{RZRPAY\_KEY\_ID}
+        \item \textbf{RZRPAY\_KEY\_SECRET}
+    \end{itemize}
+    
+    \begin{lstlisting}[language=bash, caption=LRSP Server]
+    # Install required NodeJs modules
+    npm install
+
+    # Transpile
+    npm run build
+
+    # Start server
+    RZRPAY_KEY_ID=<razorpay_key_id> RZRPAY_KEY_SECRET=<razorpay_key_secret> node dist/main.js
+    \end{lstlisting}
 
     \clearpage
     \bibliographystyle{unsrt}
