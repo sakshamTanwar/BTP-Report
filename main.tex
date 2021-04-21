@@ -278,6 +278,52 @@
     RZRPAY_KEY_ID=<razorpay_key_id> RZRPAY_KEY_SECRET=<razorpay_key_secret> node dist/main.js
     \end{lstlisting}
 
+    \subsection{Smartphone Application}
+    \paragraph{}
+    The smartphone application is built using React Native a NodeJS module, It is written in Typescript. To build Android APK, Linux, Windows and macOS are the supported development OS but to build iOS IPA macOS is required.
+    \subsubsection{Android}
+    \paragraph{}
+    To build Android APK, Android Studio is required with the following installed along with it :- 
+    \begin{itemize}
+        \item Android 10 (Q) SDK
+        \item Android SDK Platform 29
+        \item Android Virtual Device
+        \item If you are not already using Hyper-V: Performance (Intel ® HAXM)
+    \end{itemize}
+    After successful installation of Android Studio the following environment variable needs to be set :-
+    \begin{itemize}
+        \item \textbf{ANDROID\_HOME} to the Android SDK install location
+    \end{itemize}
+    
+    \subsubsection{iOS}
+    \paragraph{}
+    To build iOS IPA, version 10 or newer of Xcode is required which can be installed from the Mac App Store and after installation, Xcode Command Line Tools needs to installed from the Xcode Preferences tab. Along with Xcode, cocoapods needs to installed which is a dependency manager for Swift and Objective-C Cocoa projects. It can be installed using the command mentioned in Listing \ref{ios:cocoapods}.
+    
+    \begin{lstlisting}[language=bash, caption=Cocoapods installation, label=ios:cocoapods]
+    # Install cocoapods
+    sudo gem install cocoapods    
+    \end{lstlisting}
+    
+    \begin{lstlisting}[language=bash, caption=Smartphone Application]
+    # Install required NodeJS modules
+    npm install
+
+    # Start Metro Bundler
+    npx react-native start
+
+    # Build and run Android debug apk
+    npx react-native run-android
+    
+    # Build and run iOS debug apk
+    cd ios; pod install; cd ..; npx react-native run-ios
+    
+    # Build Android release apk
+    cd android; ./gradlew assembleRelease
+    \end{lstlisting}
+    
+    \paragraph{}
+    To build a release version of the app for iOS, an Apple developer account is required. After signing in using the developer account in the Xcode, a build button is available which builds a release IPA for iOS and pushes it to Apple Servers for verification for deployment to the App Store.
+
     \clearpage
     \bibliographystyle{unsrt}
     \bibliography{citation}
