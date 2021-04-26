@@ -134,24 +134,9 @@
     \subsection{Organisation of Dissertation}
         A brief introduction to our proposed solution and the motivation behind it was discussed in chapter one. Chapter one also provided the generic application architecture and contrasted the centralized databases with blockchain databases. Chapter two provides an introduction to the various offerings of the blockchain technology that is makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes direction for future work.
         
-\section{Chapter Two //TODO Title}
-    \subsection{Related Works}
-        \paragraph{}
-        Republic of Georgia, in 2016, undertook a phased project to create a Blockchain-based land titling system. The project has significantly improved the government’s efficiency and ensures security and immutability of the data \cite{10.1162/inov_a_00276}.
+\section{Advantages of Decentralized Solutions}
 
-        \paragraph{}
-        Sweden’s land registry authority Lantmäteriet tested a blockchain based solution to store land records and allow users to buy and sell land by using a smartphone application. The authenticity of the process and digital signatures are secured using the blockchain \cite{sweden}.
-        
-        \paragraph{}
-        \cite{THAKUR2020101940} lists the various problems in the current land record management system in India and suggests a blockchain based solution and gives a detailed flow of the land registration process in India and how blockchain technology improves the registration system.
-
-        \paragraph{}
-        \cite{8944471} suggests a permissioned blockchain based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and IPFS for storing various documents. Implements the front end as an Angular based web application and uses Passport for authentication.
-
-        \paragraph{}
-        \cite{ALAM2020} Proposes a three phase project for adoption of Blockchain based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum. 
-    
-    \subsection{Applications of Blockchain}
+    \subsection{Blockchain}
         \paragraph{}
         \cite{THAKUR2020101940} discusses various complications present in the current land record management system in India. The existing land records in India are not administered properly due to which they often are not consistent with the ground truth. Various departments, at the village or District level, are involved in maintaining ownership history of land. Often, the data present with different departments are not in sync with each other which results in discrepancies. Such discrepancies often result in conflicts in land ownership, double spending problem, etc. The data is also susceptible to alteration by corrupt officials.
 
@@ -166,13 +151,24 @@
     
     \subsection{IPFS}
         \paragraph{}
-        The Interplanetary File System (IPFS) \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. IPFS provides a high throughput storage system where each file is uniquely identified by a cryptographic hash. In IPFS, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP which uses location based addressing, IPFS uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
-
-        \paragraph{}
-        IPFS uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the IPFS. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. IPFS stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node as well as all its ancestors in the DAG. This makes the data stored on the IPFS immutable.
-
-        \paragraph{}
         IPFS, being distributed, is resilient to single point of failure. It is more secure to DDos attacks than centralized system. Multiple nodes can simultaneously participate in distributing a particular file resulting in better throughput. The data retrieved from IPFS can be verified by calculating its hash. Hence, data stored on IPFS is self-verifiable. Data can be pinned on multiple nodes to ensure it persists on IPFS. This makes IPFS resilient to data loss.
+
+    \subsection{Related Works}
+        \paragraph{}
+        Republic of Georgia, in 2016, undertook a phased project to create a Blockchain-based land titling system. The project has significantly improved the government’s efficiency and ensures security and immutability of the data \cite{10.1162/inov_a_00276}.
+
+        \paragraph{}
+        Sweden’s land registry authority Lantmäteriet tested a blockchain based solution to store land records and allow users to buy and sell land by using a smartphone application. The authenticity of the process and digital signatures are secured using the blockchain \cite{sweden}.
+        
+        \paragraph{}
+        \cite{THAKUR2020101940} lists the various problems in the current land record management system in India and suggests a blockchain based solution and gives a detailed flow of the land registration process in India and how blockchain technology improves the registration system.
+
+        \paragraph{}
+        \cite{8944471} suggests a permissioned blockchain based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and IPFS for storing various documents. Implements the front end as an Angular based web application and uses Passport for authentication.
+
+        \paragraph{}
+        \cite{ALAM2020} proposes a three phase project for adoption of Blockchain based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum based blockchain.
+        
     \clearpage
     \bibliographystyle{unsrt}
     \bibliography{citation}
