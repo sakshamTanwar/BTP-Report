@@ -134,26 +134,13 @@
     \subsection{Organisation}
         Chapter two provides an introduction to the various offerings of the blockchain technology that is makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes direction for future work.
         
-\section{Chapter Two //TODO Title}
-    \subsection{Related Works}
-        \paragraph{}
-        Republic of Georgia, in 2016, undertook a phased project to create a Blockchain-based land titling system. The project has significantly improved the government’s efficiency and ensures security and immutability of the data \cite{10.1162/inov_a_00276}.
-
-        \paragraph{}
-        Sweden’s land registry authority Lantmäteriet tested a blockchain based solution to store land records and allow users to buy and sell land by using a smartphone application. The authenticity of the process and digital signatures are secured using the blockchain \cite{sweden}.
-        
-        \paragraph{}
-        \cite{THAKUR2020101940} lists the various problems in the current land record management system in India and suggests a blockchain based solution and gives a detailed flow of the land registration process in India and how blockchain technology improves the registration system.
-
-        \paragraph{}
-        \cite{8944471} suggests a permissioned blockchain based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and IPFS for storing various documents. Implements the front end as an Angular based web application and uses Passport for authentication.
-
-        \paragraph{}
-        \cite{ALAM2020} Proposes a three phase project for adoption of Blockchain based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum. Phase One proposes adoption of public blockchain such as Etherium to store timestamps of land transactions on the blockchain. Phase Two proposes a hybrid blockchain solution consisting of both public and private blockchain networks, where key information is stored on public blockchain and all data related to land is stored on private blockchain network. Phase Three proposes using IPFS to store digital documents in the hybrid blockchain solution.
-
-
-
-    \clearpage
+\section{Chapter Five}
+    \subsection{Conclusion}
+    \paragraph{}
+    Traditional land record retrieval system had many shortcomings as discussed in Chapter one. To address these shortcomings, we proposed a Blockchain based solution. The proposed solution takes into account various features of Blockchain technology like immutability, security, transparency, etc. to overcome the shortcomings present in traditional land record retrieval system. The Blockchain based solution makes it convenient to reconcile and synchronized data across various government departments, thus eliminating discrepancies in data. The proposed solution facilitates the retrieval and verification of ownership history of land parcel and associated documents digitally. To validate the integrity of land record, the user can request for a digitally signed certificate from the Verification portal as a proof of trust. This eliminates the need of cumbersome processes and delays that exist in the current system to verify land ownership of a land parcel. The Blockchain based solution, being immutable and transparent, makes the land data tamper-proof. This checks the corruption that exists in government departments.
+    
+    \subsection{Future Work}
+    In the proposed solution, we are using Hyperledger Fabric \cite{fabric} which is a private permissioned Blockchain. This entails configuring and deploying our own distributed network infrastructure for production usage. Various components needs to be set up and configured to deploy the solution at production level. This includes certificate authorities (CA), Membership Service Providers(MSP), ordering services, peer and ordering nodes, etc. The current system has been tested on dummy data. The land information needs to be digitized and fed into the system database to test the system in real scenario. The current solution can be extended to facilitate buying and selling of land assets through smart contracts thus eliminating the need of middlemen or brokers.  
     \bibliographystyle{unsrt}
     \bibliography{citation}
 \end{document}
