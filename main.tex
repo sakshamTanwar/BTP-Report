@@ -212,7 +212,7 @@
         
 
         \subsubsection{Add Land Record}
-            Adding a land record is added to the blockchain entails:-
+            Adding a land record entails:-
             \begin{enumerate}
                 \item Get input from user.
                 \item Generate certificate from the details.
@@ -274,7 +274,7 @@
            
 
         \subsubsection{Query Records}
-            Users can query all the records in a particular village or sub-district.
+            Users can query all the records in a particular village, sub-district, district or state.
             Querying records entails :-
             \begin{enumerate}
                 \item Get input from user.
@@ -316,7 +316,7 @@
     \subsection{Smartphone Application}
         \paragraph{}
         This application is used to interact with LRSP Server and provide a user friendly mechanism for the users to request land ownership history records.
-        The application is built using React Native which is JavaScript library that is used to build cross-platform applications using a single React code base i.e. we can build both Android and iOS application using the same code base. 
+        The application is built using React Native which is a JavaScript library that is used to build cross-platform applications using a single React code base i.e. we can build both Android and iOS application using the same code base. 
         
         \subsubsection{Sequence Flow}
         \begin{figure}[htbp]
@@ -349,7 +349,7 @@
             \end{minipage}
         \end{figure}
 
-        After successful authentication the user is redirected to a screen as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the LRSP server's /landrecord endpoint with the marked GPS coordinates as the parameters and in response receives the data for the land parcel which then displayed in a confirmation screen (Figure \ref{app:confirm}) where user confirms if the data fecthed is for the correct land parcel and if so proceeds with payment bu pressing on the Continue with Payment button. By pressing on the button the user initiates a transaction with the payment gateway i.e Razorpay gateway and is redirected to the said gateway as shown in Figure \ref{app:payment}. If the transaction is completed successfully then the Payment ID and Payment Signature of the transaction are sent to the LRSP server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason then an failure screen (Figure \ref{app:failure}) is displayed prompting the user to redo the process.
+        After successful authentication the user is redirected to a screen as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the LRSP server's /landrecord endpoint with the marked GPS coordinates as the parameters and in response receives the data for the land parcel which then displayed in a confirmation screen (Figure \ref{app:confirm}) where user confirms if the data fecthed is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button the user initiates a transaction with the payment gateway i.e Razorpay gateway and is redirected to the said gateway as shown in Figure \ref{app:payment}. If the transaction is completed successfully then the Payment ID and Payment Signature of the transaction are sent to the LRSP server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason then an failure screen (Figure \ref{app:failure}) is displayed prompting the user to redo the process.
         
         \begin{figure}
             \centering
@@ -386,7 +386,7 @@
         
         \subsubsection{Sequence Flow}
         \paragraph{}
-        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village, sub-district and district levels in order. Once the record is found, the PDF is generated and mailed to the user after payment is verified. The generated PDF contains the hash IDs of the certificates stored on IPFS. To validate the land record, the user can request for these certificates from the verification server.
+        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village, sub-district and district levels in order. Once the record is found, the PDF is generated and mailed to the user after payment is verified. The generated PDF contains the hash IDs of the certificates stored on IPFS. To validate the land record, the user can request for these certificates from the verification server.
         \begin{figure}[H]
                 \includegraphics[scale=0.5]{lrsp_seq.png}
                 \centering
@@ -520,7 +520,7 @@
 
             \item \textbf{GET}  /payment/verify
                 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-                    This endpoint is used to initiate a payment request to obtain the requested land record.
+                    This endpoint is used to submit details about the successful transaction to the server for verification.
                     \par\textbf{Require Authentication:} True
                     \par\textbf{Request Parameters:}
                     \begin{itemize}
