@@ -1,8 +1,22 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-
+\usepackage{graphicx}
 \usepackage[authoryear]{natbib}
+\usepackage{titlesec}
+\graphicspath{ {./images/} }
+\newcommand{\sectionbreak}{\clearpage}
+
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
 
 \title{BTP Report}
 \author{Naman Jain, Pranshu Maheshwari, Saksham Tanwar}
@@ -10,7 +24,29 @@
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+    \begin{changemargin}{-2cm}{-2cm}
+        \begin{center}
+            \textbf{\Huge{B. TECH. PROJECT REPORT}\\}
+            \textbf{\Huge{on}\\*[1cm]}
+            \textbf{\Huge{Smartphone based Land Records Retrieval System}\\}
+            \vspace{3cm}
+            By\\
+            \textbf{Naman Jain}\\
+            \textbf{Pranshu Maheshwari}\\
+            \textbf{Saksham Tanwar}\\
+
+            \begin{figure}[htbp]
+                \includegraphics[scale=0.5]{iiti_logo}
+                \centering
+            \end{figure}
+            \vspace{3cm}
+            \textbf{\large{DISCIPLINE OF COMPUTER SCIENCE AND ENGINEERING}}\\*[0.2cm]
+            \textbf{\LARGE{INDIAN INSTITUTE OF TECHNOLOGY INDORE}}\\
+            \today
+        \end{center}
+    \end{changemargin}
+\end{titlepage}
 \clearpage
 \tableofcontents
 \clearpage
@@ -90,7 +126,7 @@
 
         \paragraph{}
         % Immutability and tracability benefits.
-        The data that is committed to the blockchain is immutable. After some data is inserted into the blockchain, it is very difficult to delete or alter it. This is realized by including, in each block, the cryptographic hash of its previous block. Because of this immutability, a blockchain database only supports read and write operations in contrast to traditional databases which supports read, write, update and delete operations. To update the database state, a subsequent write is required. Old writes persist in the blockchain forever, making it convenient to trace how the blockchain database state is updated over time. This makes it possible to trace the actions that resulted in a particular database state.
+        The data that is committed to the blockchain is immutable. After some data is inserted into the blockchain, it is very difficult to delete or alter it. This is realized by including, in each block, the cryptographic hash of its previous block. Because of this immutability, a blockchain database only supports create and read operations in contrast to traditional databases which supports create, read, update and delete (CRUD) operations. To update the database state, a subsequent write is required. Old writes persist in the blockchain forever, making it convenient to trace how the blockchain database state is updated over time. This makes it possible to trace the actions that resulted in a particular database state.
 
         \paragraph{}
         % transparency
@@ -110,6 +146,14 @@
         
         \paragraph{}
         % Benefits of blockchain in our solution
+
+    \subsection{IPFS}
+
+        \paragraph{}
+        The Interplanetary File System (IPFS) \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. IPFS provides a high throughput storage system where each file is uniquely identified by a cryptographic hash. In IPFS, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP which uses location based addressing, IPFS uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
+
+        \paragraph{}
+        IPFS uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the IPFS. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. IPFS stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node as well as all its ancestors in the DAG. This makes the data stored on the IPFS immutable.
         
     \subsection{Motivation}
         \paragraph{}
@@ -155,17 +199,9 @@
 
     \subsection{Related Works}
         \paragraph{}
-        Republic of Georgia, in 2016, undertook a phased project to create a Blockchain-based land titling system. The project has significantly improved the government’s efficiency and ensures security and immutability of the data \cite{10.1162/inov_a_00276}.
+        To tackle the problem of accessing and verifying the land ownership records, this paper proposes a smartphone based solution. Using which users can request land ownership records for a particular land parcel by taking the advantage of the GPS module available in smartphones. These land ownership records are stored in a permissioned blockchain and to make it backwards compatible i.e. migrating old records to the new system, scanned copies of the documents can be stored in permissioned IPFS cluster with their Content Identifier (CID) stored on the same blockchain. Now whenever users want the ownership history of a land parcel they use the smartphone application, mark the piece of land and after successful completion of the process they get a PDF report with the ownership history of that said land parcel. This PDF report also contains verification codes for each ownership record they hold, these verification codes can then be used on a verification portal to generate a digitally signed PDF verifying that the given information is true. This solution hence provides a trustful and hassle free mechanism for people to access and verify land ownership records.
 
-        \paragraph{}
-        Sweden’s land registry authority Lantmäteriet tested a blockchain based solution to store land records and allow users to buy and sell land by using a smartphone application. The authenticity of the process and digital signatures are secured using the blockchain \cite{sweden}.
-        
-        \paragraph{}
-        \cite{THAKUR2020101940} lists the various problems in the current land record management system in India and suggests a blockchain based solution and gives a detailed flow of the land registration process in India and how blockchain technology improves the registration system.
-
-        \paragraph{}
-        \cite{8944471} suggests a permissioned blockchain based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and IPFS for storing various documents. Implements the front end as an Angular based web application and uses Passport for authentication.
-
+    \subsection{Organisation}
         \paragraph{}
         \cite{ALAM2020} proposes a three phase project for adoption of Blockchain based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum based blockchain.
         
