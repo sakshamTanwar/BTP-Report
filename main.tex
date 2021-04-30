@@ -43,6 +43,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{minted}
+\usepackage[export]{adjustbox}
+
 \newcommand{\sectionbreak}{\clearpage}
 \graphicspath{ {./images/} }
 
@@ -759,8 +761,42 @@
         \paragraph{}
         Land Registration Department issues two types of certificates:
         \begin{itemize}
-            \item \textit{Land Ownership Certificate} :- This certificate is issued corresponding to each land parcel and provides the ownership detail of a land.
-            \item \textit{Land Transaction Certificate} :-  This certificate is issued for each land transaction and provides the land transaction details such as information about previous and new owner, sale price, etc.
+            \item \textbf{Land Ownership Certificate} :- This certificate is issued corresponding to each land parcel and provides the ownership detail of a land. This certificate contains the following fields:
+             \begin{itemize}
+                \item \textbf{Khasra No} - Khasra Number of land parcel
+                \item \textbf{Village} - Name of the village
+                \item \textbf{Sub-District} - Name of the sub-district 
+                \item \textbf{District} - Name of the district
+                \item \textbf{State} - Name of the state
+                \item \textbf{Area} - Area of land parcel in sq m
+                \item \textbf{Khata No} - Khata number of current owner
+                \item \textbf{Owner Name} - Name of current owner
+            \end{itemize}
+            \begin{figure}[htbp]
+                \includegraphics[scale=0.5, frame]{landcertificate.png}
+                \centering
+                \caption{Land Ownership Certificate}
+            \end{figure}
+
+            \item \textbf{Land Transaction Certificate} :-  This certificate is issued for each land transaction and provides the land transaction details. This certificate contains the following fields:
+             \begin{itemize}
+                \item \textbf{Khasra No} - Khasra Number of land parcel
+                \item \textbf{Village} - Name of the village
+                \item \textbf{Sub-District} - Name of the sub-district 
+                \item \textbf{District} - Name of the district
+                \item \textbf{State} - Name of the state
+                \item \textbf{Transfer Date} - Date on which land transfer takes place
+                \item \textbf{Seller Khata No} - Khata number of seller of the land
+                \item \textbf{Seller Name} - Name of seller of the land
+                \item \textbf{Buyer Khata No} - Khata number of buyer of the land
+                \item \textbf{Buyer Name} - Name of buyer of the land
+                \item \textbf{Price} - Selling Price of land in Indian Rupees
+            \end{itemize}
+            \begin{figure}[htbp]
+                \includegraphics[scale=0.5, frame]{landtransfercertificate.png}
+                \centering
+                \caption{Land Transfer Certificate}
+            \end{figure}
         \end{itemize}
         
         \subsubsection{Sequence Flow}
