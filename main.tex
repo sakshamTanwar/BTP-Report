@@ -210,39 +210,6 @@
 \tableofcontents
 \clearpage
 
-% \section*{Sections in Report}
-% \begin{enumerate}
-%     \item Introduction
-%     \begin{itemize}
-%         \item Description of a generic application
-%         \item Disadvantages of a centralized database layer
-%         \item Advantages of using a blockchain solution
-%         \item Introduction of our product, highlighting the importance of blockchain, describing overall architecture and various products used.
-%     \end{itemize}
-%     \item Introduction of essential Concepts of Blockchain
-%     \begin{itemize}
-%         \item Describe various offerings of blockchain in regards to our product
-%         \item Existing applications related to our product
-%     \end{itemize}
-%     \item Architecture
-%     \begin{itemize}
-%         \item Details regarding the solution architecture
-%         \item Identifying the various actors/users of the product and how they interact with the product
-%         \item Various sub modules of the product and how they interact with one another
-%     \end{itemize}
-%     \item Deployment Details
-%     \begin{itemize}
-%         \item Details about how the product can be deployed
-%     \end{itemize}
-%     \item Conclusion
-%     \begin{itemize}
-%         \item Identify the problems which the product solved
-%         \item Identify the problems still left in the solution proposed
-%     \end{itemize}
-%     \item References
-
-% \end{enumerate}
-
 \section{Introduction}
     \subsection{Generic Application}
         \paragraph{} A typical application can be broken down into three logical layers namely:-
@@ -392,7 +359,7 @@
             \item \textbf{Server :-} Backend server for the Smartphone Application. It interacts with the blockchain network to compile the summary of the land records requested by the users.
         \end{itemize}
         \item \textbf{Payment Gateway :-} Razorpay payment gateway service is used to process payments.
-        \item \textbf{Reverse Geocoding Service :-} MapMyIndia's reverse geocoding API is used to get a particular place's State, District, Sub-District and Village from GPS Coordinates.
+        \item \textbf{Reverse Geocoding Service :-} Currently no service exists which has accurate data of villages or sub-districts. Under the Digital India, if some service is introduced for accurate reverse geocoding, that can be used. For the proposed solution, a sample service is used as described.
         \item \textbf{Blockchain Network :-} Blockchain network is responsible for storing all the land records consisting of details about all the land parcels and their transactions.
         \item \textbf{IPFS :-} Since blockchain network is not ideal for storing files, IPFS is used to store files such as certificates and scanned documents.
         \item \textbf{Land Registration Department :-} Responsible for adding records to the blockchain and providing a verification portal where users can obtain digitally signed certificates to verify land records.
@@ -957,6 +924,28 @@
             \centering
             \caption{Sequence Diagram for Getting ownership history of a land}
         \end{figure}
+    
+    \subsection{Reverse Geocoding Service}
+        \paragraph{}
+        Reverse Geocoding Service is takes GPS coordinates as input and returns the name of State, District, Sub-District and Village where the coordinate belong to. Names and coordinates of places is stored in JSON with the following schema :-
+
+        \begin{listing}[H]
+        \begin{minted}[frame=single,
+                        framesep=3mm,
+                        xleftmargin=21pt,
+                        tabsize=4,
+                        autogobble]{js}
+            {     
+                "name": "Name of the place",
+                "pts": "Array of polygon coordinates of the place",
+                "subdivision": "Array of information regarding
+                the places in lower administrative level
+                inside this place"
+            }
+        \end{minted}
+        \end{listing}
+        
+        
 
 
 \section{Chapter 4}
