@@ -43,6 +43,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{minted}
+\usepackage[export]{adjustbox}
+
 \newcommand{\sectionbreak}{\clearpage}
 \graphicspath{ {./images/} }
 
@@ -87,41 +89,128 @@
     \end{changemargin}
 \end{titlepage}
 \clearpage
-\tableofcontents
+
+% Page 2 of Format
+
+\begin{center}
+    \textbf{\Huge{Smartphone based Land Records Retrieval System}\\*[1cm]}
+
+    \textbf{A PROJECT REPORT}\\*[0.5cm]
+
+    \textit{Submitted in partial fulfillment of the\\ requirements for the award of the degrees}\\*[0.5cm]
+
+    {
+        \bfseries
+        \textit{of}\\
+        BACHELOR OF TECHNOLOGY\\
+        in\\*[0.5cm]
+        COMPUTER SCIENCE AND ENGINEERING\\*[0.5cm]
+    }
+    \textit{Submitted by:}\\
+    \textbf{Naman Jain}\\
+    \textbf{Pranshu Maheshwari}\\
+    \textbf{Saksham Tanwar}\\*[0.5cm]
+    \textit{Guided by:}\\
+    \textbf{Dr. Gourinath Banda, Associate Professor}\\*[1cm]
+    \begin{figure}[htbp]
+        \includegraphics[scale=0.5]{iiti_logo}
+        \centering
+    \end{figure}
+    \vspace{1cm}
+    \textbf{INDIAN INSTITUTE OF TECHNOLOGY INDORE}\\
+    \textbf{May 2021}
+    \thispagestyle{empty}
+\end{center}
 \clearpage
 
-% \section*{Sections in Report}
-% \begin{enumerate}
-%     \item Introduction
-%     \begin{itemize}
-%         \item Description of a generic application
-%         \item Disadvantages of a centralized database layer
-%         \item Advantages of using a blockchain solution
-%         \item Introduction of our product, highlighting the importance of blockchain, describing overall architecture and various products used.
-%     \end{itemize}
-%     \item Introduction of essential Concepts of Blockchain
-%     \begin{itemize}
-%         \item Describe various offerings of blockchain in regards to our product
-%         \item Existing applications related to our product
-%     \end{itemize}
-%     \item Architecture
-%     \begin{itemize}
-%         \item Details regarding the solution architecture
-%         \item Identifying the various actors/users of the product and how they interact with the product
-%         \item Various sub modules of the product and how they interact with one another
-%     \end{itemize}
-%     \item Deployment Details
-%     \begin{itemize}
-%         \item Details about how the product can be deployed
-%     \end{itemize}
-%     \item Conclusion
-%     \begin{itemize}
-%         \item Identify the problems which the product solved
-%         \item Identify the problems still left in the solution proposed
-%     \end{itemize}
-%     \item References
+% Declaration
 
-% \end{enumerate}
+{
+    \begin{center}
+        \textbf{\underline{\large{CANDIDATE’S DECLARATION}}}
+    \end{center}
+
+    \paragraph{}
+    We hereby declare that the project entitled \textbf{Smartphone based Land Records Retrieval System} submitted in partial fulfillment for the award of the degree of Bachelor of Technology in Computer Science and Engineering completed under the supervision of Dr. Gourinath Banda, Associate Professor, IIT Indore is an authentic work.
+
+    \paragraph{}
+    Further, we declare that we have not submitted this work for the award of any other degree elsewhere.
+
+    \vspace{4cm}
+    \begin{flushright}
+        \textbf{Signature and name of the student(s) with date}
+    \end{flushright}
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\underline{\large{CERTIFICATE by BTP Guide(s)}}}
+    \end{center}
+
+    \paragraph{}
+    It is certified that the above statement made by the students is correct to the best of my knowledge.
+
+    \vspace{3cm}
+    \begin{flushright}
+        \textbf{Signature of BTP Guide(s) with dates and their designation}
+    \end{flushright}
+
+    \thispagestyle{empty}
+}
+\clearpage
+
+% Preface
+
+{
+    \begin{center}
+        \textbf{\underline{\large{Preface}}}
+    \end{center}
+    This report on Smartphone based Land Records Retrieval System is prepared under the guidance of Dr. Gourinath Banda.\\
+    \\
+    \\
+    Through this report we have tried to give a detailed design of an innovative car control utility for the vehicles and try to cover every aspect of the new design, if the design is technically and economically sound and feasible.\\
+    \\
+    We have tried to the best of our abilities and knowledge to explain the content in a lucid manner. We have also added 3-D models and figures to make it more illustrative.\\
+    \\
+    \\
+    Naman Jain\\
+    Pranshu Maheshwari\\
+    Saksham Tanwar\\
+    B.Tech. IV Year
+    Discipline of Computer Science and Engineering
+    IIT Indore 
+
+
+    \thispagestyle{empty}
+}
+
+\clearpage
+
+% Acknowledgements
+
+{
+    \begin{center}
+        \textbf{\underline{\large{Acknowledgements}}}
+    \end{center}
+    We wish to thank Dr. Gourinath Banda for his kind support and valuable guidance.\\
+    \\
+    It is their help and support, due to which we became able to complete the design and technical report.\\
+    \\
+    Without their support this report would not have been possible.\\
+    \\
+    \\
+    Naman Jain\\
+    Pranshu Maheshwari\\
+    Saksham Tanwar\\
+    B.Tech. IV Year
+    Discipline of Computer Science and Engineering
+    IIT Indore 
+    \thispagestyle{empty}
+}
+
+\clearpage
+
+\tableofcontents
+\clearpage
 
 \section{Introduction}
     \subsection{Generic Application}
@@ -239,10 +328,23 @@
 
     \subsection{Related Works}
         \paragraph{}
-        To tackle the problem of accessing and verifying the land ownership records, this paper proposes a smartphone based solution. Using which users can request land ownership records for a particular land parcel by taking the advantage of the GPS module available in smartphones. These land ownership records are stored in a permissioned blockchain and to make it backwards compatible i.e. migrating old records to the new system, scanned copies of the documents can be stored in permissioned IPFS cluster with their Content Identifier (CID) stored on the same blockchain. Now whenever users want the ownership history of a land parcel they use the smartphone application, mark the piece of land and after successful completion of the process they get a PDF report with the ownership history of that said land parcel. This PDF report also contains verification codes for each ownership record they hold, these verification codes can then be used on a verification portal to generate a digitally signed PDF verifying that the given information is true. This solution hence provides a trustful and hassle free mechanism for people to access and verify land ownership records.
+        Republic of Georgia, in 2016, undertook a phased project to create a Blockchain-based land titling system. The project has significantly improved the government’s efficiency and ensures security and immutability of the data \cite{10.1162/inov_a_00276}.
+
+        \paragraph{}
+        Sweden’s land registry authority Lantmäteriet tested a blockchain based solution to store land records and allow users to buy and sell land by using a smartphone application. The authenticity of the process and digital signatures are secured using the blockchain \cite{sweden}.
+        
+        \paragraph{}
+        \cite{THAKUR2020101940} lists the various problems in the current land record management system in India and suggests a blockchain based solution and gives a detailed flow of the land registration process in India and how blockchain technology improves the registration system.
+
+        \paragraph{}
+        \cite{8944471} suggests a permissioned blockchain based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and IPFS for storing various documents. Implements the front end as an Angular based web application and uses Passport for authentication.
+
+        \paragraph{}
+        \cite{ALAM2020} Proposes a three phase project for adoption of Blockchain based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum. Phase One proposes adoption of public blockchain such as Etherium to store timestamps of land transactions on the blockchain. Phase Two proposes a hybrid blockchain solution consisting of both public and private blockchain networks, where key information is stored on public blockchain and all data related to land is stored on private blockchain network. Phase Three proposes using IPFS to store digital documents in the hybrid blockchain solution.
 
 
-\section{Chapter 3}
+
+\section{Proposed Solution Architecture}
     \paragraph{}
     \begin{figure}[htbp]
         \includegraphics[scale=0.25]{hld}
@@ -259,7 +361,7 @@
             \item \textbf{Server :-} Backend server for the Smartphone Application. It interacts with the blockchain network to compile the summary of the land records requested by the users.
         \end{itemize}
         \item \textbf{Payment Gateway :-} Razorpay payment gateway service is used to process payments.
-        \item \textbf{Reverse Geocoding Service :-} MapMyIndia's reverse geocoding API is used to get a particular place's State, District, Sub-District and Village from GPS Coordinates.
+        \item \textbf{Reverse Geocoding Service :-} Currently no service exists which has accurate data of villages or sub-districts. Under the Digital India, if some service is introduced for accurate reverse geocoding, that can be used. For the proposed solution, a sample service is used as described.
         \item \textbf{Blockchain Network :-} Blockchain network is responsible for storing all the land records consisting of details about all the land parcels and their transactions.
         \item \textbf{IPFS :-} Since blockchain network is not ideal for storing files, IPFS is used to store files such as certificates and scanned documents.
         \item \textbf{Land Registration Department :-} Responsible for adding records to the blockchain and providing a verification portal where users can obtain digitally signed certificates to verify land records.
@@ -659,8 +761,42 @@
         \paragraph{}
         Land Registration Department issues two types of certificates:
         \begin{itemize}
-            \item \textit{Land Ownership Certificate} :- This certificate is issued corresponding to each land parcel and provides the ownership detail of a land.
-            \item \textit{Land Transaction Certificate} :-  This certificate is issued for each land transaction and provides the land transaction details such as information about previous and new owner, sale price, etc.
+            \item \textbf{Land Ownership Certificate} :- This certificate is issued corresponding to each land parcel and provides the ownership detail of a land. This certificate contains the following fields:
+             \begin{itemize}
+                \item \textbf{Khasra No} - Khasra Number of land parcel
+                \item \textbf{Village} - Name of the village
+                \item \textbf{Sub-District} - Name of the sub-district 
+                \item \textbf{District} - Name of the district
+                \item \textbf{State} - Name of the state
+                \item \textbf{Area} - Area of land parcel in sq m
+                \item \textbf{Khata No} - Khata number of current owner
+                \item \textbf{Owner Name} - Name of current owner
+            \end{itemize}
+            \begin{figure}[htbp]
+                \includegraphics[scale=0.5, frame]{landcertificate.png}
+                \centering
+                \caption{Land Ownership Certificate}
+            \end{figure}
+
+            \item \textbf{Land Transaction Certificate} :-  This certificate is issued for each land transaction and provides the land transaction details. This certificate contains the following fields:
+             \begin{itemize}
+                \item \textbf{Khasra No} - Khasra Number of land parcel
+                \item \textbf{Village} - Name of the village
+                \item \textbf{Sub-District} - Name of the sub-district 
+                \item \textbf{District} - Name of the district
+                \item \textbf{State} - Name of the state
+                \item \textbf{Transfer Date} - Date on which land transfer takes place
+                \item \textbf{Seller Khata No} - Khata number of seller of the land
+                \item \textbf{Seller Name} - Name of seller of the land
+                \item \textbf{Buyer Khata No} - Khata number of buyer of the land
+                \item \textbf{Buyer Name} - Name of buyer of the land
+                \item \textbf{Price} - Selling Price of land in Indian Rupees
+            \end{itemize}
+            \begin{figure}[htbp]
+                \includegraphics[scale=0.5, frame]{landtransfercertificate.png}
+                \centering
+                \caption{Land Transfer Certificate}
+            \end{figure}
         \end{itemize}
         
         \subsubsection{Sequence Flow}
@@ -824,9 +960,31 @@
             \centering
             \caption{Sequence Diagram for Getting ownership history of a land}
         \end{figure}
+    
+    \subsection{Reverse Geocoding Service}
+        \paragraph{}
+        Reverse Geocoding Service is takes GPS coordinates as input and returns the name of State, District, Sub-District and Village where the coordinate belong to. Names and coordinates of places is stored in JSON with the following schema :-
+
+        \begin{listing}[H]
+        \begin{minted}[frame=single,
+                        framesep=3mm,
+                        xleftmargin=21pt,
+                        tabsize=4,
+                        autogobble]{js}
+            {     
+                "name": "Name of the place",
+                "points": "Array of polygon coordinates of the place",
+                "subdivision": "Array of information regarding
+                the places in lower administrative level
+                inside this place"
+            }
+        \end{minted}
+        \end{listing}
+        
+        
 
 
-\section{Chapter 4}
+\section{Deployment Details}
     \subsection{Records Server}
         \paragraph{}
         Records server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
@@ -979,14 +1137,20 @@
         \textbf{Verification Server} and \textbf{Records Server} run as organization 2(magnetocorp) application.
     
 
-    \section{Chapter Five}
+    \section{Conclusion}
         \subsection{Conclusion}
             \paragraph{}
-            Traditional land record retrieval system had many shortcomings as discussed in Chapter one. To address these shortcomings, we proposed a Blockchain based solution. The proposed solution takes into account various features of Blockchain technology like immutability, security, transparency, etc. to overcome the shortcomings present in traditional land record retrieval system. The Blockchain based solution makes it convenient to reconcile and synchronized data across various government departments, thus eliminating discrepancies in data. The proposed solution facilitates the retrieval and verification of ownership history of land parcel and associated documents digitally. To validate the integrity of land record, the user can request for a digitally signed certificate from the Verification portal as a proof of trust. This eliminates the need of cumbersome processes and delays that exist in the current system to verify land ownership of a land parcel. The Blockchain based solution, being immutable and transparent, makes the land data tamper-proof. This checks the corruption that exists in government departments.
+            Traditional land record retrieval system has many shortcomings as discussed in Chapter one. To address these shortcomings, a Blockchain based solution is proposed. The proposed solution takes into account various features of Blockchain technology like immutability, security, transparency, etc. to overcome the shortcomings present in traditional land record retrieval system. The proposed solution makes it convenient to reconcile and synchronize data across various government departments, thus eliminating discrepancies in data. The proposed solution facilitates the retrieval and verification of ownership history of land parcel and associated documents digitally. To validate the integrity of land record, the user can request for a digitally signed certificate from the Verification portal as a proof of trust. This eliminates the need of cumbersome processes and delays that exist in the current system to verify land ownership of a land parcel. The Blockchain based solution, being immutable and transparent, makes the land data tamper-proof. This also checks any possible corruption in government departments.
         
         \subsection{Future Work}
             \paragraph{}
-            In the proposed solution, we are using Hyperledger Fabric \cite{fabric} which is a private permissioned Blockchain. This entails configuring and deploying our own distributed network infrastructure for production usage. Various components needs to be set up and configured to deploy the solution at production level. This includes certificate authorities (CA), Membership Service Providers(MSP), ordering services, peer and ordering nodes, etc. The current system has been tested on dummy data. The land information needs to be digitized and fed into the system database to test the system in real scenario. The current solution can be extended to facilitate buying and selling of land assets through smart contracts thus eliminating the need of middlemen or brokers.  
+            In the proposed solution, we are using Hyperledger Fabric \cite{fabric} which is a private permissioned Blockchain. This entails configuring and deploying our own distributed network infrastructure for production usage. Various components needs to be set up and configured to deploy the solution at production level. This includes certificate authorities (CA), Membership Service Providers(MSP), ordering services, peer and ordering nodes, etc. The current system has been tested on dummy data. The land information needs to be digitized and fed into the system database to test the system in real scenario. 
+            
+            \paragraph{}
+            For transfer of land, proposed solution requires the transfer to be manually entered to the blokchain records by the Land Registration Department. This can be improved to remove the dependency on Land Registration Department and allow users to directly sell and buy land without the intermediate regulatory authority.
+
+            \paragraph{}
+            Land Registration Department Record's portal can be further improved to add additional metadata for every record entered into the blockchain such as which user added a particular record into the blockchain.
         
 
     \clearpage
