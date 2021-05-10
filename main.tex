@@ -479,7 +479,7 @@
     
     \subsection{LRSP Server}
         \paragraph{}
-        It is a Node server that interacts with the smartphone application to provide the requested land record to the user. It acts as an intermediary between the LRSP smartphone application and the Blockchain network. The application sends GPS coordinates to the LRSP server requesting for the land record. The server resolves it and fetches the corresponding land record information from the Blockchain. The land record is mailed to the user once the user completes the payment. It supports HTTPS for secured interaction.
+        It is a Node server that interacts with the smartphone application to provide the requested land parcel details to the user. It acts as an intermediary between the LRSP smartphone application and the Blockchain network. The application sends GPS coordinates to the LRSP server requesting for the land record. The server resolves it and fetches the corresponding land record information from the Blockchain. The land parcel details are then e-mailed to the user once the user completes the payment. It supports HTTPS for secured interaction.
         
         \paragraph{}
         The server also provides user authentication functionality to the LRSP system. It uses a centralized database to register users with the system. It uses JWT-based stateless authentication to allow access to protected routes.
@@ -516,7 +516,7 @@
                                    tabsize=4,
                                    autogobble]{js}
                         {     
-                            "success": "true"
+                            "success": true
                             "token": <jwt_token>
                         }
                     \end{minted}
