@@ -227,7 +227,7 @@
         \paragraph{}
         Most applications require data in some form or another and need to store the said data for future use, this is where databases come into picture.
         A database is an organized collection of data, generally stored and accessed electronically from a computer system.
-        Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one databases and provides access to all of the data contained in the database.
+        Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one database and provides access to all of the data contained in the database.
         DBMS's provide various functions that allow management of a database and its data such as :-
         \begin{itemize}
             \item \textbf{Data definition} which defines the database model i.e. the logical structure of the data model
@@ -271,7 +271,7 @@
 
         \paragraph{}
         % decentralization benefits
-        A blockchain based system is decentralized. Hence, a centralized authority is not necessary. Decentralized systems are also resilient to single point of failure. A blockchain network comprises of various nodes, each maintaining its own copy of database. Hence, all the data is replicated, shared and synchronized across all the nodes in the network. This makes the data almost tamper proof as it will be very costly and thus highly unlikely for a malicious person to change the data across the whole network. No node can directly write data to the blockchain as it can make the data inconsistent, to avoid this the blockchain network uses a consensus algorithm which helps all the nodes in the network to come to a consensus and commit the data in the blockchain. This helps to keep all the nodes in the network to get synchronized with each other. 
+        A blockchain based system is decentralized. Hence, a centralized authority is not necessary. Decentralized systems are also resilient to single point of failure. A blockchain network comprises of various nodes, each maintaining its own copy of database. Hence, all the data is replicated, shared and synchronized across all the nodes in the network. This makes the data almost tamper proof as it will be very costly and thus highly unlikely for a malicious person to change the data across the whole network. No node can directly write data to the blockchain as it can make the data inconsistent, to avoid this the blockchain network uses a consensus algorithm which helps all the nodes in the network to come to a consensus and commit the data in the blockchain. This helps to keep all the nodes in the network synchronized with each other. 
 
         \paragraph{}
         % Immutability and tracability benefits.
@@ -367,6 +367,19 @@
 
 \section{Proposed Solution Architecture}
     \paragraph{}
+    The proposed solution consists of :-
+
+    \begin{itemize}
+        \item A smartphone application where users can request land ownership records.
+        \item A platform for users to request digitally signed certificate from the Land Registration Department to verify land records.
+        \item A platform for Land Registration Department to enter land records, with support for uploading old scanned documents to help in migration of old records.
+    \end{itemize}
+
+    \paragraph{}
+    Land Ownership Records and the ownership history are stored on a blockchain making it tamper proof. A potential land buyer can request the ownership history using the smartphone application after paying a minimal fees and can also request for a digitally signed certificate from the Land Registration Department to validate the data.
+
+    \subsection{Overall Architecture}
+    \paragraph{}
     \begin{figure}[htbp]
         \includegraphics[scale=0.25]{hld}
         \centering
@@ -396,7 +409,7 @@
     Users which use the proposed solution :-
     \begin{itemize}
         \item \textbf{Land Information Seeker :-} These users need to access land information, they can be the prospective buyers for a particular land looking to validate the current owner's claim on the land.
-        \item \textbf{Land Registration Department Admins :-} These users enter information on the blockchain. Only these users can enter information to the blockchain.
+        \item \textbf{Land Registration Department Admins :-} These users enter information on the blockchain by logging in to the Records Portal.
     \end{itemize}
 
     \subsection{Records Server}
@@ -519,12 +532,12 @@
                 \caption{Sequence diagram for querying records}
             \end{figure}
 
-        \subsubsection{Query Records}
+        \subsubsection{Query Ownership History}
             Users can query ownership history of a particular land.
-            Querying records entails :-
+            Querying ownership history entails :-
             \begin{enumerate}
                 \item Get input from user.
-                \item Query records from blockchain.
+                \item Query ownership history from blockchain.
             \end{enumerate}
             
             \begin{figure}[htbp]
@@ -612,7 +625,7 @@
         
         \subsubsection{Sequence Flow}
         \paragraph{}
-        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village, sub-district and district levels in order. Once the record is found, the PDF is generated and mailed to the user after payment is verified. The generated PDF contains the hash IDs of the certificates stored on IPFS. To validate the land record, the user can request for these certificates from the verification server.
+        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village level and the land parcel which contains the GPS coordinate inside its polygon boundary is searched. Once the record is found, the PDF is generated and mailed to the user after payment is verified. The generated PDF contains the hash IDs of the certificates stored on IPFS. To validate the land record, the user can request for these certificates from the verification server.
         \begin{figure}[H]
                 \includegraphics[scale=0.5]{lrsp_seq.png}
                 \centering
@@ -891,7 +904,7 @@
             \item \textbf{area} - Area of land parcel in sq m
             \item \textbf{owner} - Current land owner
             \item \textbf{parentLandKey} - In case the land record is formed after splitting from another land, this stores the land key of the land from which this record was created
-            \item \textbf{expired} - Boolean to store whether the record is expired or not
+            \item \textbf{expired} - Boolean to store whether the record is expired or not, a record is marked as expired when the land parcel is split into two land parcels
             \item \textbf{certificate} - CID of the certificate file stored in IPFS
             \item \textbf{otherDocs} - Array of CIDs of the files uploaded to IPFS with the land record
         \end{itemize}
@@ -984,7 +997,7 @@
     
     \subsection{Reverse Geocoding Service}
         \paragraph{}
-        Reverse Geocoding Service takes GPS coordinates as input and returns the name of State, District, Sub-District and Village where the coordinate belong to. Names and coordinates of places is stored in JSON with the following schema :-
+        Due to absence of any external service with accurate and upto date village and sub-district data, a dummy service is created. Under the Digital India scheme, if such a service is made available then that can be used in place of this. Reverse Geocoding Service takes GPS coordinates as input and returns the name of State, District, Sub-District and Village where the coordinate belong to. Names and coordinates of places is stored in JSON with the following schema :-
 
         \begin{listing}[H]
         \begin{minted}[frame=single,
@@ -1057,7 +1070,6 @@
         LRSP server uses the following external services :-
         \begin{itemize}
             \item \textbf{MongoDb :-} A running MongoDb instance is required for user authentication purposes. Provide the URI to the MongoDb database in the file \textit{src/setup/db.ts}. To set up a Mongodb instance locally, follow \href{https://docs.mongodb.com/manual/installation/}{this}.
-            \item \textbf{Reverse Geocoding Service :-} The server is using \textbf{MapMyIndia} Reverse geocoding service. Provide the MapMyIndia API Key in the file \textit{src/services/coordResolver.ts}
             \item \textbf{RazorPay Payment Integration :-}RazorPay Payment service is used to initiate and verify the payment.
         \end{itemize}
     
@@ -1154,8 +1166,8 @@
         \paragraph{}
         One can follow the tutorial in the example linked and replace the smart contract with the implementation on the github repo for our project.\\
         \\
-        \textbf{LRSP server} run as organization 1(digibank) application.\\
-        \textbf{Verification Server} and \textbf{Records Server} run as organization 2(magnetocorp) application.
+        \textbf{LRSP server} runs as an organization 1(digibank) application.\\
+        \textbf{Verification Server} and \textbf{Records Server} run as organization 2(magnetocorp) applications.
     
 
     \section{Conclusion}
@@ -1168,7 +1180,7 @@
             In the proposed solution, we are using Hyperledger Fabric \cite{fabric} which is a private permissioned Blockchain. This entails configuring and deploying our own distributed network infrastructure for production usage. Various components needs to be set up and configured to deploy the solution at production level. This includes certificate authorities (CA), Membership Service Providers(MSP), ordering services, peer and ordering nodes, etc. The current system has been tested on dummy data. The land information needs to be digitized and fed into the system database to test the system in real scenario. 
             
             \paragraph{}
-            For transfer of land, proposed solution requires the transfer to be manually entered to the blokchain records by the Land Registration Department. This can be improved to remove the dependency on Land Registration Department and allow users to directly sell and buy land without the intermediate regulatory authority.
+            For transfer of land, proposed solution requires the transfer to be manually entered to the blockchain records by the Land Registration Department. This can be improved to remove the dependency on Land Registration Department and allow users to directly sell and buy land without the intermediate regulatory authority.
 
             \paragraph{}
             Land Registration Department Record's portal can be further improved to add additional metadata for every record entered into the blockchain such as which user added a particular record into the blockchain.
