@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage[acronym]{glossaries}
 
 \hypersetup{
     colorlinks=true,
@@ -44,6 +45,7 @@
 \usepackage{float}
 \usepackage{minted}
 \usepackage[export]{adjustbox}
+\makeglossaries
 
 \newcommand{\sectionbreak}{\clearpage}
 \graphicspath{ {./images/} }
@@ -64,6 +66,11 @@
 \date{\today}
 
 \begin{document}
+
+%% Acronyms
+
+\newacronym{cid}{CID}{Content Identifier}
+\newacronym{lrrs}{LRRS}{Land Records Retrieval Service}
 
 \begin{titlepage}
     \begin{changemargin}{-2cm}{-2cm}
@@ -322,7 +329,7 @@
         Indian government launched Digital India Land Record Modernization Programme in 2008. Main aim of this programme is to create a system of updated land records, automated and automatic mutation, integration between textual and spatial records, inter-connectivity between revenue and registration, to replace the present deeds registration and presumptive title system with that of conclusive titling with title guarantee \cite{dilrmp}. In addition to this, Indian government also plans on storing the digital records on a private blockchain and provide a system where citizens can view the ownership details and complete history of the property before going in for the purchase \cite{blockchaingovin}.  
 
     \subsection{Proposed Solution}
-        To takle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private IPFS cluster with their Content Identifier (CID) stored on the blockchain. A verification portal is also part of the solution where users while accessing records will be given verification code which users can use to generate a digitally signed PDF for verifying the land records. 
+        To takle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private IPFS cluster with their \gls{cid} stored on the blockchain. A verification portal is also part of the solution where users while accessing records will be given verification code which users can use to generate a digitally signed PDF for verifying the land records. 
         
     \subsection{Organisation of Dissertation}
         A brief introduction to our proposed solution and the motivation behind it was discussed in chapter one. Chapter one also provided the generic application architecture and contrasted the centralized databases with blockchain databases. Chapter two provides an introduction to the various offerings of the blockchain technology that is makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes direction for future work.
@@ -455,7 +462,7 @@
             \begin{enumerate}
                 \item Get input from user.
                 \item Generate certificate from the details.
-                \item Upload certificate to IPFS and receive CID for the certificate.
+                \item Upload certificate to IPFS and receive \gls{cid} for the certificate.
                 \item Create land record on the blockchain
             \end{enumerate}
 
@@ -476,7 +483,7 @@
                 \item Get input from user.
                 \item Generate land transfer certificate containing details about the land transfer.
                 \item Generate land record certificate containing details about the land and current owner.
-                \item Upload certificates to IPFS and receive CIDs for the certificates.
+                \item Upload certificates to IPFS and receive \gls{cid}'s for the certificates.
                 \item Create land transfer record and update land record on the blockchain.
             \end{enumerate}
             \begin{figure}[htbp]
@@ -554,7 +561,7 @@
 
     \subsection{Smartphone Application}
         \paragraph{}
-        This application is used to interact with LRSP Server and provide a user friendly mechanism for the users to request land ownership history records.
+        This application is used to interact with \gls{lrrs} Server and provide a user friendly mechanism for the users to request land ownership history records.
         The application is built using React Native which is a JavaScript library that is used to build cross-platform applications using a single React code base i.e. we can build both Android and iOS application using the same code base. 
         
         \subsubsection{Sequence Flow}
@@ -588,7 +595,7 @@
             \end{minipage}
         \end{figure}
 
-        After successful authentication the user is redirected to a screen as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the LRSP server's /landrecord endpoint with the marked GPS coordinates as the parameters and in response receives the data for the land parcel which then displayed in a confirmation screen (Figure \ref{app:confirm}) where user confirms if the data fecthed is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button the user initiates a transaction with the payment gateway i.e Razorpay gateway and is redirected to the said gateway as shown in Figure \ref{app:payment}. If the transaction is completed successfully then the Payment ID and Payment Signature of the transaction are sent to the LRSP server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason then an failure screen (Figure \ref{app:failure}) is displayed prompting the user to redo the process.
+        After successful authentication the user is redirected to a screen as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the \gls{lrrs} server's /landrecord endpoint with the marked GPS coordinates as the parameters and in response receives the data for the land parcel which then displayed in a confirmation screen (Figure \ref{app:confirm}) where user confirms if the data fecthed is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button the user initiates a transaction with the payment gateway i.e Razorpay gateway and is redirected to the said gateway as shown in Figure \ref{app:payment}. If the transaction is completed successfully then the Payment ID and Payment Signature of the transaction are sent to the \gls{lrrs} server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason then an failure screen (Figure \ref{app:failure}) is displayed prompting the user to redo the process.
         
         \begin{figure}
             \centering
@@ -613,15 +620,15 @@
             \end{minipage}
         \end{figure}
     
-    \subsection{LRSP Server}
+    \subsection{\gls{lrrs} Server}
         \paragraph{}
-        It is a Node server that interacts with the smartphone application to provide the requested land parcel details to the user. It acts as an intermediary between the LRSP smartphone application and the Blockchain network. The application sends GPS coordinates to the LRSP server requesting for the land record. The server resolves it and fetches the corresponding land record information from the Blockchain. The land parcel details are then e-mailed to the user once the user completes the payment. It supports HTTPS for secured interaction.
+        It is a Node server that interacts with the smartphone application to provide the requested land parcel details to the user. It acts as an intermediary between the \gls{lrrs} smartphone application and the Blockchain network. The application sends GPS coordinates to the \gls{lrrs} server requesting for the land record. The server resolves it and fetches the corresponding land record information from the Blockchain. The land parcel details are then e-mailed to the user once the user completes the payment. It supports HTTPS for secured interaction.
         
         \paragraph{}
-        The server also provides user authentication functionality to the LRSP system. It uses a centralized database to register users with the system. It uses JWT-based stateless authentication to allow access to protected routes.
+        The server also provides user authentication functionality to the \gls{lrrs} system. It uses a centralized database to register users with the system. It uses JWT-based stateless authentication to allow access to protected routes.
 
         \paragraph{}
-        LRSP server is implemented using Express framework, a NodeJS module.
+        \gls{lrrs} server is implemented using Express framework, a NodeJS module.
         
         \subsubsection{Sequence Flow}
         \paragraph{}
@@ -629,15 +636,15 @@
         \begin{figure}[H]
                 \includegraphics[scale=0.5]{lrsp_seq.png}
                 \centering
-                \caption{LRSP server sequence diagram}
+                \caption{\gls{lrrs} server sequence diagram}
         \end{figure}
         
         \subsubsection{Usage}
-        Following are the web endpoints exposed by the LRSP server:
+        Following are the web endpoints exposed by the \gls{lrrs} server:
         \begin{itemize}
             \item \textbf{POST} /signup:
                 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-                    This endpoint is used to register a new user to the LRSP server. If successful, it returns the jwt access token in the response body. The jwt token expires in 1 hour.
+                    This endpoint is used to register a new user to the \gls{lrrs} server. If successful, it returns the jwt access token in the response body. The jwt token expires in 1 hour.
                     \par\textbf{Request Paramaters:}
                     \begin{itemize}
                         \item name: user name
@@ -905,8 +912,8 @@
             \item \textbf{owner} - Current land owner
             \item \textbf{parentLandKey} - In case the land record is formed after splitting from another land, this stores the land key of the land from which this record was created
             \item \textbf{expired} - Boolean to store whether the record is expired or not, a record is marked as expired when the land parcel is split into two land parcels
-            \item \textbf{certificate} - CID of the certificate file stored in IPFS
-            \item \textbf{otherDocs} - Array of CIDs of the files uploaded to IPFS with the land record
+            \item \textbf{certificate} - \gls{cid} of the certificate file stored in IPFS
+            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to IPFS with the land record
         \end{itemize}
 
         \paragraph{}
@@ -917,8 +924,8 @@
             \item \textbf{price} - Selling Price of land in Rupees
             \item \textbf{prevOwner} - Seller of the land
             \item \textbf{newOwner} - Buyer of the land
-            \item \textbf{certificate} - CID of the certificate file stored in IPFS
-            \item \textbf{otherDocs} - Array of CIDs of the files uploaded to IPFS with the land transfer record
+            \item \textbf{certificate} - \gls{cid} of the certificate file stored in IPFS
+            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to IPFS with the land transfer record
         \end{itemize}
 
     \subsubsection{Create Land Record}
@@ -1062,25 +1069,25 @@
             CERT=<cert_path> node dist/app.js
             \end{lstlisting}
     
-    \subsection{LRSP Server}
+    \subsection{\gls{lrrs} Server}
         \paragraph{}
-        LRSP server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+        \gls{lrrs} server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
     
         \paragraph{}
-        LRSP server uses the following external services :-
+        \gls{lrrs} server uses the following external services :-
         \begin{itemize}
             \item \textbf{MongoDb :-} A running MongoDb instance is required for user authentication purposes. Provide the URI to the MongoDb database in the file \textit{src/setup/db.ts}. To set up a Mongodb instance locally, follow \href{https://docs.mongodb.com/manual/installation/}{this}.
             \item \textbf{RazorPay Payment Integration :-}RazorPay Payment service is used to initiate and verify the payment.
         \end{itemize}
     
         \paragraph{}
-        LRSP server requires the following environment variables :-
+        \gls{lrrs} server requires the following environment variables :-
         \begin{itemize}
             \item \textbf{RZRPAY\_KEY\_ID}
             \item \textbf{RZRPAY\_KEY\_SECRET}
         \end{itemize}
         
-        \begin{lstlisting}[language=bash, caption=LRSP Server]
+        \begin{lstlisting}[language=bash, caption=\gls{lrrs} Server]
         # Install required NodeJs modules
         npm install
     
@@ -1166,7 +1173,7 @@
         \paragraph{}
         One can follow the tutorial in the example linked and replace the smart contract with the implementation on the github repo for our project.\\
         \\
-        \textbf{LRSP server} runs as an organization 1(digibank) application.\\
+        \textbf{\gls{lrrs} server} runs as an organization 1(digibank) application.\\
         \textbf{Verification Server} and \textbf{Records Server} run as organization 2(magnetocorp) applications.
     
 
@@ -1186,7 +1193,8 @@
             Land Registration Department Record's portal can be further improved to add additional metadata for every record entered into the blockchain such as which user added a particular record into the blockchain.
         
 
-    \clearpage
+    \printglossaries
+    \addcontentsline{toc}{section}{Acronyms}
     \addcontentsline{toc}{section}{References}
     \bibliographystyle{unsrt}
     \bibliography{citation}
