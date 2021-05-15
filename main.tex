@@ -462,7 +462,26 @@
         \end{figure}
         
         \subsubsection{Usage}
-        Following are the web endpoints exposed by the LRSP server:
+        \paragraph{}
+        The web endpoints exposed by the LRSP server are described below. \newline
+        The error response of these endpoints comprises of the following structure: \newline
+        
+        \par\textbf{Error Response:}
+                    \begin{listing}[H]
+                    \begin{minted}[frame=single,
+                                   framesep=3mm,
+                                   xleftmargin=21pt,
+                                   tabsize=4,
+                                   autogobble]{js}
+                        {     
+                            "success": "false"
+                            "error": {
+                                "code":  <error code>,
+                                "message": <error description>
+                            }
+                        }
+                    \end{minted}
+                    \end{listing}
         \begin{itemize}
             \item \textbf{POST} /signup:
                 \begin{addmargin}[1em]{2em}% 1em left, 2em right
