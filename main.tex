@@ -632,11 +632,19 @@
         
         \subsubsection{Sequence Flow}
         \paragraph{}
-        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village level and the land parcel which contains the GPS coordinate inside its polygon boundary is searched. Once the record is found, the PDF is generated and mailed to the user after payment is verified. The generated PDF contains the hash IDs of the certificates stored on IPFS. To validate the land record, the user can request for these certificates from the verification server.
+        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village level and the land parcel which contains the GPS coordinate inside its polygon boundary is searched. Once the record is found, the PDF (as seen in Figure \ref{fig:pdfreport}) is generated and mailed to the user after payment is verified.
+        \paragraph{}
+        The generated PDF contains general details about the land parcel on top and it also includes a Verification Code which can be used to verify the current owner of the land parcel using the Verification server and selecting the record type as Land Record. The PDF also contains a table of ownership history of the land parcel from genesis with the Verification Code for the Transfer Records which can also be verified on the verification server. These verification codes are the hash ID's of the records stored on the IPFS. To validate the land record and the transfer records, the users can request for these certificates from the verification portal.
         \begin{figure}[H]
                 \includegraphics[scale=0.5]{lrsp_seq.png}
                 \centering
                 \caption{\gls{lrrs} server sequence diagram}
+        \end{figure}
+        \begin{figure}[H]
+                \includegraphics[scale=0.25]{landRecord.png}
+                \centering
+                \caption{Land Ownership History PDF}
+                \label{fig:pdfreport}
         \end{figure}
         
         \subsubsection{Usage}
