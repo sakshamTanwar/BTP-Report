@@ -71,6 +71,9 @@
 
 \newacronym{cid}{CID}{Content Identifier}
 \newacronym{lrrs}{LRRS}{Land Records Retrieval Service}
+\newacronym{dbms}{DBMS}{Database Management System}
+\newacronym{acid}{ACID}{Atomicity, Consistency, Isolation and Durability}
+\newacronym{ipfs}{IPFS}{Interplanetary File System}
 
 \begin{titlepage}
     \begin{changemargin}{-2cm}{-2cm}
@@ -223,8 +226,8 @@
     \subsection{Generic Application}
         \paragraph{} A typical application can be broken down into three logical layers namely:-
         \begin{itemize}
-            \item \textbf{Presentation Layer: }It is the layer responsible for displaying information and collect information from the user.
-            \item \textbf{Business Logic Layer: }In this layer, information collected from presentation layer is used to perform the various calculations and operations needed to be performed by the application.
+            \item \textbf{Presentation Layer: }It is the layer responsible for displaying and collecting information from the user.
+            \item \textbf{Business Logic Layer: }In this layer, information collected from presentation layer is used to perform various calculations and operations needed to be performed by the application.
             \item \textbf{Data Layer: }This layer is responsible for storing and retrieving data to be used by other layers.
         \end{itemize}
 
@@ -234,28 +237,28 @@
         \paragraph{}
         Most applications require data in some form or another and need to store the said data for future use, this is where databases come into picture.
         A database is an organized collection of data, generally stored and accessed electronically from a computer system.
-        Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one database and provides access to all of the data contained in the database.
-        DBMS's provide various functions that allow management of a database and its data such as :-
+        Access to this data is usually provided by a \gls{dbms} consisting of an integrated set of computer software that allows users to interact with one database and provides access to all of the data contained in the database.
+        \gls{dbms}'s provide various functions that allow management of a database and its data such as :-
         \begin{itemize}
             \item \textbf{Data definition} which defines the database model i.e. the logical structure of the data model
             \item \textbf{Updating} of actual data which includes insertion, modification, and deletion of the actual data
             \item \textbf{Retrieval} of actual data which may or may not include data processing
             \item \textbf{Administration} which includes allowing access to various users, enforcing data security and various other checks
         \end{itemize}
-        A database model is a type of data model that determines the logical structure of a database and fundamentally determines in which manner data can be stored, organized and manipulated. The most popular example of a database model is the relational model, which uses a table-based format. The ACID (Atomicity, Consistency, Isolation and Durability) database design is one of oldest and most important database design. A relational database that fails to follow the ACID model cannot be considered reliable. 
+        A database model is a type of data model that determines the logical structure of a database and fundamentally determines in which manner data can be stored, organized and manipulated. The most popular example of a database model is the relational model, which uses a table-based format. The \gls{acid} database design is one of oldest and most important database design. A relational database that fails to follow the \gls{acid} model cannot be considered reliable. 
         \paragraph{}
-        Databases can be categorized in many categories depending on how they store data, where it is stored and the additional functionality the DBMS can provide on the stored data. Broadly databases can categorized into two major categories centralized and distributed. They both have their advantages and disadvantages.
+        Databases can be categorized in many categories depending on how they store data, where it is stored and the additional functionality the \gls{dbms} can provide on the stored data. Broadly databases can categorized into two major categories centralized and distributed. They both have their advantages and disadvantages.
         \paragraph{}
-        A centralized database is a database that is located, stored, and maintained in a single location and has a single DBMS but can be accessed by the users distributed in the network.
+        A centralized database is a database that is located, stored, and maintained in a single location and has a single \gls{dbms} but can be accessed by the users distributed in the network.
         \paragraph{}
         A distributed database system consists of a collection of local databases,  geographically located in different points (nodes of a network of computers) and  logically related by functional relations so that they can be viewed globally as a single database \cite{distributeddatabase}.
         There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database all the locations store the database identically i.e. all locations have the same management system and schema. Whereas in heterogeneous distributed database different locations can have different management software, schemas.
-        For a database management system to be distributed, it should be fully compliant with the twelve rules introduced by C.J. Date in 1987 \cite{distributeddbms} -:
+        For a \gls{dbms} to be distributed, it should be fully compliant with the twelve rules introduced by C.J. Date in 1987 \cite{distributeddbms} -:
         \begin{enumerate}
             \item Local Autonomy
-            \item The absence of a dependency from a central location
             \item Continuous Operation
             \item Location Independent
+            \item The absence of a dependency from a central location
             \item Fragmentation Independent
             \item Replication  Independent
             \item Distributed Query Processing
@@ -267,10 +270,10 @@
         \end{enumerate}
         
         \paragraph{}
-        If a centralized database is used to store the data then the whole system is prone to Single Point of Failure, if for some reason the database fails the whole system will fail. As all the data is stored in a single location, if there are no  precautionary measures taken then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerability. This makes centralized database dubious with very low reliability. But at the same time, centralized database ensures data consistency and easy management in compliance with ACID design \cite{centralizeddistributeddatabases}.
+        If a centralized database is used to store the data then the whole system is prone to Single Point of Failure, if for some reason the database fails the whole system will fail. As all the data is stored in a single location, if there are no  precautionary measures taken then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerability. This makes centralized database dubious with very low reliability. But at the same time, centralized database ensures data consistency and easy management in compliance with \gls{acid} design \cite{centralizeddistributeddatabases}.
         
         \paragraph{}
-        A major advantage of distributed database is that by sharing a database across  multiple nodes can obtain a storage space extension and also can benefit from multiple processing resources. A distributed database system is robust to failure to some extent. Hence, it is reliable when compared to a  centralized database system. It is also more robust compared to a centralized database as it doesn't have a single point of failure, if a node fails another node or group of nodes can provide the necessary data. But to make this possible complex software's are required which incur additional costs and processing overheads. Marinating data integrity is difficult and hence minimum redundancy and ACID properties are more relaxed than compared to a centralized database \cite{centralizeddistributeddatabases}. Distributed environment also faces problems such as fragmentation and data replication. A data fragment constitutes some subset of the original database. A data replica constitutes some copy of the whole or part of the original database. The fragmentation and the replication can be combined: a relationship can be partitioned into several pieces and can have multiple replicas of each fragment \cite{distributedsystems}.
+        A major advantage of distributed database is that by sharing a database across  multiple nodes can obtain a storage space extension and also can benefit from multiple processing resources. A distributed database system is robust to failure to some extent. Hence, it is reliable when compared to a  centralized database system. It is also more robust compared to a centralized database as it doesn't have a single point of failure, if a node fails another node or group of nodes can provide the necessary data. But to make this possible complex software's are required which incur additional costs and processing overheads. Marinating data integrity is difficult and hence minimum redundancy and \gls{acid} properties are more relaxed than compared to a centralized database \cite{centralizeddistributeddatabases}. Distributed environment also faces problems such as fragmentation and data replication. A data fragment constitutes some subset of the original database. A data replica constitutes some copy of the whole or part of the original database. The fragmentation and the replication can be combined: a relationship can be partitioned into several pieces and can have multiple replicas of each fragment \cite{distributedsystems}.
         
     \subsection{Advantages of using Blockchain}
         % general introduction about blockchain benefits.
@@ -289,9 +292,9 @@
         Another benefit of blockchain is that it provides transparency to the data stored in it. This is achieved by replicating the blockchain data among multiple nodes present in the blockchain network. Nodes in the blockchain network not only can view the data already committed to the blockchain but can also participate in the process of validating the data to be committed in the blockchain. The transparency also helps users to cross verify some data against the blockchain.  
 
         \paragraph{}
-        % single public ledger
         A blockchain ledger is logically a single public ledger. Since every node updates its copy of blockchain ledger in sync with each other and after consensus is reached, the whole network logically act as one single public ledger. This removes the complications present in traditional systems where different participants or organizations maintains multiple ledgers which needs to be reconcile and synchronized time to time.
 
+        % single public ledger
         \paragraph{}
         % Reduced Cost
         Systems that are deployed on public blockchain network are more cost efficient as compared to the traditional systems. This is because the system utilizes the processing power and resources of a large number of nodes that are already connected to the blockchain network, thus significantly reducing the cost needed for setting up and maintaining centralized servers present in traditional systems.
@@ -303,13 +306,13 @@
         \paragraph{}
         % Benefits of blockchain in our solution
 
-    \subsection{IPFS}
+    \subsection{\gls{ipfs}}
 
         \paragraph{}
-        The Interplanetary File System (IPFS) \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. IPFS provides a high throughput storage system where each file is uniquely identified by a cryptographic hash. In IPFS, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP which uses location based addressing, IPFS uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
+        The \gls{ipfs} \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. \gls{ipfs} provides a high throughput storage system where each file is uniquely identified by a cryptographic hash. In \gls{ipfs}, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP which uses location based addressing, \gls{ipfs} uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
 
         \paragraph{}
-        IPFS uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the IPFS. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. IPFS stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node as well as all its ancestors in the DAG. This makes the data stored on the IPFS immutable.
+        \gls{ipfs} uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the \gls{ipfs}. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. \gls{ipfs} stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node as well as all its ancestors in the DAG. This makes the data stored on the \gls{ipfs} immutable.
         
     \subsection{Motivation}
         \paragraph{}
@@ -329,7 +332,7 @@
         Indian government launched Digital India Land Record Modernization Programme in 2008. Main aim of this programme is to create a system of updated land records, automated and automatic mutation, integration between textual and spatial records, inter-connectivity between revenue and registration, to replace the present deeds registration and presumptive title system with that of conclusive titling with title guarantee \cite{dilrmp}. In addition to this, Indian government also plans on storing the digital records on a private blockchain and provide a system where citizens can view the ownership details and complete history of the property before going in for the purchase \cite{blockchaingovin}.  
 
     \subsection{Proposed Solution}
-        To takle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private IPFS cluster with their \gls{cid} stored on the blockchain. A verification portal is also part of the solution where users while accessing records will be given verification code which users can use to generate a digitally signed PDF for verifying the land records. 
+        To tackle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private \gls{ipfs} cluster with their \gls{cid} stored on the blockchain. A verification portal is also part of the solution where users while accessing records will be given verification code which users can use to generate a digitally signed PDF for verifying the land records. 
         
     \subsection{Organisation of Dissertation}
         A brief introduction to our proposed solution and the motivation behind it was discussed in chapter one. Chapter one also provided the generic application architecture and contrasted the centralized databases with blockchain databases. Chapter two provides an introduction to the various offerings of the blockchain technology that is makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes direction for future work.
@@ -350,9 +353,9 @@
         \paragraph{}
         Blockchain is a shared ledger. Each participant has a copy of the ledger. With necessary permissions, a participant can commit data into the ledger which, after getting validated by other nodes, gets reflected across the entire Blockchain network. This removes the complications present in the current land record management systems where different departments maintain land data which needs to be reconcile and synchronized regularly.
     
-    \subsection{IPFS}
+    \subsection{\gls{ipfs}}
         \paragraph{}
-        IPFS, being distributed, is resilient to single point of failure. It is more secure to DDos attacks than centralized system. Multiple nodes can simultaneously participate in distributing a particular file resulting in better throughput. The data retrieved from IPFS can be verified by calculating its hash. Hence, data stored on IPFS is self-verifiable. Data can be pinned on multiple nodes to ensure it persists on IPFS. This makes IPFS resilient to data loss.
+        \gls{ipfs}, being distributed, is resilient to single point of failure. It is more secure to Denial of Service (DDoS) attacks than centralized system. Multiple nodes can simultaneously participate in distributing a particular file resulting in better throughput. The data retrieved from \gls{ipfs} can be verified by calculating its hash. Hence, data stored on \gls{ipfs} is self-verifiable. Data can be pinned on multiple nodes to ensure it persists on \gls{ipfs}. This makes \gls{ipfs} resilient to data loss.
 
     \subsection{Related Works}
         \paragraph{}
@@ -365,10 +368,10 @@
         International Journal of Information Management \cite{THAKUR2020101940} lists the various problems in the current land record management system in India and suggests a blockchain based solution and gives a detailed flow of the land registration process in India and how blockchain technology improves the registration system.
 
         \paragraph{}
-        In 10th ICCCNT, \cite{8944471} suggests a permissioned blockchain based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and IPFS for storing various documents.
+        In 10th ICCCNT, \cite{8944471} suggests a permissioned blockchain based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and \gls{ipfs} for storing various documents.
 
         \paragraph{}
-        Journal of King Saud University - Computer and Information Sciences \cite{ALAM2020} proposes a three phase project for adoption of Blockchain based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum. Phase One proposes adoption of public blockchain such as Ethereum to store timestamps of land transactions on the blockchain. Phase Two proposes a hybrid blockchain solution consisting of both public and private blockchain networks, where key information is stored on public blockchain and all data related to land is stored on private blockchain network. Phase Three proposes using IPFS to store digital documents in the hybrid blockchain solution.
+        Journal of King Saud University - Computer and Information Sciences \cite{ALAM2020} proposes a three phase project for adoption of Blockchain based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum. Phase One proposes adoption of public blockchain such as Ethereum to store timestamps of land transactions on the blockchain. Phase Two proposes a hybrid blockchain solution consisting of both public and private blockchain networks, where key information is stored on public blockchain and all data related to land is stored on private blockchain network. Phase Three proposes using \gls{ipfs} to store digital documents in the hybrid blockchain solution.
 
 
 
@@ -404,7 +407,7 @@
         \item \textbf{Payment Gateway :-} Razorpay payment gateway service is used to process payments.
         \item \textbf{Reverse Geocoding Service :-} Currently no service exists which has accurate data of villages or sub-districts. Under the Digital India, if some service is introduced for accurate reverse geocoding, that can be used. For the proposed solution, a sample service is used as described.
         \item \textbf{Blockchain Network :-} Blockchain network is responsible for storing all the land records consisting of details about all the land parcels and their transactions.
-        \item \textbf{IPFS :-} Since blockchain network is not ideal for storing files, IPFS is used to store files such as certificates and scanned documents.
+        \item \textbf{\gls{ipfs} :-} Since blockchain network is not ideal for storing files, \gls{ipfs} is used to store files such as certificates and scanned documents.
         \item \textbf{Land Registration Department :-} Responsible for adding records to the blockchain and providing a verification portal where users can obtain digitally signed certificates to verify land records.
         \begin{itemize}
             \item \textbf{Records Server :-} Responsible for serving the website using which Land Records can be added to the blockchain.
@@ -421,13 +424,13 @@
 
     \subsection{Records Server}
         \paragraph{}
-        This serves a web application that allows users in Land Registration Department to enter and query land records on blockchain. To support migration of old land records onto the new platform, uploading scanned documents with each transaction such as adding a land record, transferring a land or splitting a land record is supported. All the documents are stored in the IPFS.
+        This serves a web application that allows users in Land Registration Department to enter and query land records on blockchain. To support migration of old land records onto the new platform, uploading scanned documents with each transaction such as adding a land record, transferring a land or splitting a land record is supported. All the documents are stored in the \gls{ipfs}.
 
         \paragraph{}
-        For each land record, a PDF certificate, digitally signed by the Land Registration Department, is generated which includes all the information about the land such as the current owner, khasra number etc. This certificate is stored in the IPFS.
+        For each land record, a PDF certificate, digitally signed by the Land Registration Department, is generated which includes all the information about the land such as the current owner, khasra number etc. This certificate is stored in the \gls{ipfs}.
         
         \paragraph{}
-        For each land transfer, a PDF certificate, digitally signed by the Land Registration Department, is generated which includes all the information related to the land transfer. This certificate is stored in the IPFS. In a land transfer, land record certificate is also updated to reflect the current owner.
+        For each land transfer, a PDF certificate, digitally signed by the Land Registration Department, is generated which includes all the information related to the land transfer. This certificate is stored in the \gls{ipfs}. In a land transfer, land record certificate is also updated to reflect the current owner.
 
         \paragraph{}
         This web application provides following operations to the user :-
@@ -462,7 +465,7 @@
             \begin{enumerate}
                 \item Get input from user.
                 \item Generate certificate from the details.
-                \item Upload certificate to IPFS and receive \gls{cid} for the certificate.
+                \item Upload certificate to \gls{ipfs} and receive \gls{cid} for the certificate.
                 \item Create land record on the blockchain
             \end{enumerate}
 
@@ -483,7 +486,7 @@
                 \item Get input from user.
                 \item Generate land transfer certificate containing details about the land transfer.
                 \item Generate land record certificate containing details about the land and current owner.
-                \item Upload certificates to IPFS and receive \gls{cid}'s for the certificates.
+                \item Upload certificates to \gls{ipfs} and receive \gls{cid}'s for the certificates.
                 \item Create land transfer record and update land record on the blockchain.
             \end{enumerate}
             \begin{figure}[htbp]
@@ -634,7 +637,7 @@
         \paragraph{}
         The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using an external Reverse Geocoding service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at village level and the land parcel which contains the GPS coordinate inside its polygon boundary is searched. Once the record is found, the PDF (as seen in Figure \ref{fig:pdfreport}) is generated and mailed to the user after payment is verified.
         \paragraph{}
-        The generated PDF contains general details about the land parcel on top and it also includes a Verification Code which can be used to verify the current owner of the land parcel using the Verification server and selecting the record type as Land Record. The PDF also contains a table of ownership history of the land parcel from genesis with the Verification Code for the Transfer Records which can also be verified on the verification server. These verification codes are the hash ID's of the records stored on the IPFS. To validate the land record and the transfer records, the users can request for these certificates from the verification portal.
+        The generated PDF contains general details about the land parcel on top and it also includes a Verification Code which can be used to verify the current owner of the land parcel using the Verification server and selecting the record type as Land Record. The PDF also contains a table of ownership history of the land parcel from genesis with the Verification Code for the Transfer Records which can also be verified on the verification server. These verification codes are the hash ID's of the records stored on the \gls{ipfs}. To validate the land record and the transfer records, the users can request for these certificates from the verification portal.
         \begin{figure}[H]
                 \includegraphics[scale=0.5]{lrsp_seq.png}
                 \centering
@@ -852,10 +855,10 @@
         \paragraph{}
         The sequence flow of verification server comprises of the following steps:
         \begin{enumerate}
-            \item Get input from the user which includes IPFS hash of the certificate and record details.
+            \item Get input from the user which includes \gls{ipfs} hash of the certificate and record details.
             \item Fetch the corresponding record from the Blockchain network.
-            \item Validate the provided certificate IPFS hash against the one associated with the record in the Blockchain.
-            \item If certificate hashes matched, fetch the stored certificate from IPFS.
+            \item Validate the provided certificate \gls{ipfs} hash against the one associated with the record in the Blockchain.
+            \item If certificate hashes matched, fetch the stored certificate from \gls{ipfs}.
             \item Add digital signature to certificate with timestamp and send it to user.
         \end{enumerate}
         
@@ -920,8 +923,8 @@
             \item \textbf{owner} - Current land owner
             \item \textbf{parentLandKey} - In case the land record is formed after splitting from another land, this stores the land key of the land from which this record was created
             \item \textbf{expired} - Boolean to store whether the record is expired or not, a record is marked as expired when the land parcel is split into two land parcels
-            \item \textbf{certificate} - \gls{cid} of the certificate file stored in IPFS
-            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to IPFS with the land record
+            \item \textbf{certificate} - \gls{cid} of the certificate file stored in \gls{ipfs}
+            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to \gls{ipfs} with the land record
         \end{itemize}
 
         \paragraph{}
@@ -932,8 +935,8 @@
             \item \textbf{price} - Selling Price of land in Rupees
             \item \textbf{prevOwner} - Seller of the land
             \item \textbf{newOwner} - Buyer of the land
-            \item \textbf{certificate} - \gls{cid} of the certificate file stored in IPFS
-            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to IPFS with the land transfer record
+            \item \textbf{certificate} - \gls{cid} of the certificate file stored in \gls{ipfs}
+            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to \gls{ipfs} with the land transfer record
         \end{itemize}
 
     \subsubsection{Create Land Record}
@@ -1042,7 +1045,7 @@
         Records server requires the following environment variables :-
         \begin{itemize}
             \item \textbf{CERT :-} Path to P12 certificate file used to sign the PDF documents (certificates)
-            \item \textbf{IPFS\_CLUSTER :-} Link to IPFS cluster node
+            \item \textbf{IPFS\_CLUSTER :-} Link to \gls{ipfs} cluster node
         \end{itemize}
         
         \begin{lstlisting}[language=bash, caption=Records Server]
@@ -1154,18 +1157,18 @@
         \paragraph{}
         To build a release version of the app for iOS, an Apple developer account is required. After signing in using the developer account in the Xcode, a build button is available which builds a release IPA for iOS and pushes it to App Store Connect where the IPA is inspected by Apple for any guideline violation. Upon successful inspection, the app can be published to the App Store using the App Store Connect Console.
     
-    \subsection{IPFS}
+    \subsection{\gls{ipfs}}
         \paragraph{}
-        A private IPFS network is set up. IPFS-Cluster is used to manage the cluster. This requires two environment variables to be provided :-
+        A private \gls{ipfs} network is set up. IPFS-Cluster is used to manage the cluster. This requires two environment variables to be provided :-
         \begin{itemize}
-            \item \textbf{SWARM\_KEY :-} Required for private ipfs network, can be generated by following point 2 in this \href{https://github.com/ahester57/ipfs-private-swarm}{link}.
-            \item \textbf{CLUSTER\_SECRET :-} Required to manage the private IPFS cluster
+            \item \textbf{SWARM\_KEY :-} Required for private \gls{ipfs} network, can be generated by following point 2 in this \href{https://github.com/ahester57/ipfs-private-swarm}{link}.
+            \item \textbf{CLUSTER\_SECRET :-} Required to manage the private \gls{ipfs} cluster
         \end{itemize}
     
         These can be provided in a .env file in the same directory as the docker-compose.yml file.
         Make sure that the init.sh file can be executed.
     
-        \begin{lstlisting}[language=bash, caption=IPFS]
+        \begin{lstlisting}[language=bash, caption=\gls{ipfs}]
         # Modify init.sh file permissions to allow execution
         chmod 740 init.sh
         
