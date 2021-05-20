@@ -221,35 +221,35 @@
 
 \section{Introduction}
     \subsection{Generic Application}
-        \paragraph{} A typical application can be broken down into three logical layers namely:-
+        \paragraph{} A typical application can be broken down into three logical layers, namely:-
         \begin{itemize}
             \item \textbf{Presentation Layer: }It is the layer responsible for displaying information and collect information from the user.
-            \item \textbf{Business Logic Layer: }In this layer, information collected from presentation layer is used to perform the various calculations and operations needed to be performed by the application.
+            \item \textbf{Business Logic Layer: }In this layer, information collected from the presentation layer is used to perform the various calculations and operations needed to be performed by the application.
             \item \textbf{Data Layer: }This layer is responsible for storing and retrieving data to be used by other layers.
         \end{itemize}
 
-        \paragraph{}Data Layer is typically implemented using a database, which is an organized collection of data. A database can be of two types : Centralized and Distributed.
+        \paragraph{}Data Layer is typically implemented using a database, which is an organized collection of data. A database can be of two types: Centralized and Distributed.
         
     \subsection{Disadvantages of a centralized database}
         \paragraph{}
-        Most applications require data in some form or another and need to store the said data for future use, this is where databases come into picture.
+        Most applications require data in some form or another and need to store the said data for future use, and this is where databases come into the picture.
         A database is an organized collection of data, generally stored and accessed electronically from a computer system.
         Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one database and provides access to all of the data contained in the database.
-        DBMS's provide various functions that allow management of a database and its data such as :-
+        DBMS's provide various functions that allow management of a database and its data, such as:-
         \begin{itemize}
-            \item \textbf{Data definition} which defines the database model i.e. the logical structure of the data model
-            \item \textbf{Updating} of actual data which includes insertion, modification, and deletion of the actual data
-            \item \textbf{Retrieval} of actual data which may or may not include data processing
+            \item \textbf{Data definition}, which defines the database model, i.e. the logical structure of the data model
+            \item \textbf{Updating} of actual data, which includes insertion, modification, and deletion of the actual data
+            \item \textbf{Retrieval} of actual data, which may or may not include data processing
             \item \textbf{Administration} which includes allowing access to various users, enforcing data security and various other checks
         \end{itemize}
-        A database model is a type of data model that determines the logical structure of a database and fundamentally determines in which manner data can be stored, organized and manipulated. The most popular example of a database model is the relational model, which uses a table-based format. The ACID (Atomicity, Consistency, Isolation and Durability) database design is one of oldest and most important database design. A relational database that fails to follow the ACID model cannot be considered reliable. 
+        A database model is a type of data model that determines the logical structure of a database and fundamentally determines how data can be stored, organized and manipulated. The most famous example of a database model is the relational model, which uses a table-based format. The ACID (Atomicity, Consistency, Isolation and Durability) database design is one of the oldest and most important database design. A relational database that fails to follow the ACID model cannot be considered reliable. 
         \paragraph{}
-        Databases can be categorized in many categories depending on how they store data, where it is stored and the additional functionality the DBMS can provide on the stored data. Broadly databases can categorized into two major categories centralized and distributed. They both have their advantages and disadvantages.
+        Databases can be categorized in many categories depending on how they store data, where it is stored, and the additional functionality the DBMS can provide on the stored data. Broadly databases can be categorized into two major categories centralized and distributed. They both have their advantages and disadvantages.
         \paragraph{}
         A centralized database is a database that is located, stored, and maintained in a single location and has a single DBMS but can be accessed by the users distributed in the network.
         \paragraph{}
-        A distributed database system consists of a collection of local databases,  geographically located in different points (nodes of a network of computers) and  logically related by functional relations so that they can be viewed globally as a single database \cite{distributeddatabase}.
-        There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database all the locations store the database identically i.e. all locations have the same management system and schema. Whereas in heterogeneous distributed database different locations can have different management software, schemas.
+        A distributed database system consists of a collection of local databases,  geographically located at different points (nodes of a network of computers) and  logically related by functional relations to be viewed globally as a single database \cite{distributeddatabase}.
+        There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database, all the locations store the database identically, i.e. all locations have the same management system and schema. Whereas in a heterogeneous distributed database, different locations can have different management software, schemas.
         For a database management system to be distributed, it should be fully compliant with the twelve rules introduced by C.J. Date in 1987 \cite{distributeddbms} -:
         \begin{enumerate}
             \item Local Autonomy
@@ -267,14 +267,14 @@
         \end{enumerate}
         
         \paragraph{}
-        If a centralized database is used to store the data then the whole system is prone to Single Point of Failure, if for some reason the database fails the whole system will fail. As all the data is stored in a single location, if there are no  precautionary measures taken then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerability. This makes centralized database dubious with very low reliability. But at the same time, centralized database ensures data consistency and easy management in compliance with ACID design \cite{centralizeddistributeddatabases}.
+        If a centralized database is used to store the data, then the whole system is prone to a Single Point of Failure; if for some reason the database fails, the whole system will fail. As all the data is stored in a single location, if there are no precautionary measures taken, then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerabilities. This makes a centralized database dubious with very low reliability. However, at the same time, a centralized database ensures data consistency and easy management in compliance with ACID design \cite{centralizeddistributeddatabases}.
         
         \paragraph{}
-        A major advantage of distributed database is that by sharing a database across  multiple nodes can obtain a storage space extension and also can benefit from multiple processing resources. A distributed database system is robust to failure to some extent. Hence, it is reliable when compared to a  centralized database system. It is also more robust compared to a centralized database as it doesn't have a single point of failure, if a node fails another node or group of nodes can provide the necessary data. But to make this possible complex software's are required which incur additional costs and processing overheads. Marinating data integrity is difficult and hence minimum redundancy and ACID properties are more relaxed than compared to a centralized database \cite{centralizeddistributeddatabases}. Distributed environment also faces problems such as fragmentation and data replication. A data fragment constitutes some subset of the original database. A data replica constitutes some copy of the whole or part of the original database. The fragmentation and the replication can be combined: a relationship can be partitioned into several pieces and can have multiple replicas of each fragment \cite{distributedsystems}.
+        A major advantage of distributed database is that by sharing a database across multiple nodes, the database can obtain a storage space extension and benefit from multiple processing resources. A distributed database system is robust to failure to some extent. Hence, it is reliable when compared to a  centralized database system. It is also more robust than a centralized database as it does not have a single point of failure. If a node fails, another node or group of nodes can provide the necessary data. However, to make this possible complex software's are required, which incur additional costs and processing overheads. Marinating data integrity is difficult, and hence minimum redundancy and ACID properties are more relaxed than a centralized database \cite{centralizeddistributeddatabases}. The distributed environment also faces problems such as fragmentation and data replication. A data fragment constitutes some subset of the original database. A data replica constitutes some copy of the whole or part of the original database. The fragmentation and the replication can be combined: a relationship can be partitioned into several pieces and can have multiple replicas of each fragment \cite{distributedsystems}.
         
     \subsection{Advantages of using Blockchain}
         % general introduction about blockchain benefits.
-        Blockchain is a type of decentralized database where the data is stored in blocks and each block is linked to the previous block using its cryptographic hash, thus forming a chain. As the blockchain grows in size, it becomes more and more difficult to tamper the data in these blocks. Blockchain based databases are more trustworthy, reliable and secure than traditional databases.
+        Blockchain is a type of decentralized database where the data is stored in blocks, and each block is linked to the previous block using its cryptographic hash, thus forming a chain. As the blockchain grows in size, it becomes more and more difficult to tamper with the data in these blocks. Blockchain based databases are more trustworthy, reliable and secure than traditional databases.
 
         \paragraph{}
         % decentralization benefits
@@ -282,23 +282,23 @@
 
         \paragraph{}
         % Immutability and tracability benefits.
-        The data that is committed to the blockchain is immutable. After some data is inserted into the blockchain, it is very difficult to delete or alter it. This is realized by including, in each block, the cryptographic hash of its previous block. Because of this immutability, a blockchain database only supports create and read operations in contrast to traditional databases which supports create, read, update and delete (CRUD) operations. To update the database state, a subsequent write is required. Old writes persist in the blockchain forever, making it convenient to trace how the blockchain database state is updated over time. This makes it possible to trace the actions that resulted in a particular database state.
+        The data that is committed to the blockchain is immutable. After some data is inserted into the blockchain, it is very difficult to delete or alter it. This is realized by including, in each block, the cryptographic hash of its previous block. Because of this immutability, a blockchain database only supports create and read operations in contrast to traditional databases, which supports create, read, update and delete (CRUD) operations. To update the database state, a subsequent write is required. Old writes persist in the blockchain forever, making it convenient to trace how the blockchain database state is updated over time. This makes it possible to trace the actions that resulted in a particular database state.
 
         \paragraph{}
         % transparency
-        Another benefit of blockchain is that it provides transparency to the data stored in it. This is achieved by replicating the blockchain data among multiple nodes present in the blockchain network. Nodes in the blockchain network not only can view the data already committed to the blockchain but can also participate in the process of validating the data to be committed in the blockchain. The transparency also helps users to cross verify some data against the blockchain.  
+        Another benefit of blockchain is that it provides transparency to the data stored in it. This is achieved by replicating the blockchain data among multiple nodes present in the blockchain network. Nodes in the blockchain network can view the data already committed to the blockchain and participate in the process of validating the data to be committed in the blockchain. The transparency also helps users to cross verify some data against the blockchain.  
 
         \paragraph{}
         % single public ledger
-        A blockchain ledger is logically a single public ledger. Since every node updates its copy of blockchain ledger in sync with each other and after consensus is reached, the whole network logically act as one single public ledger. This removes the complications present in traditional systems where different participants or organizations maintains multiple ledgers which needs to be reconcile and synchronized time to time.
+        A blockchain ledger is logically a single public ledger. Since every node updates its copy of the blockchain ledger in sync with each other and after consensus is reached, the whole network logically acts as one public ledger. This removes the complications present in traditional systems where different participants or organizations maintain multiple ledgers, which needs to be reconciled and synchronized from time to time.
 
         \paragraph{}
         % Reduced Cost
-        Systems that are deployed on public blockchain network are more cost efficient as compared to the traditional systems. This is because the system utilizes the processing power and resources of a large number of nodes that are already connected to the blockchain network, thus significantly reducing the cost needed for setting up and maintaining centralized servers present in traditional systems.
+        Systems that are deployed on public blockchain network are more cost efficient as compared to traditional systems. This is because the system utilizes the processing power and resources of many nodes that are already connected to the blockchain network, thus significantly reducing the cost needed for setting up and maintaining centralized servers present in traditional systems.
 
         \paragraph{}
         % Security
-        Blockchain based systems are more secure and resilient to cyber attacks, which can cause data loss, data leaks, data inconsistency and many other vulnerability, than traditional sytems. Whenever a new block is introduced in the blockchain, its hash value is calculated which also includes the hash of its previous block. If a malicious user fraudulently tries to tamper the data inside a block, not only its hash value changes, but the hashes of the following blocks get changed too. This, along with the fact, that the data is stored in multiple nodes present in the blockchain network, makes it very difficult to tamper the data present in the blockchain.
+        Blockchain based systems are more secure and resilient to cyber attacks, which can cause data loss, data leaks, data inconsistency and many other vulnerabilities than traditional systems. Whenever a new block is introduced in the blockchain, its hash value is calculated, which also includes the hash of its previous block. If a malicious user fraudulently tries to tamper with the data inside a block, not only its hash value changes but the hashes of the following blocks get changed too. This, along with the fact that the data is stored in multiple nodes present in the blockchain network, makes it very difficult to tamper with the data present in the blockchain.
         
         \paragraph{}
         % Benefits of blockchain in our solution
@@ -306,33 +306,33 @@
     \subsection{IPFS}
 
         \paragraph{}
-        The Interplanetary File System (IPFS) \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. IPFS provides a high throughput storage system where each file is uniquely identified by a cryptographic hash. In IPFS, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP which uses location based addressing, IPFS uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
+        The Interplanetary File System (IPFS) \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. IPFS provides a high throughput storage system where a cryptographic hash uniquely identifies each file. In IPFS, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP, which uses location based addressing, IPFS uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
 
         \paragraph{}
-        IPFS uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the IPFS. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. IPFS stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node as well as all its ancestors in the DAG. This makes the data stored on the IPFS immutable.
+        IPFS uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the IPFS. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. IPFS stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node and all its ancestors in the DAG. This makes the data stored on the IPFS immutable.
         
     \subsection{Motivation}
         \paragraph{}
-        In India, currently if a person is asked to prove if he/she is the owner of a piece of land then all they can show for it is a sale deed which just proves that the person was the owner at a particular time, but that person cannot prove that he/she is still the owner of that land. For proving the same he/she has to go to various government offices and collect various document showing that no sale deed has been registered for that land after the one which the person has. When a person wishes to buy land in India, they have to be very careful and perform various checks such as
+        In India, currently, if a person is asked to prove if he/she is the owner of a piece of land, then all they can show for it is a sale deed which just proves that the person was the owner at a particular time, but that person cannot prove that he/she is still the owner of that land. For proving the same, he/she has to go to various government offices and collect various document showing that no sale deed has been registered for that land after the one which the person has. When a person wishes to buy land in India, they have to be very careful and perform various checks such as:-
         \begin{itemize}
             \item Check if the deed title is in the name of the seller and if he/she has the full right to sell it
             \item Procure a Encumbrance Certificate from sub-registrar's office where the deed is registered which declares that the land is free of any legal hassle and unpaid dues
             \item Check if the Property tax and other bills are paid in full and the seller has the respective original receipts
             \item Check if the loan on the land has been completely repaid
         \end{itemize}
-        If a buyer is lethargic in verifying these documents he/she can be easily duped into buying a disputed land parcel or it may even happen that the land in question did not even legally belong to the said seller, that is the seller was not the genuine owner of that land and provided fake documents. As these documents are mostly maintained offline as hard copies these cases often occur.
+        If a buyer is lethargic in verifying these documents, he/she can be easily duped into buying a disputed land parcel, or it may even happen that the land in question did not even legally belong to the said seller, that is, the seller was not the genuine owner of that land and provided fake documents. As these documents are primarily maintained offline as hard copies, these cases often occur.
 
         \paragraph{}
-        Getting all the information such as the sale deeds and ownership history for a land parcel is very cumbersome, a simple solution to this problem is a smartphone application with which users/potential buyers can get land ownership history and related documents for a particular land parcel. These documents and data can be stored in a database by the government and will be updated every time a new sale deed is registered i.e. owner for a land parcel changes. This makes the process of acquiring the documents in question very easy and hassle free.
+        Getting all the information, such as the sale deeds and ownership history for a land parcel, is cumbersome. A simple solution to this problem is a smartphone application with which users/potential buyers can get land ownership history and related documents for a particular land parcel. These documents and data can be stored in a database by the government and will be updated every time a new sale deed is registered, i.e. owner for a land parcel changes. This makes the process of acquiring the documents in question straightforward and hassle-free.
 
         \paragraph{}
-        Indian government launched Digital India Land Record Modernization Programme in 2008. Main aim of this programme is to create a system of updated land records, automated and automatic mutation, integration between textual and spatial records, inter-connectivity between revenue and registration, to replace the present deeds registration and presumptive title system with that of conclusive titling with title guarantee \cite{dilrmp}. In addition to this, Indian government also plans on storing the digital records on a private blockchain and provide a system where citizens can view the ownership details and complete history of the property before going in for the purchase \cite{blockchaingovin}.  
+        Indian government launched Digital India Land Record Modernization Programme in 2008. This programme aims to create a system of updated land records, automated and automatic mutation, integration between textual and spatial records, inter-connectivity between revenue and registration, to replace the present deeds registration and presumptive title system with that of conclusive titling with title guarantee \cite{dilrmp}. In addition to this, the Indian government also plans on storing the digital records on a private blockchain and provide a system where citizens can view the ownership details and complete history of the property before going in for the purchase \cite{blockchaingovin}.  
 
     \subsection{Proposed Solution}
-        To takle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private IPFS cluster with their \gls{cid} stored on the blockchain. A verification portal is also part of the solution where users while accessing records will be given verification code which users can use to generate a digitally signed PDF for verifying the land records. 
+        To tackle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private IPFS cluster with their \gls{cid} stored on the blockchain. A verification portal is also part of the solution where users, while accessing records, will be given a verification code which users can use to generate a digitally signed PDF for verifying the land records. 
         
     \subsection{Organisation of Dissertation}
-        A brief introduction to our proposed solution and the motivation behind it was discussed in chapter one. Chapter one also provided the generic application architecture and contrasted the centralized databases with blockchain databases. Chapter two provides an introduction to the various offerings of the blockchain technology that is makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes direction for future work.
+        A brief introduction to our proposed solution and the motivation behind it was discussed in chapter one. Chapter one also provided the generic application architecture and contrasted the centralized databases with blockchain databases. Chapter two provides an introduction to the various offerings of blockchain technology that makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture, including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes a direction for future work.
         
 
 \section{Advantages of Decentralized Solutions}
@@ -460,10 +460,10 @@
         \subsubsection{Add Land Record}
             Adding a land record entails:-
             \begin{enumerate}
-                \item Get input from user.
+                \item Get input from the user.
                 \item Generate certificate from the details.
                 \item Upload certificate to IPFS and receive \gls{cid} for the certificate.
-                \item Create land record on the blockchain
+                \item Create land record on the blockchain.
             \end{enumerate}
 
             \begin{figure}[htbp]
@@ -478,7 +478,7 @@
             \end{figure}
         
         \subsubsection{Transfer Land}
-            Transferring a land record entails :-
+            Transferring a land record entails:-
             \begin{enumerate}
                 \item Get input from user.
                 \item Generate land transfer certificate containing details about the land transfer.
@@ -595,7 +595,7 @@
             \end{minipage}
         \end{figure}
 
-        After successful authentication the user is redirected to a screen as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the \gls{lrrs} server's /landrecord endpoint with the marked GPS coordinates as the parameters and in response receives the data for the land parcel which then displayed in a confirmation screen (Figure \ref{app:confirm}) where user confirms if the data fecthed is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button the user initiates a transaction with the payment gateway i.e Razorpay gateway and is redirected to the said gateway as shown in Figure \ref{app:payment}. If the transaction is completed successfully then the Payment ID and Payment Signature of the transaction are sent to the \gls{lrrs} server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason then an failure screen (Figure \ref{app:failure}) is displayed prompting the user to redo the process.
+        After successful authentication the user is redirected to a screen as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the \gls{lrrs} server's /landrecord endpoint with the marked GPS coordinates as the parameters and in response receives the data for the land parcel which then displayed in a confirmation screen (Figure \ref{app:confirm}) where user confirms if the data fetched is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button the user initiates a transaction with the payment gateway i.e Razorpay gateway and is redirected to the said gateway as shown in Figure \ref{app:payment}. If the transaction is completed successfully then the Payment ID and Payment Signature of the transaction are sent to the \gls{lrrs} server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason then an failure screen (Figure \ref{app:failure}) is displayed prompting the user to redo the process.
         
         \begin{figure}
             \centering
@@ -1198,7 +1198,7 @@
             For transfer of land, proposed solution requires the transfer to be manually entered to the blockchain records by the Land Registration Department. This can be improved to remove the dependency on Land Registration Department and allow users to directly sell and buy land without the intermediate regulatory authority.
 
             \paragraph{}
-            Land Registration Department Record's portal can be further improved to add additional metadata for every record entered into the blockchain such as which user added a particular record into the blockchain.
+            Land Registration Department Record's portal can be further improved to add additional metadata for every record entered into the blockchain, such as which user added a particular record into the blockchain.
         
     \printglossaries
     \addcontentsline{toc}{section}{Acronyms}
