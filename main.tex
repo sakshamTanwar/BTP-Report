@@ -91,7 +91,7 @@
             \textbf{Pranshu Maheshwari}\\
             \textbf{Saksham Tanwar}\\
 
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.5]{iiti_logo}
                 \centering
             \end{figure}
@@ -126,7 +126,7 @@
     \textbf{Saksham Tanwar}\\*[0.5cm]
     \textit{Guided by:}\\
     \textbf{Dr. Gourinath Banda, Associate Professor}\\*[1cm]
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \includegraphics[scale=0.5]{iiti_logo}
         \centering
     \end{figure}
@@ -422,7 +422,7 @@
 
     \subsection{Overall Architecture}
     \paragraph{}
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \includegraphics[scale=0.25]{hld}
         \centering
         \caption{Overall Architecture}
@@ -470,21 +470,21 @@
             \item Add Land Record:- Add a land record.
             \item Transfer Land:- Transfer land ownership.
             \item Split Land:- Splits a land record into two separate land records, useful in cases when a part of land needs to be transferred.
-            \item Query Records:- Users can query records in any particular State, Sub-District, District or Village.
+            \item Query Records:- UseFrs can query records in any particular State, Sub-District, District or Village.
             \item Query Ownership History:- Users can query the ownership history of a particular land.
         \end{itemize}
 
         \paragraph{}
         Records Server is implemented using Express framework, a NodeJS module.
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{records_login}
             \centering
             \caption{Login Page for the Records Server}
         \end{figure}
 
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{records_home}
             \centering
             \caption{Home Page for the Records Server}
@@ -501,12 +501,12 @@
                 \item Create land record on the blockchain.
             \end{enumerate}
 
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_add}
                 \centering
                 \caption{Add Land Records Page for the Records Server}
             \end{figure}
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_seq_add}
                 \centering
                 \caption{Sequence Diagram for Adding Land Records}
@@ -521,13 +521,13 @@
                 \item Upload certificates to \acrshort{ipfs} and receive \acrshort{cid}'s for the certificates.
                 \item Create land transfer record and update the land record on the blockchain.
             \end{enumerate}
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_transfer}
                 \centering
                 \caption{Transfer Land Page for the Records Server}
             \end{figure}
 
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_seq_transfer}
                 \centering
                 \caption{Sequence Diagram for Transferring Land Records}
@@ -541,13 +541,13 @@
                 \item Add two new land records and mark the old land record as expired on the blockchain.
             \end{enumerate}
             
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_split}
                 \centering
                 \caption{Split Land Record Page for the Records Server}
             \end{figure}
 
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_seq_split_land}
                 \centering
                 \caption{Sequence diagram for Splitting a Land Record}
@@ -563,13 +563,13 @@
                 \item Query records from the blockchain.
             \end{enumerate}
             
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_query_records}
                 \centering
                 \caption{Query Land Records Page for the Records Server}
             \end{figure}
 
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_seq_query_records}
                 \centering
                 \caption{Sequence diagram for Querying Land Records}
@@ -583,13 +583,13 @@
                 \item Query ownership history from the blockchain.
             \end{enumerate}
             
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_query_history}
                 \centering
                 \caption{Query Land Ownership History Page for the Records Server}
             \end{figure}
             
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{records_seq_query_history}
                 \centering
                 \caption{Sequence diagram for Querying Land Ownership History}
@@ -601,21 +601,21 @@
         The application is built using React Native, a JavaScript library used to build cross-platform applications using a single React codebase, i.e. we can build both Android and iOS application using the same code base. 
         
         \subsubsection{Sequence Flow}
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.5]{app_sequence}
             \centering
             \caption{Sequence diagram for Smartphone Application}
         \end{figure}
         \paragraph{}
         Initially, the user has to log in to the application using an email and password. If they are new to the platform, they can register a new account, as seen in Figure \ref{app:login}.
-        \begin{figure}
+        \begin{figure}[H]
             \centering
             \includegraphics[scale=0.1]{app_login}
             \includegraphics[scale=0.1]{app_signup}
             \caption{Login and Signup Screen for Smartphone Application}
             \label{app:login}
         \end{figure}
-        \begin{figure}
+        \begin{figure}[H]
             \centering
             \begin{minipage}{.5\textwidth}
                 \centering
@@ -633,14 +633,14 @@
 
         After successful authentication, the user is redirected to a screen, as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the \acrshort{lrrs} server's /landrecord endpoint with the marked GPS coordinates as the parameters and, in response, receives the data for the land parcel, which then displayed in a confirmation screen (Figure \ref{app:confirm}) where the user confirms if the data fetched is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button, the user initiates a transaction with the payment gateway, i.e. Razorpay gateway and is redirected to the said gateway, as shown in Figure \ref{app:payment}. If the transaction is completed successfully, then the Payment ID and Payment Signature of the transaction are sent to the \acrshort{lrrs} server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified, then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason, then a failure screen (Figure \ref{app:failure}) is displayed, prompting the user to redo the process.
         
-        \begin{figure}
+        \begin{figure}[H]
             \centering
             \includegraphics[scale=0.1]{app_payment}
             \caption{Payment Screen}
             \label{app:payment}
         \end{figure}
         
-        \begin{figure}
+        \begin{figure}[H]
             \centering
             \begin{minipage}{.5\textwidth}
                 \centering
@@ -857,7 +857,7 @@
                 \item \textbf{Khata No} - Khata number of the current owner
                 \item \textbf{Owner Name} - Name of the current owner
             \end{itemize}
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.5, frame]{landcertificate.png}
                 \centering
                 \caption{Land Ownership Certificate}
@@ -877,7 +877,7 @@
                 \item \textbf{Buyer Name} - Name of the buyer of the land
                 \item \textbf{Price} - Selling Price of the land in Indian Rupees
             \end{itemize}
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.5, frame]{landtransfercertificate.png}
                 \centering
                 \caption{Land Transfer Certificate}
@@ -911,7 +911,7 @@
         \paragraph{}
         All land records and land transfer information is stored on the blockchain. Blockchain is implemented using Hyperledger Fabric.
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{blockchain_use_cases}
             \centering
             \caption{Use Case diagram for Blockchain}
@@ -921,7 +921,7 @@
         Figure \ref{fig:bl_use_case} shows the various use cases supported by the blockchain. These are implemented by writing smart contracts for each of the five operations shown.
 
         \subsubsection{Data Format}
-            \begin{figure}[htbp]
+            \begin{figure}[H]
                 \includegraphics[scale=0.25]{blockchain_data_format}
                 \centering
                 \caption{Data Format for Blockchain}
@@ -979,7 +979,7 @@
             \item Create LandRecord data structure with the information provided and store it on the blockchain.
         \end{enumerate}
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{blockchain_seq_create_land}
             \centering
             \caption{Sequence Diagram for Creating a Land Record}
@@ -995,7 +995,7 @@
             \item Create TransferLandRecord with the information provided and store it on the blockchain.
         \end{enumerate}
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{blockchain_seq_transfer_land}
             \centering
             \caption{Sequence Diagram for Transferring Land Ownership}
@@ -1011,7 +1011,7 @@
             \item Update the original land record and add the two new records on the blockchain. 
         \end{enumerate}
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{blockchain_seq_split_land}
             \centering
             \caption{Sequence Diagram for Splitting a Land Record}
@@ -1024,7 +1024,7 @@
             \item Return the records.
         \end{enumerate}
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{blockchain_seq_get_records}
             \centering
             \caption{Sequence Diagram for Getting all Records}
@@ -1040,7 +1040,7 @@
             \item Repeat the above steps for each parent land till a LandRecord does not have a parentLandKey field. 
         \end{enumerate}
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \includegraphics[scale=0.25]{blockchain_seq_get_history}
             \centering
             \caption{Sequence Diagram for Getting Ownership History of a Land}
