@@ -74,6 +74,7 @@
 \newacronym{ipfs}{IPFS}{InterPlanetary File System}
 \newacronym{apk}{APK}{Android Package}
 \newacronym{ipa}{IPA}{iOS App Store Package}
+\newacronym{pdf}{PDF}{Portable Document Format}
 \renewcommand*{\acronymname}{Abbreviations}
 
 \begin{titlepage}
@@ -222,6 +223,8 @@
 
 \tableofcontents
 \clearpage
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
 
 \section{Introduction}
     \subsection{Generic Application}
@@ -333,7 +336,7 @@
         Indian government launched Digital India Land Record Modernization Programme in 2008. This programme aims to create a system of updated land records, automated and automatic mutation, integration between textual and spatial records, inter-connectivity between revenue and registration, to replace the present deeds registration and presumptive title system with that of conclusive titling with title guarantee \cite{dilrmp}. In addition to this, the Indian government also plans on storing the digital records on a private blockchain and provide a system where citizens can view the ownership details and complete history of the property before going in for the purchase \cite{blockchaingovin}.  
 
     \subsection{Proposed Solution}
-        To tackle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private \acrshort{ipfs} cluster with their \acrshort{cid} stored on the blockchain. A verification portal is also part of the solution where users, while accessing records, will be given a verification code which users can use to generate a digitally signed PDF for verifying the land records. 
+        To tackle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private \acrshort{ipfs} cluster with their \acrshort{cid} stored on the blockchain. A verification portal is also part of the solution where users, while accessing records, will be given a verification code which users can use to generate a digitally signed \acrshort{pdf} for verifying the land records. 
         
     \subsection{Organisation of Dissertation}
         A brief introduction to our proposed solution and the motivation behind it was discussed in chapter one. Chapter one also provided the generic application architecture and contrasted the centralized databases with blockchain databases. Chapter two provides an introduction to the various offerings of blockchain technology that makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture, including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes a direction for future work.
@@ -428,10 +431,10 @@
         This serves a web application that allows users in Land Registration Department to enter and query land records on the blockchain. To support the migration of old land records onto the new platform, uploading scanned documents with each transaction such as adding a land record, transferring a land or splitting a land record is supported. All the documents are stored in the \acrshort{ipfs}.
 
         \paragraph{}
-        For each land record, a PDF certificate, digitally signed by the Land Registration Department, is generated, which includes all the information about the land such as the current owner, khasra number etc. This certificate is stored in the \acrshort{ipfs}.
+        For each land record, a \acrshort{pdf} certificate, digitally signed by the Land Registration Department, is generated, which includes all the information about the land such as the current owner, khasra number etc. This certificate is stored in the \acrshort{ipfs}.
         
         \paragraph{}
-        For each land transfer, a PDF certificate, digitally signed by the Land Registration Department, is generated, which includes all the information related to the land transfer. This certificate is stored in the \acrshort{ipfs}. In a land transfer, the land record certificate is also updated to reflect the current owner.
+        For each land transfer, a \acrshort{pdf} certificate, digitally signed by the Land Registration Department, is generated, which includes all the information related to the land transfer. This certificate is stored in the \acrshort{ipfs}. In a land transfer, the land record certificate is also updated to reflect the current owner.
 
         \paragraph{}
         This web application provides the following operations to the user(Land Registration Department Admin):-
@@ -637,9 +640,9 @@
         
         \subsubsection{Sequence Flow}
         \paragraph{}
-        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using a Reverse Geocoding Service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at the village level, and the land parcel which contains the GPS coordinate inside its polygon boundary is searched. Once the record is found, the PDF (as seen in Figure \ref{fig:pdfreport}) is generated and mailed to the user after payment is verified.
+        The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using a Reverse Geocoding Service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at the village level, and the land parcel which contains the GPS coordinate inside its polygon boundary is searched. Once the record is found, the \acrshort{pdf} (as seen in Figure \ref{fig:pdfreport}) is generated and mailed to the user after payment is verified.
         \paragraph{}
-        The generated PDF contains general details about the land parcel on top. It also includes a Verification Code that can be used to verify the current owner of the land parcel using the Verification server and selecting the record type as Land Record. The PDF also contains a table comprising the ownership history of the land parcel from genesis with the Verification Code for each Transfer Record, which can be used to verify each transaction. These verification codes are the hash ID's of the records stored on the \acrshort{ipfs}. The users can request these certificates from the verification portal to validate the land record and the transfer records.
+        The generated \acrshort{pdf} contains general details about the land parcel on top. It also includes a Verification Code that can be used to verify the current owner of the land parcel using the Verification server and selecting the record type as Land Record. The \acrshort{pdf} also contains a table comprising the ownership history of the land parcel from genesis with the Verification Code for each Transfer Record, which can be used to verify each transaction. These verification codes are the hash ID's of the records stored on the \acrshort{ipfs}. The users can request these certificates from the verification portal to validate the land record and the transfer records.
         \begin{figure}[H]
                 \includegraphics[scale=0.5]{lrsp_seq.png}
                 \centering
@@ -806,7 +809,7 @@
 
     \subsection{Verification Server}
         \paragraph{}
-        The verification server provides a portal to obtain the PDF certificates issued by Land Registration Department. The certificates are digitally signed by the respective authorities and contain information regarding land records and transactions. These certificates provide proof for land ownership and transactions and can be used for validation purposes.
+        The verification server provides a portal to obtain the \acrshort{pdf} certificates issued by Land Registration Department. The certificates are digitally signed by the respective authorities and contain information regarding land records and transactions. These certificates provide proof for land ownership and transactions and can be used for validation purposes.
         
         \paragraph{}
         Verification Server is implemented as a Node server using ExpressJS.
@@ -996,7 +999,7 @@
         \begin{figure}[htbp]
             \includegraphics[scale=0.25]{blockchain_seq_get_records}
             \centering
-            \caption{Sequence Diagram for Getting all Records in a Village/Sub-District/District/State}
+            \caption{Sequence Diagram for Getting all Records}
         \end{figure}
 
 
@@ -1046,7 +1049,7 @@
         \paragraph{}
         Records Server requires the following environment variables:-
         \begin{itemize}
-            \item \textbf{CERT:-} Path to P12 certificate file used to sign the PDF documents (certificates).
+            \item \textbf{CERT:-} Path to P12 certificate file used to sign the \acrshort{pdf} documents (certificates).
             \item \textbf{IPFS\_CLUSTER:-} Link to \acrshort{ipfs} cluster node.
         \end{itemize}
         
@@ -1068,7 +1071,7 @@
         \paragraph{}
         Verification Server requires the following environment variables:-
         \begin{itemize}
-            \item \textbf{CERT:-} Path to P12 certificate file used to sign the PDF documents (certificates).
+            \item \textbf{CERT:-} Path to P12 certificate file used to sign the \acrshort{pdf} documents (certificates).
         \end{itemize}
     
         \begin{lstlisting}[language=bash, caption=Verification Server]
