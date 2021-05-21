@@ -71,6 +71,9 @@
 
 \newacronym{cid}{CID}{Content Identifier}
 \newacronym{lrrs}{LRRS}{Land Records Retrieval Service}
+\newacronym{ipfs}{IPFS}{InterPlanetary File System}
+\newacronym{apk}{APK}{Android Package}
+\newacronym{ipa}{IPA}{iOS App Store Package}
 \renewcommand*{\acronymname}{Abbreviations}
 
 \begin{titlepage}
@@ -304,13 +307,13 @@
         \paragraph{}
         % Benefits of blockchain in our solution
 
-    \subsection{IPFS}
+    \subsection{\acrshort{ipfs}}
 
         \paragraph{}
-        The Interplanetary File System (IPFS) \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. IPFS provides a high throughput storage system where a cryptographic hash uniquely identifies each file. In IPFS, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP, which uses location based addressing, IPFS uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
+        The \acrfull{ipfs} \cite{IPFS} is a peer to peer distributed file system for sharing and storing data. \acrshort{ipfs} provides a high throughput storage system where a cryptographic hash uniquely identifies each file. In \acrshort{ipfs}, multiple users store a piece of each others' data and actively participate in making it available in the network. In contrast to HTTP, which uses location based addressing, \acrshort{ipfs} uses content based addressing. In content based addressing, user request data using its content identifier instead of the location where it is stored.
 
         \paragraph{}
-        IPFS uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the IPFS. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. IPFS stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node and all its ancestors in the DAG. This makes the data stored on the IPFS immutable.
+        \acrshort{ipfs} uses Distributed Hash Table (DHT) \cite{DHT} to enable routing and discovery of peers and content on the network. The hash table is split across all the participating nodes in the \acrshort{ipfs}. These nodes coordinate with each other to enable efficient lookup and retrieval of data on the network. \acrshort{ipfs} stores data using a data structure called Merkle DAGS \cite{IPFS}. Each node in a Merkle DAG stores the cryptographic hash of each of its children. Thus, altering a node's data changes the hash value of the node and all its ancestors in the DAG. This makes the data stored on the \acrshort{ipfs} immutable.
         
     \subsection{Motivation}
         \paragraph{}
@@ -330,7 +333,7 @@
         Indian government launched Digital India Land Record Modernization Programme in 2008. This programme aims to create a system of updated land records, automated and automatic mutation, integration between textual and spatial records, inter-connectivity between revenue and registration, to replace the present deeds registration and presumptive title system with that of conclusive titling with title guarantee \cite{dilrmp}. In addition to this, the Indian government also plans on storing the digital records on a private blockchain and provide a system where citizens can view the ownership details and complete history of the property before going in for the purchase \cite{blockchaingovin}.  
 
     \subsection{Proposed Solution}
-        To tackle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private IPFS cluster with their \gls{cid} stored on the blockchain. A verification portal is also part of the solution where users, while accessing records, will be given a verification code which users can use to generate a digitally signed PDF for verifying the land records. 
+        To tackle this problem of accessing land records, a smartphone based solution is proposed. Users can request land records for a particular land parcel by visiting the land parcel or marking it on the map. Land records are stored on a private blockchain which provides methods to access the data. For help in migrating old records to the new system, scanned documents can be uploaded. These documents are stored in a private \acrshort{ipfs} cluster with their \acrshort{cid} stored on the blockchain. A verification portal is also part of the solution where users, while accessing records, will be given a verification code which users can use to generate a digitally signed PDF for verifying the land records. 
         
     \subsection{Organisation of Dissertation}
         A brief introduction to our proposed solution and the motivation behind it was discussed in chapter one. Chapter one also provided the generic application architecture and contrasted the centralized databases with blockchain databases. Chapter two provides an introduction to the various offerings of blockchain technology that makes it useful for the proposed solution. Chapter two also provides a summary of related works. Chapter three describes the proposed solution's architecture, including the various actors/users of the solution, various submodules as part of the solution and how they interact with one another. Chapter four provides details regarding the deployment of the proposed solution. Chapter five concludes with the main contributions of this work and proposes a direction for future work.
@@ -351,9 +354,9 @@
         \paragraph{}
         Blockchain is a shared ledger. Each participant has a copy of the ledger. With necessary permissions, a participant can commit data into the ledger, which, after getting validated by other nodes, gets reflected across the entire Blockchain network. This removes the complications present in the current land record management systems where different departments maintain land data which needs to be reconciled and synchronized regularly.
     
-    \subsection{IPFS}
+    \subsection{\acrshort{ipfs}}
         \paragraph{}
-        IPFS, being distributed, is resilient to a single point of failure. It is more secure to DDos attacks than a centralized system. Multiple nodes can simultaneously participate in distributing a particular file resulting in better throughput. The data retrieved from IPFS can be verified by calculating its hash. Hence, data stored on IPFS is self-verifiable. Data can be pinned on multiple nodes to ensure it persists on IPFS. This makes IPFS resilient to data loss.
+        \acrshort{ipfs}, being distributed, is resilient to a single point of failure. It is more secure to DDos attacks than a centralized system. Multiple nodes can simultaneously participate in distributing a particular file resulting in better throughput. The data retrieved from \acrshort{ipfs} can be verified by calculating its hash. Hence, data stored on \acrshort{ipfs} is self-verifiable. Data can be pinned on multiple nodes to ensure it persists on \acrshort{ipfs}. This makes \acrshort{ipfs} resilient to data loss.
 
     \subsection{Related Works}
         \paragraph{}
@@ -366,10 +369,10 @@
         International Journal of Information Management \cite{THAKUR2020101940} lists the various problems in the current land record management system in India, and suggests a blockchain-based solution and gives a detailed flow of the land registration process in India and how blockchain technology improves the registration system.
 
         \paragraph{}
-        In 10th ICCCNT, \cite{8944471} suggests a permissioned blockchain-based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and IPFS for storing various documents.
+        In 10th ICCCNT, \cite{8944471} suggests a permissioned blockchain-based system for managing land records using Hyperledger Composer for permissioned blockchain implementation and \acrshort{ipfs} for storing various documents.
 
         \paragraph{}
-        Journal of King Saud University - Computer and Information Sciences \cite{ALAM2020} proposes a three-phase project for adopting a blockchain-based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum. Phase One proposes adopting public blockchain such as Ethereum to store timestamps of land transactions on the blockchain. Phase Two proposes a hybrid blockchain solution consisting of public and private blockchain networks, where key information is stored on the public blockchain. All data related to land is stored on a private blockchain network. Phase Three proposes using IPFS to store digital documents in the hybrid blockchain solution.
+        Journal of King Saud University - Computer and Information Sciences \cite{ALAM2020} proposes a three-phase project for adopting a blockchain-based solution for land titling problem in Bangladesh and provides an implementation of a prototype model using Ethereum. Phase One proposes adopting public blockchain such as Ethereum to store timestamps of land transactions on the blockchain. Phase Two proposes a hybrid blockchain solution consisting of public and private blockchain networks, where key information is stored on the public blockchain. All data related to land is stored on a private blockchain network. Phase Three proposes using \acrshort{ipfs} to store digital documents in the hybrid blockchain solution.
 
 
 
@@ -405,7 +408,7 @@
         \item \textbf{Payment Gateway:-} Razorpay payment gateway service is used to process payments.
         \item \textbf{Reverse Geocoding Service:-} Currently, no service exists which has accurate data of villages or sub-districts. Under the Digital India programme, if some service is introduced for accurate reverse geocoding, that can be used. For the proposed solution, a sample service is used as described.
         \item \textbf{Blockchain Network:-} Blockchain network is responsible for storing all the land records consisting of details about all the land parcels and their transactions.
-        \item \textbf{IPFS:-} Since a blockchain network is not ideal for storing files, IPFS is used to store files such as certificates and scanned documents.
+        \item \textbf{\acrshort{ipfs}:-} Since a blockchain network is not ideal for storing files, \acrshort{ipfs} is used to store files such as certificates and scanned documents.
         \item \textbf{Land Registration Department:-} Responsible for adding records to the blockchain and providing a verification portal where users can obtain digitally signed certificates to verify land records.
         \begin{itemize}
             \item \textbf{Records Server:-} Responsible for serving the website using which Land Records can be added to the blockchain.
@@ -422,13 +425,13 @@
 
     \subsection{Records Server}
         \paragraph{}
-        This serves a web application that allows users in Land Registration Department to enter and query land records on the blockchain. To support the migration of old land records onto the new platform, uploading scanned documents with each transaction such as adding a land record, transferring a land or splitting a land record is supported. All the documents are stored in the IPFS.
+        This serves a web application that allows users in Land Registration Department to enter and query land records on the blockchain. To support the migration of old land records onto the new platform, uploading scanned documents with each transaction such as adding a land record, transferring a land or splitting a land record is supported. All the documents are stored in the \acrshort{ipfs}.
 
         \paragraph{}
-        For each land record, a PDF certificate, digitally signed by the Land Registration Department, is generated, which includes all the information about the land such as the current owner, khasra number etc. This certificate is stored in the IPFS.
+        For each land record, a PDF certificate, digitally signed by the Land Registration Department, is generated, which includes all the information about the land such as the current owner, khasra number etc. This certificate is stored in the \acrshort{ipfs}.
         
         \paragraph{}
-        For each land transfer, a PDF certificate, digitally signed by the Land Registration Department, is generated, which includes all the information related to the land transfer. This certificate is stored in the IPFS. In a land transfer, the land record certificate is also updated to reflect the current owner.
+        For each land transfer, a PDF certificate, digitally signed by the Land Registration Department, is generated, which includes all the information related to the land transfer. This certificate is stored in the \acrshort{ipfs}. In a land transfer, the land record certificate is also updated to reflect the current owner.
 
         \paragraph{}
         This web application provides the following operations to the user(Land Registration Department Admin):-
@@ -463,7 +466,7 @@
             \begin{enumerate}
                 \item Get input from the user.
                 \item Generate certificate from the details.
-                \item Upload certificate to IPFS and receive \gls{cid} for the certificate.
+                \item Upload certificate to \acrshort{ipfs} and receive \acrshort{cid} for the certificate.
                 \item Create land record on the blockchain.
             \end{enumerate}
 
@@ -484,7 +487,7 @@
                 \item Get input from the user.
                 \item Generate land transfer certificate containing details about the land transfer.
                 \item Generate land record certificate containing details about the land and current owner.
-                \item Upload certificates to IPFS and receive \gls{cid}'s for the certificates.
+                \item Upload certificates to \acrshort{ipfs} and receive \acrshort{cid}'s for the certificates.
                 \item Create land transfer record and update the land record on the blockchain.
             \end{enumerate}
             \begin{figure}[htbp]
@@ -563,7 +566,7 @@
 
     \subsection{Smartphone Application}
         \paragraph{}
-        This application is used to interact with the \gls{lrrs} Server and provide a user-friendly mechanism for the users to request land ownership history records.
+        This application is used to interact with the \acrshort{lrrs} Server and provide a user-friendly mechanism for the users to request land ownership history records.
         The application is built using React Native, a JavaScript library used to build cross-platform applications using a single React codebase, i.e. we can build both Android and iOS application using the same code base. 
         
         \subsubsection{Sequence Flow}
@@ -597,7 +600,7 @@
             \end{minipage}
         \end{figure}
 
-        After successful authentication, the user is redirected to a screen, as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the \gls{lrrs} server's /landrecord endpoint with the marked GPS coordinates as the parameters and, in response, receives the data for the land parcel, which then displayed in a confirmation screen (Figure \ref{app:confirm}) where the user confirms if the data fetched is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button, the user initiates a transaction with the payment gateway, i.e. Razorpay gateway and is redirected to the said gateway, as shown in Figure \ref{app:payment}. If the transaction is completed successfully, then the Payment ID and Payment Signature of the transaction are sent to the \gls{lrrs} server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified, then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason, then a failure screen (Figure \ref{app:failure}) is displayed, prompting the user to redo the process.
+        After successful authentication, the user is redirected to a screen, as shown in Figure \ref{app:home} where they can request the land ownership history of a land parcel by placing the marker anywhere in the land area and pressing Submit button. The app then makes a GET request to the \acrshort{lrrs} server's /landrecord endpoint with the marked GPS coordinates as the parameters and, in response, receives the data for the land parcel, which then displayed in a confirmation screen (Figure \ref{app:confirm}) where the user confirms if the data fetched is for the correct land parcel and if so proceeds with payment by pressing on the Continue with Payment button. By pressing on the button, the user initiates a transaction with the payment gateway, i.e. Razorpay gateway and is redirected to the said gateway, as shown in Figure \ref{app:payment}. If the transaction is completed successfully, then the Payment ID and Payment Signature of the transaction are sent to the \acrshort{lrrs} server via a GET request to the /payment/verify endpoint for verification. If the transaction is successfully verified, then the app redirects to a Success screen (Figure \ref{app:success}) and the ownership history report of that land parcel is emailed to the user. If the payment transaction fails for any reason, then a failure screen (Figure \ref{app:failure}) is displayed, prompting the user to redo the process.
         
         \begin{figure}
             \centering
@@ -622,25 +625,25 @@
             \end{minipage}
         \end{figure}
     
-    \subsection{\gls{lrrs} Server}
+    \subsection{\acrshort{lrrs} Server}
         \paragraph{}
-        It is a Node server that interacts with the smartphone application to provide the requested land parcel details to the user. It acts as an intermediary between the \gls{lrrs} smartphone application and the Blockchain network. The application sends GPS coordinates to the \gls{lrrs} server requesting for the land record. The server resolves it and fetches the corresponding land record information from the Blockchain. The land parcel details are then e-mailed to the user once the user completes the payment. It supports HTTPS for secured interaction.
+        It is a Node server that interacts with the smartphone application to provide the requested land parcel details to the user. It acts as an intermediary between the \acrshort{lrrs} smartphone application and the Blockchain network. The application sends GPS coordinates to the \acrshort{lrrs} server requesting for the land record. The server resolves it and fetches the corresponding land record information from the Blockchain. The land parcel details are then e-mailed to the user once the user completes the payment. It supports HTTPS for secured interaction.
         
         \paragraph{}
-        The server also provides user authentication functionality to the \gls{lrrs} system. It uses a centralized database to register users with the system. It uses JWT-based stateless authentication to allow access to protected routes.
+        The server also provides user authentication functionality to the \acrshort{lrrs} system. It uses a centralized database to register users with the system. It uses JWT-based stateless authentication to allow access to protected routes.
 
         \paragraph{}
-        \gls{lrrs} server is implemented using Express framework, a NodeJS module.
+        \acrshort{lrrs} server is implemented using Express framework, a NodeJS module.
         
         \subsubsection{Sequence Flow}
         \paragraph{}
         The server resolves the GPS coordinates obtained from the application to get the corresponding State, District, Sub-District and Village information. This is accomplished by using a Reverse Geocoding Service. The server interacts with the Blockchain network to fetch the corresponding record. The records are queried at the village level, and the land parcel which contains the GPS coordinate inside its polygon boundary is searched. Once the record is found, the PDF (as seen in Figure \ref{fig:pdfreport}) is generated and mailed to the user after payment is verified.
         \paragraph{}
-        The generated PDF contains general details about the land parcel on top. It also includes a Verification Code that can be used to verify the current owner of the land parcel using the Verification server and selecting the record type as Land Record. The PDF also contains a table comprising the ownership history of the land parcel from genesis with the Verification Code for each Transfer Record, which can be used to verify each transaction. These verification codes are the hash ID's of the records stored on the IPFS. The users can request these certificates from the verification portal to validate the land record and the transfer records.
+        The generated PDF contains general details about the land parcel on top. It also includes a Verification Code that can be used to verify the current owner of the land parcel using the Verification server and selecting the record type as Land Record. The PDF also contains a table comprising the ownership history of the land parcel from genesis with the Verification Code for each Transfer Record, which can be used to verify each transaction. These verification codes are the hash ID's of the records stored on the \acrshort{ipfs}. The users can request these certificates from the verification portal to validate the land record and the transfer records.
         \begin{figure}[H]
                 \includegraphics[scale=0.5]{lrsp_seq.png}
                 \centering
-                \caption{Sequence diagram for \gls{lrrs} Server}
+                \caption{Sequence diagram for \acrshort{lrrs} Server}
         \end{figure}
         \begin{figure}[H]
                 \includegraphics[scale=0.25]{landRecord.png}
@@ -650,11 +653,11 @@
         \end{figure}
         
         \subsubsection{Usage}
-        Following are the web endpoints exposed by the \gls{lrrs} server:
+        Following are the web endpoints exposed by the \acrshort{lrrs} server:
         \begin{itemize}
             \item \textbf{POST} /signup:
                 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-                    This endpoint is used to register a new user to the \gls{lrrs} server. If successful, it returns the jwt access token in the response body. The jwt token expires in 1 hour.
+                    This endpoint is used to register a new user to the \acrshort{lrrs} server. If successful, it returns the jwt access token in the response body. The jwt token expires in 1 hour.
                     \par\textbf{Request Parameters:}
                     \begin{itemize}
                         \item name: user name
@@ -854,10 +857,10 @@
         \paragraph{}
         The sequence flow of the verification server comprises of the following steps:-
         \begin{enumerate}
-            \item Get input from the user, which includes the IPFS hash of the certificate and record details.
+            \item Get input from the user, which includes the \acrshort{ipfs} hash of the certificate and record details.
             \item Fetch the corresponding record from the Blockchain network.
-            \item Validate the provided certificate IPFS hash against the one associated with the record in the Blockchain.
-            \item If certificate hashes matched, fetch the stored certificate from IPFS.
+            \item Validate the provided certificate \acrshort{ipfs} hash against the one associated with the record in the Blockchain.
+            \item If certificate hashes matched, fetch the stored certificate from \acrshort{ipfs}.
             \item Add digital signature to certificate with the current timestamp and send it to the user.
         \end{enumerate}
         
@@ -922,8 +925,8 @@
             \item \textbf{owner} - Current land owner
             \item \textbf{parentLandKey} - In case the land record is formed after splitting from another land record, this stores the land key of the land from which this record was created
             \item \textbf{expired} - Boolean to store whether the record is expired or not; a record is marked as expired when the land parcel is split into two land parcels
-            \item \textbf{certificate} - \gls{cid} of the certificate file stored in IPFS
-            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to IPFS with the land record
+            \item \textbf{certificate} - \acrshort{cid} of the certificate file stored in \acrshort{ipfs}
+            \item \textbf{otherDocs} - Array of \acrshort{cid}'s of the files uploaded to \acrshort{ipfs} with the land record
         \end{itemize}
 
         \paragraph{}
@@ -934,8 +937,8 @@
             \item \textbf{price} - Selling Price of land in Rupees
             \item \textbf{prevOwner} - Seller of the land
             \item \textbf{newOwner} - Buyer of the land
-            \item \textbf{certificate} - \gls{cid} of the certificate file stored in IPFS
-            \item \textbf{otherDocs} - Array of \gls{cid}'s of the files uploaded to IPFS with the land transfer record
+            \item \textbf{certificate} - \acrshort{cid} of the certificate file stored in \acrshort{ipfs}
+            \item \textbf{otherDocs} - Array of \acrshort{cid}'s of the files uploaded to \acrshort{ipfs} with the land transfer record
         \end{itemize}
 
     \subsubsection{Create Land Record}
@@ -1044,7 +1047,7 @@
         Records Server requires the following environment variables:-
         \begin{itemize}
             \item \textbf{CERT:-} Path to P12 certificate file used to sign the PDF documents (certificates).
-            \item \textbf{IPFS\_CLUSTER:-} Link to IPFS cluster node.
+            \item \textbf{IPFS\_CLUSTER:-} Link to \acrshort{ipfs} cluster node.
         \end{itemize}
         
         \begin{lstlisting}[language=bash, caption=Records Server]
@@ -1079,25 +1082,25 @@
             CERT=<cert_path> node dist/app.js
             \end{lstlisting}
     
-    \subsection{\gls{lrrs} Server}
+    \subsection{\acrshort{lrrs} Server}
         \paragraph{}
-        \gls{lrrs} Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+        \acrshort{lrrs} Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
     
         \paragraph{}
-        \gls{lrrs} Server uses the following external services:-
+        \acrshort{lrrs} Server uses the following external services:-
         \begin{itemize}
             \item \textbf{MongoDB:-} A running MongoDB instance is required for user authentication purposes. Provide the URI to the MongoDB database in the file \textit{src/setup/db.ts}. To set up a MongodB instance locally, follow \href{https://docs.mongodb.com/manual/installation/}{this}.
             \item \textbf{RazorPay Payment Gateway:-} RazorPay Payment Gateway is used to initiate and verify the payment.
         \end{itemize}
     
         \paragraph{}
-        \gls{lrrs} Server requires the following environment variables :-
+        \acrshort{lrrs} Server requires the following environment variables :-
         \begin{itemize}
             \item \textbf{RZRPAY\_KEY\_ID:-} ID provided by RazorPay.
             \item \textbf{RZRPAY\_KEY\_SECRET:-} Secret provided by RazorPay.
         \end{itemize}
         
-        \begin{lstlisting}[language=bash, caption=\gls{lrrs} Server]
+        \begin{lstlisting}[language=bash, caption=\acrshort{lrrs} Server]
         # Install required NodeJs modules
         npm install
     
@@ -1110,10 +1113,10 @@
     
     \subsection{Smartphone Application}
         \paragraph{}
-        The smartphone application is built using React Native, a NodeJS module, and is written in Typescript. To build Android APK, Linux, Windows and macOS are the supported development OS, but to build iOS IPA, only macOS is supported.
+        The smartphone application is built using React Native, a NodeJS module, and is written in Typescript. To build Android \acrshort{apk}, Linux, Windows and macOS are the supported development OS, but to build iOS \acrshort{ipa}, only macOS is supported.
         \subsubsection{Android}
             \paragraph{}
-            To build Android APK, Android Studio is required with the following installed along with it:- 
+            To build Android \acrshort{apk}, Android Studio is required with the following installed along with it:- 
             \begin{itemize}
                 \item Android 10 (Q) SDK
                 \item Android SDK Platform 29
@@ -1127,7 +1130,7 @@
         
         \subsubsection{iOS}
             \paragraph{}
-            To build iOS IPA, version 10 or a newer version of Xcode is required, which can be installed from the Mac App Store, and after installation, Xcode Command Line Tools needs to installed from the Xcode Preferences tab. Along with Xcode, Cocoapods needs to installed, a dependency manager for Swift and Objective-C Cocoa projects. It can be installed using the command mentioned in Listing \ref{ios:cocoapods}.
+            To build iOS \acrshort{ipa}, version 10 or a newer version of Xcode is required, which can be installed from the Mac App Store, and after installation, Xcode Command Line Tools needs to installed from the Xcode Preferences tab. Along with Xcode, Cocoapods needs to installed, a dependency manager for Swift and Objective-C Cocoa projects. It can be installed using the command mentioned in Listing \ref{ios:cocoapods}.
         
             \begin{lstlisting}[language=bash, caption=Cocoapods installation, label=ios:cocoapods]
             # Install cocoapods
@@ -1152,16 +1155,16 @@
         \end{lstlisting}
         
         \paragraph{}
-        To publish the Android APK to the Play Store, a Google Developer account is required. After building a release APK, the same can be uploaded on the Play Store Console from where it is published on the Play Store.
+        To publish the Android \acrshort{apk} to the Play Store, a Google Developer account is required. After building a release \acrshort{apk}, the same can be uploaded on the Play Store Console from where it is published on the Play Store.
         \paragraph{}
-        To build a release version of the app for iOS, an Apple developer account is required. After signing in using the developer account in the Xcode, a build button is available, which builds a release IPA for iOS and pushes it to App Store Connect, where the IPA is inspected by Apple for any guideline violation. Upon successful inspection, the app can be published to the App Store using the App Store Connect Console.
+        To build a release version of the app for iOS, an Apple developer account is required. After signing in using the developer account in the Xcode, a build button is available, which builds a release \acrshort{ipa} for iOS and pushes it to App Store Connect, where the \acrshort{ipa} is inspected by Apple for any guideline violation. Upon successful inspection, the app can be published to the App Store using the App Store Connect Console.
     
-    \subsection{IPFS}
+    \subsection{\acrshort{ipfs}}
         \paragraph{}
-        A private IPFS network is set up. IPFS-Cluster is used to manage the cluster. This requires two environment variables to be set:-
+        A private \acrshort{ipfs} network is set up. IPFS-Cluster is used to manage the cluster. This requires two environment variables to be set:-
         \begin{itemize}
-            \item \textbf{SWARM\_KEY:-} Required for private IPFS network, can be generated by following point 2 in this \href{https://github.com/ahester57/ipfs-private-swarm}{link}.
-            \item \textbf{CLUSTER\_SECRET:-} Required to manage the private IPFS cluster
+            \item \textbf{SWARM\_KEY:-} Required for private \acrshort{ipfs} network, can be generated by following point 2 in this \href{https://github.com/ahester57/ipfs-private-swarm}{link}.
+            \item \textbf{CLUSTER\_SECRET:-} Required to manage the private \acrshort{ipfs} cluster
         \end{itemize}
     
         These can be provided in a .env file in the same directory as the docker-compose.yml file.
@@ -1183,7 +1186,7 @@
         \paragraph{}
         One can follow the tutorial in the example linked and replace the smart contract with the implementation on the Github repo for our project.\\
         \\
-        \textbf{\gls{lrrs} server} runs as an organization 1(digibank) application.\\
+        \textbf{\acrshort{lrrs} server} runs as an organization 1(digibank) application.\\
         \textbf{Verification Server} and \textbf{Records Server} run as organization 2(magnetocorp) applications.
     
 
