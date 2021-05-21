@@ -1,4 +1,6 @@
-\documentclass{article}
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[authoryear]{natbib}
@@ -93,7 +95,7 @@
                 \includegraphics[scale=0.5]{iiti_logo}
                 \centering
             \end{figure}
-            \vspace{3cm}
+            \vspace{2.5cm}
             \textbf{\large{DISCIPLINE OF COMPUTER SCIENCE AND ENGINEERING}}\\*[0.2cm]
             \textbf{\LARGE{INDIAN INSTITUTE OF TECHNOLOGY INDORE}}\\
             \today
@@ -128,7 +130,6 @@
         \includegraphics[scale=0.5]{iiti_logo}
         \centering
     \end{figure}
-    \vspace{1cm}
     \textbf{INDIAN INSTITUTE OF TECHNOLOGY INDORE}\\
     \textbf{May 2021}
     \thispagestyle{empty}
@@ -225,6 +226,8 @@
 \clearpage
 \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
+\printglossaries
+\addcontentsline{toc}{section}{Abbreviations}
 
 \section{Introduction}
     \subsection{Generic Application}
@@ -1207,9 +1210,7 @@
 
             \paragraph{}
             Land Registration Department Record's portal can be further improved to add additional metadata for every record entered into the blockchain, such as which user added a particular record into the blockchain.
-        
-    \printglossaries
-    \addcontentsline{toc}{section}{Abbreviations}
+    
     \clearpage
     \addcontentsline{toc}{section}{References}
     \bibliographystyle{unsrt}
