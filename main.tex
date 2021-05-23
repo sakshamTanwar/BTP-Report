@@ -677,7 +677,7 @@
                 \caption{Sequence diagram for \acrshort{lrrs} Server}
         \end{figure}
         \begin{figure}[H]
-                \includegraphics[scale=0.5]{landRecord.png}
+                \includegraphics[scale=0.5, frame]{landRecord.png}
                 \centering
                 \caption{Land Ownership History PDF}
                 \label{fig:pdfreport}
@@ -1125,10 +1125,13 @@
         \end{itemize}
     
         \paragraph{}
-        \acrshort{lrrs} Server requires the following environment variables :-
+        \acrshort{lrrs} Server requires the following environment variables, which can be provided in a \textit{.env} file in the same directory:-
         \begin{itemize}
             \item \textbf{RZRPAY\_KEY\_ID:-} ID provided by RazorPay.
             \item \textbf{RZRPAY\_KEY\_SECRET:-} Secret provided by RazorPay.
+            \item \textbf{CLIENT\_ID:-} Client ID for OAuth Authentication, needed for sending Emails.
+            \item \textbf{CLIENT\_SECRET:-} Client Secret for OAuth Authentication, needed for sending Emails.
+            \item \textbf{REFRESH\_TOKEN:-} Refresh Token for OAuth Authentication, needed for sending Emails.
         \end{itemize}
         
         \begin{lstlisting}[language=bash, caption=\acrshort{lrrs} Server]
@@ -1139,7 +1142,7 @@
         npm run build
     
         # Start server
-        RZRPAY_KEY_ID=<razorpay_key_id> RZRPAY_KEY_SECRET=<razorpay_key_secret> node dist/main.js
+        node dist/main.js
         \end{lstlisting}
     
     \subsection{Smartphone Application}
