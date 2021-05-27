@@ -274,8 +274,8 @@
         \paragraph{}
         Most applications require data in some form or another and need to store the said data for future use, and this is where databases come into the picture.
         A database is an organized collection of data, generally stored and accessed electronically from a computer system.
-        Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one database and provides access to all of the data contained in the database.
-        DBMS's provide various functions that allow management of a database and its data \cite{wikidbms}, such as:-
+        Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one's database and provides access to all of the data contained in the database.
+        DBMS provides various functions that allow management of a database and its data \cite{wikidbms}, such as:-
         \begin{itemize}
             \item \textbf{Data definition}, which defines the database model, i.e. the logical structure of the data model
             \item \textbf{Updating} of actual data, which includes insertion, modification, and deletion of the actual data
@@ -356,7 +356,7 @@
         In India, currently, if a person is asked to prove that he/she is the owner of a piece of land, then all they can show for it is a sale deed which just proves that the person was the owner at a particular time, but that person cannot prove that he/she is still the owner of that land. For proving the same, he/she has to go to various government offices and collect various document showing that no sale deed has been registered for that land after the one which the person has. When a person wishes to buy land in India, they have to be very careful and perform various checks such as:-
         \begin{itemize}
             \item Check if the deed title is in the name of the seller and if he/she has the full right to sell it
-            \item Procure a Encumbrance Certificate from sub-registrar's office where the deed is registered which declares that the land is free of any legal hassle and unpaid dues
+            \item Procure an Encumbrance Certificate from sub-registrar's office where the deed is registered which declares that the land is free of any legal hassle and unpaid dues
             \item Check if the Property tax and other bills are paid in full and the seller has the respective original receipts
             \item Check if the loan on the land has been completely repaid
         \end{itemize}
@@ -438,7 +438,7 @@
     \begin{itemize}
         \item \textbf{Land Records Retrieval Service:-} Responsible for providing land records service to the users who want to obtain land records by visiting the land parcel itself or marking the land on the map.
         \begin{itemize}
-            \item \textbf{Smartphone Application:-} Provides a user interface for users to interact with where users can request land records for a particular land by marking the point on the map.
+            \item \textbf{Smartphone Application:-} Provides a user interface for users to interact with, where users can request land records for a particular land by marking the point on the map.
             \item \textbf{Server:-} Backend server for the Smartphone Application. It interacts with the blockchain network to compile the summary of the land records requested by the users.
         \end{itemize}
         \item \textbf{Payment Gateway:-} Razorpay payment gateway service is used to process payments.
@@ -475,7 +475,7 @@
             \item Add Land Record:- Add a land record.
             \item Transfer Land:- Transfer land ownership.
             \item Split Land:- Splits a land record into two separate land records, useful in cases when a part of land needs to be transferred.
-            \item Query Records:- UseFrs can query records in any particular State, Sub-District, District or Village.
+            \item Query Records:- Users can query records in any particular State, Sub-District, District or Village.
             \item Query Ownership History:- Users can query the ownership history of a particular land.
         \end{itemize}
 
@@ -689,7 +689,25 @@
         \end{figure}
         
         \subsubsection{Usage}
-        Following are the web endpoints exposed by the \acrshort{lrrs} server:
+        The web endpoints exposed by the LRSP server are described below. \newline
+        The error response of these endpoints comprises of the following structure: \newline
+        
+        \par\textbf{Error Response:}
+                    \begin{listing}[H]
+                    \begin{minted}[frame=single,
+                                   framesep=3mm,
+                                   xleftmargin=21pt,
+                                   tabsize=4,
+                                   autogobble]{js}
+                        {     
+                            "success": "false"
+                            "error": {
+                                "code":  <error code>,
+                                "message": <error description>
+                            }
+                        }
+                    \end{minted}
+                    \end{listing}
         \begin{itemize}
             \item \textbf{POST} /signup:
                 \begin{addmargin}[1em]{2em}% 1em left, 2em right
