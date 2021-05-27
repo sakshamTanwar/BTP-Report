@@ -83,6 +83,8 @@
 \newacronym{apk}{APK}{Android Package}
 \newacronym{ipa}{IPA}{iOS App Store Package}
 \newacronym{pdf}{PDF}{Portable Document Format}
+\newacronym{dbms}{DBMS}{Database Management System}
+\newacronym{acid}{ACID}{Atomicity, Consistency, Isolation and Durability}
 \renewcommand*{\acronymname}{Abbreviations}
 
 \begin{titlepage}
@@ -263,8 +265,8 @@
     \subsection{Generic Application}
         \paragraph{} A typical application can be broken down into three logical layers \cite{wikimulti}, namely:-
         \begin{itemize}
-            \item \textbf{Presentation Layer: }It is the layer responsible for displaying information and collect information from the user.
-            \item \textbf{Business Logic Layer: }In this layer, information collected from the presentation layer is used to perform the various calculations and operations needed to be performed by the application.
+            \item \textbf{Presentation Layer: }It is the layer responsible for displaying and collecting information from the user.
+            \item \textbf{Business Logic Layer: }In this layer, information collected from presentation layer is used to perform various calculations and operations needed to be performed by the application.
             \item \textbf{Data Layer: }This layer is responsible for storing and retrieving data to be used by other layers.
         \end{itemize}
 
@@ -274,23 +276,23 @@
         \paragraph{}
         Most applications require data in some form or another and need to store the said data for future use, and this is where databases come into the picture.
         A database is an organized collection of data, generally stored and accessed electronically from a computer system.
-        Access to this data is usually provided by a "database management system" (DBMS) consisting of an integrated set of computer software that allows users to interact with one's database and provides access to all of the data contained in the database.
-        DBMS provides various functions that allow management of a database and its data \cite{wikidbms}, such as:-
+        Access to this data is usually provided by a \acrfull{dbms} consisting of an integrated set of computer software that allows users to interact with one's database and provides access to all of the data contained in the database.
+        \acrshort{dbms} provides various functions that allow management of a database and its data \cite{wikidbms}, such as:-
         \begin{itemize}
             \item \textbf{Data definition}, which defines the database model, i.e. the logical structure of the data model
             \item \textbf{Updating} of actual data, which includes insertion, modification, and deletion of the actual data
             \item \textbf{Retrieval} of actual data, which may or may not include data processing
             \item \textbf{Administration} which includes allowing access to various users, enforcing data security and various other checks
         \end{itemize}
-        A database model is a type of data model that determines the logical structure of a database and fundamentally determines how data can be stored, organized and manipulated. The most famous example of a database model is the relational model, which uses a table-based format. The ACID (Atomicity, Consistency, Isolation and Durability) database design is one of the oldest and most important database design. A relational database that fails to follow the ACID model cannot be considered reliable. 
+        A database model is a type of data model that determines the logical structure of a database and fundamentally determines how data can be stored, organized and manipulated. The most famous example of a database model is the relational model, which uses a table-based format. The \acrfull{acid} database design is one of the oldest and most important database design. A relational database that fails to follow the \acrshort{acid} model cannot be considered reliable. 
         \paragraph{}
-        Databases can be categorized in many categories depending on how they store data, where it is stored, and the additional functionality the DBMS can provide on the stored data. Broadly databases can be categorized into two major categories centralized and distributed. They both have their advantages and disadvantages.
+        Databases can be categorized in many categories depending on how they store data, where it is stored, and the additional functionality the \acrshort{dbms} can provide on the stored data. Broadly databases can be categorized into two major categories centralized and distributed. They both have their advantages and disadvantages.
         \paragraph{}
-        A centralized database is a database that is located, stored, and maintained in a single location and has a single DBMS but can be accessed by the users distributed in the network.
+        A centralized database is a database that is located, stored, and maintained in a single location and has a single \acrshort{dbms} but can be accessed by the users distributed in the network.
         \paragraph{}
         A distributed database system consists of a collection of local databases,  geographically located at different points (nodes of a network of computers) and  logically related by functional relations to be viewed globally as a single database \cite{distributeddatabase}.
         There are two types of distributed databases homogeneous and heterogeneous. In a homogeneous distributed database, all the locations store the database identically, i.e. all locations have the same management system and schema. Whereas in a heterogeneous distributed database, different locations can have different management software, schemas.
-        For a database management system to be distributed, it should be fully compliant with the twelve rules introduced by C.J. Date in 1987 \cite{distributeddbms} -:
+        For a \acrshort{dbms} to be distributed, it should be fully compliant with the twelve rules introduced by C.J. Date in 1987 \cite{distributeddbms} -:
         \begin{enumerate}
             \item Local Autonomy
             \item The absence of a dependency from a central location
@@ -307,10 +309,10 @@
         \end{enumerate}
         
         \paragraph{}
-        If a centralized database is used to store the data, then the whole system is prone to a Single Point of Failure; if for some reason the database fails, the whole system will fail. As all the data is stored in a single location, if there are no precautionary measures taken, then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerabilities. This makes a centralized database dubious with very low reliability. However, at the same time, a centralized database ensures data consistency and easy management in compliance with ACID design \cite{centralizeddistributeddatabases}.
+        If a centralized database is used to store the data, then the whole system is prone to a Single Point of Failure; if for some reason the database fails, the whole system will fail. As all the data is stored in a single location, if there are no precautionary measures taken, then a hardware failure can lead to complete data loss. The databases are also vulnerable to cyberattacks which can cause data loss, data leaks, data inconsistency and many other vulnerabilities. This makes a centralized database dubious with very low reliability. However, at the same time, a centralized database ensures data consistency and easy management in compliance with \acrshort{acid} design \cite{centralizeddistributeddatabases}.
         
         \paragraph{}
-        A major advantage of distributed database is that by sharing a database across multiple nodes, the database can obtain a storage space extension and benefit from multiple processing resources. A distributed database system is robust to failure to some extent. Hence, it is reliable when compared to a  centralized database system. It is also more robust than a centralized database as it does not have a single point of failure. If a node fails, another node or group of nodes can provide the necessary data. However, to make this possible complex software's are required, which incur additional costs and processing overheads. Marinating data integrity is difficult, and hence minimum redundancy and ACID properties are more relaxed than a centralized database \cite{centralizeddistributeddatabases}. The distributed environment also faces problems such as fragmentation and data replication. A data fragment constitutes some subset of the original database. A data replica constitutes some copy of the whole or part of the original database. The fragmentation and the replication can be combined: a relationship can be partitioned into several pieces and can have multiple replicas of each fragment \cite{distributedsystems}.
+        A major advantage of distributed database is that by sharing a database across multiple nodes, the database can obtain a storage space extension and benefit from multiple processing resources. A distributed database system is robust to failure to some extent. Hence, it is reliable when compared to a  centralized database system. It is also more robust than a centralized database as it does not have a single point of failure. If a node fails, another node or group of nodes can provide the necessary data. However, to make this possible complex software's are required, which incur additional costs and processing overheads. Marinating data integrity is difficult, and hence minimum redundancy and \acrshort{acid} properties are more relaxed than a centralized database \cite{centralizeddistributeddatabases}. The distributed environment also faces problems such as fragmentation and data replication. A data fragment constitutes some subset of the original database. A data replica constitutes some copy of the whole or part of the original database. The fragmentation and the replication can be combined: a relationship can be partitioned into several pieces and can have multiple replicas of each fragment \cite{distributedsystems}.
         
     \subsection{Advantages of using Blockchain}
         % general introduction about blockchain benefits.
@@ -392,7 +394,7 @@
     
     \subsection{\acrshort{ipfs}}
         \paragraph{}
-        \acrshort{ipfs}, being distributed, is resilient to a single point of failure. It is more secure to DDos attacks than a centralized system. Multiple nodes can simultaneously participate in distributing a particular file resulting in better throughput. The data retrieved from \acrshort{ipfs} can be verified by calculating its hash. Hence, data stored on \acrshort{ipfs} is self-verifiable. Data can be pinned on multiple nodes to ensure it persists on \acrshort{ipfs}. This makes \acrshort{ipfs} resilient to data loss.
+        \acrshort{ipfs}, being distributed, is resilient to a single point of failure. It is more secure to Denial of Service (DDoS) attacks than a centralized system. Multiple nodes can simultaneously participate in distributing a particular file resulting in better throughput. The data retrieved from \acrshort{ipfs} can be verified by calculating its hash. Hence, data stored on \acrshort{ipfs} is self-verifiable. Data can be pinned on multiple nodes to ensure it persists on \acrshort{ipfs}. This makes \acrshort{ipfs} resilient to data loss.
 
     \subsection{Related Works}
         \paragraph{}
