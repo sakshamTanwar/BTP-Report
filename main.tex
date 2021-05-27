@@ -1093,81 +1093,7 @@
 
 
 \section{Deployment Details}
-    \subsection{Records Server}
-        \paragraph{}
-        Records Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
-        
-        \paragraph{}
-        Records Server requires the following environment variables:-
-        \begin{itemize}
-            \item \textbf{CERT:-} Path to P12 certificate file used to sign the \acrshort{pdf} documents (certificates).
-            \item \textbf{IPFS\_CLUSTER:-} Link to \acrshort{ipfs} cluster node.
-        \end{itemize}
-        
-        \begin{lstlisting}[language=bash, caption=Records Server]
-        # Install required NodeJs modules
-        npm install
-    
-        # Transpile
-        npm run build
-    
-        # Start server
-        CERT=<cert_path> IPFS_CLUSTER=<ipfs_cluster_link> node dist/app.js
-        \end{lstlisting}
-    
-    \subsection{Verification Server}
-        \paragraph{}
-        Verification Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
-        
-        \paragraph{}
-        Verification Server requires the following environment variables:-
-        \begin{itemize}
-            \item \textbf{CERT:-} Path to P12 certificate file used to sign the \acrshort{pdf} documents (certificates).
-        \end{itemize}
-    
-        \begin{lstlisting}[language=bash, caption=Verification Server]
-            # Install required NodeJs modules
-            npm install
-        
-            # Transpile
-            npm run build
-        
-            # Start server
-            CERT=<cert_path> node dist/app.js
-            \end{lstlisting}
-    
-    \subsection{\acrshort{lrrs} Server}
-        \paragraph{}
-        \acrshort{lrrs} Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
-    
-        \paragraph{}
-        \acrshort{lrrs} Server uses the following external services:-
-        \begin{itemize}
-            \item \textbf{MongoDB:-} A running MongoDB instance is required for user authentication purposes. Provide the URI to the MongoDB database in the file \textit{src/setup/db.ts}. To set up a MongodB instance locally, follow \href{https://docs.mongodb.com/manual/installation/}{this}.
-            \item \textbf{RazorPay Payment Gateway:-} RazorPay Payment Gateway is used to initiate and verify the payment.
-        \end{itemize}
-    
-        \paragraph{}
-        \acrshort{lrrs} Server requires the following environment variables, which can be provided in a \textit{.env} file in the same directory:-
-        \begin{itemize}
-            \item \textbf{RZRPAY\_KEY\_ID:-} ID provided by RazorPay.
-            \item \textbf{RZRPAY\_KEY\_SECRET:-} Secret provided by RazorPay.
-            \item \textbf{CLIENT\_ID:-} Client ID for OAuth Authentication, needed for sending Emails.
-            \item \textbf{CLIENT\_SECRET:-} Client Secret for OAuth Authentication, needed for sending Emails.
-            \item \textbf{REFRESH\_TOKEN:-} Refresh Token for OAuth Authentication, needed for sending Emails.
-        \end{itemize}
-        
-        \begin{lstlisting}[language=bash, caption=\acrshort{lrrs} Server]
-        # Install required NodeJs modules
-        npm install
-    
-        # Transpile
-        npm run build
-    
-        # Start server
-        node dist/main.js
-        \end{lstlisting}
-    
+
     \subsection{Smartphone Application}
         \paragraph{}
         The smartphone application is built using React Native, a NodeJS module, and is written in Typescript. To build Android \acrshort{apk}, Linux, Windows and macOS are the supported development OS, but to build iOS \acrshort{ipa}, only macOS is supported.
@@ -1216,6 +1142,93 @@
         \paragraph{}
         To build a release version of the app for iOS, an Apple developer account is required. After signing in using the developer account in the Xcode, a build button is available, which builds a release \acrshort{ipa} for iOS and pushes it to App Store Connect, where the \acrshort{ipa} is inspected by Apple for any guideline violation. Upon successful inspection, the app can be published to the App Store using the App Store Connect Console.
     
+    \subsection{\acrshort{lrrs} Server}
+        \paragraph{}
+        \acrshort{lrrs} Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+    
+        \paragraph{}
+        \acrshort{lrrs} Server uses the following external services:-
+        \begin{itemize}
+            \item \textbf{MongoDB:-} A running MongoDB instance is required for user authentication purposes. Provide the URI to the MongoDB database in the file \textit{src/setup/db.ts}. To set up a MongodB instance locally, follow \href{https://docs.mongodb.com/manual/installation/}{this}.
+            \item \textbf{RazorPay Payment Gateway:-} RazorPay Payment Gateway is used to initiate and verify the payment.
+        \end{itemize}
+    
+        \paragraph{}
+        \acrshort{lrrs} Server requires the following environment variables, which can be provided in a \textit{.env} file in the same directory:-
+        \begin{itemize}
+            \item \textbf{RZRPAY\_KEY\_ID:-} ID provided by RazorPay.
+            \item \textbf{RZRPAY\_KEY\_SECRET:-} Secret provided by RazorPay.
+            \item \textbf{CLIENT\_ID:-} Client ID for OAuth Authentication, needed for sending Emails.
+            \item \textbf{CLIENT\_SECRET:-} Client Secret for OAuth Authentication, needed for sending Emails.
+            \item \textbf{REFRESH\_TOKEN:-} Refresh Token for OAuth Authentication, needed for sending Emails.
+        \end{itemize}
+        
+        \begin{lstlisting}[language=bash, caption=\acrshort{lrrs} Server]
+        # Install required NodeJs modules
+        npm install
+    
+        # Transpile
+        npm run build
+    
+        # Start server
+        node dist/main.js
+        \end{lstlisting}
+    
+    \subsection{Blockchain}
+    
+        \paragraph{}
+        Smart contract and applications that interact with blockchain run on the test net using the commercial paper \href{https://hyperledger-fabric.readthedocs.io/en/latest/tutorial/commercial_paper.html}{example} replacing the smart contract and applications with our implementations.
+        
+        \paragraph{}
+        One can follow the tutorial in the example linked and replace the smart contract with the implementation on the Github repo for our project.\\
+        \\
+        \textbf{\acrshort{lrrs} server} runs as an organization 1(digibank) application.\\
+        \textbf{Verification Server} and \textbf{Records Server} run as organization 2(magnetocorp) applications.
+
+    \subsection{Records Server}
+        \paragraph{}
+        Records Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+        
+        \paragraph{}
+        Records Server requires the following environment variables:-
+        \begin{itemize}
+            \item \textbf{CERT:-} Path to P12 certificate file used to sign the \acrshort{pdf} documents (certificates).
+            \item \textbf{IPFS\_CLUSTER:-} Link to \acrshort{ipfs} cluster node.
+        \end{itemize}
+        
+        \begin{lstlisting}[language=bash, caption=Records Server]
+        # Install required NodeJs modules
+        npm install
+    
+        # Transpile
+        npm run build
+    
+        # Start server
+        CERT=<cert_path> IPFS_CLUSTER=<ipfs_cluster_link> node dist/app.js
+        \end{lstlisting}
+    
+    \subsection{Verification Server}
+        \paragraph{}
+        Verification Server is implemented using NodeJs module Express. It is written in typescript and needs to be transpiled.
+        
+        \paragraph{}
+        Verification Server requires the following environment variables:-
+        \begin{itemize}
+            \item \textbf{CERT:-} Path to P12 certificate file used to sign the \acrshort{pdf} documents (certificates).
+        \end{itemize}
+    
+        \begin{lstlisting}[language=bash, caption=Verification Server]
+            # Install required NodeJs modules
+            npm install
+        
+            # Transpile
+            npm run build
+        
+            # Start server
+            CERT=<cert_path> node dist/app.js
+            \end{lstlisting}
+    
+    
     \subsection{\acrshort{ipfs}}
         \paragraph{}
         A private \acrshort{ipfs} network is set up. IPFS-Cluster is used to manage the cluster. This requires two environment variables to be set:-
@@ -1235,16 +1248,7 @@
         docker-compose up
         \end{lstlisting}
     
-        \subsection{Blockchain}
     
-        \paragraph{}
-        Smart contract and applications that interact with blockchain run on the test net using the commercial paper \href{https://hyperledger-fabric.readthedocs.io/en/latest/tutorial/commercial_paper.html}{example} replacing the smart contract and applications with our implementations.
-        
-        \paragraph{}
-        One can follow the tutorial in the example linked and replace the smart contract with the implementation on the Github repo for our project.\\
-        \\
-        \textbf{\acrshort{lrrs} server} runs as an organization 1(digibank) application.\\
-        \textbf{Verification Server} and \textbf{Records Server} run as organization 2(magnetocorp) applications.
     
 
     \section{Conclusion and Future Work}
